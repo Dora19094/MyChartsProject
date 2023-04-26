@@ -25,6 +25,17 @@
     margin-bottom: 6px;
 }
 
+.card-title{
+    color:black;
+}
+.card-text{
+    color: dimgrey;
+}
+.card-body{
+    background-color: whitesmoke;
+}
+
+
 .btn-primary {
     background-color: darkslateblue;
     border: darkslateblue;
