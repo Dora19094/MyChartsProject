@@ -35,7 +35,14 @@
     background-color: whitesmoke;
 }
 
-
+h5{
+    color: dimgrey;
+    font-size: calc(3px + 2vmin);
+}
+p{
+    color: dimgrey;
+    font-size: calc(3px + 1vmin);
+}
 .btn-primary {
     background-color: darkslateblue;
     border: darkslateblue;

@@ -23,7 +23,6 @@ export function Charts() {
                                         <Card.Title>Network graph</Card.Title>
                                         <Card.Text>
                                             library: 'highcharts'.
-                                            Tokens: 2.
                                         </Card.Text>
                                         <Button variant="outline-info">Choose</Button>
                                     </Card.Body>
@@ -89,6 +88,12 @@ export function Charts() {
                         </CarouselItem>
                 </Carousel>
             </div>
-        </div>
+               <div>
+                   <h5> Press on a diagram to see how this works, or log in with your google account to start creating your diagrams.</h5>
+               <div className="d-flex justify-content-left">
+                   <p> about </p>
+               </div>
+               </div>
+            </div>
     );
 }
