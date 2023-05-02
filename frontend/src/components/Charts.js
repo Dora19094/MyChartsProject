@@ -2,15 +2,50 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
+import { GoogleLogin } from '@react-oauth/google';
 import logo from "../logo.svg";
-import {Card, Carousel, CarouselItem, Stack} from "react-bootstrap";
+import {Card, Carousel, CarouselItem, Modal, Stack} from "react-bootstrap";
 
 export function Charts() {
 
+    const [show, setShow] = useState(false);
+    function handleClose(){setShow(false);}
+    function handleShow() {setShow(true);}
+    const responseMessage = (response) => {
+        console.log(response);
+    };
+    const errorMessage = (error) => {
+        console.log(error);
+    };
     return (
             <div>
                 <img src={logo} className="App-logo" alt="logo" />
             <div>
+
+<div>
+    <Button variant="outline-info" onClick={handleShow}>
+        Log in or Sign in with Google
+    </Button>
+
+    <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+            <Modal.Title>Welcome</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> Google Sign Up Button
+            <button id="apple-pay-button"></button>
+        </Modal.Body>
+        <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+                Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+                Save Changes
+            </Button>
+        </Modal.Footer>
+    </Modal>
+</div>
+
+
                 <Carousel style={{ height: 500 }}>
                         <Carousel.Item style={{ height: 500 }}>
                             <Stack
