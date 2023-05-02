@@ -11,12 +11,13 @@ export function Charts() {
     const [show, setShow] = useState(false);
     function handleClose(){setShow(false);}
     function handleShow() {setShow(true);}
-    const responseMessage = (response) => {
+    function responseMessage(response){
         console.log(response);
-    };
-    const errorMessage = (error) => {
+    }
+    function errorMessage(error) {
         console.log(error);
-    };
+    }
+
     return (
             <div>
                 <img src={logo} className="App-logo" alt="logo" />
@@ -31,8 +32,10 @@ export function Charts() {
         <Modal.Header closeButton>
             <Modal.Title>Welcome</Modal.Title>
         </Modal.Header>
-        <Modal.Body> Google Sign Up Button
-            <button id="apple-pay-button"></button>
+        <Modal.Body> Sign in with your Google Account
+
+            <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
+
         </Modal.Body>
         <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
