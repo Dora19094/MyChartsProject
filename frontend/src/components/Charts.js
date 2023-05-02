@@ -13,13 +13,18 @@ export function Charts() {
     function handleShow() {setShow(true);}
     const [questionnaire, setQuestionnare] = useState();
 
-    function handleClick(){
-        const url = `http://auth/google`;
+    function handleClick() {
+        const url = "http://localhost/auth/google";
         const fetchData = async () => {
-            await fetch(url)
-                .then((response) => response.json())
-                .then((data) => {console.log(data); const d = [data]; setQuestionnare(d)});
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                setQuestionnare(data);
+            } catch (error) {
+                console.error(error);
+            }
         };
+        fetchData();
     }
     console.log(questionnaire);
     function responseMessage(response){
@@ -27,16 +32,16 @@ export function Charts() {
         console.log(response);
 
             // Send user data to backend API
-            fetch('/api/user', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(response),
-            })
-                .then(response => response.json())
-                .then(data => console.log(data))
-                .catch(error => console.error(error));
+            // fetch('/api/user', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(response),
+            // })
+            //     .then(response => response.json())
+            //     .then(data => console.log(data))
+            //     .catch(error => console.error(error));
 
     }
     function errorMessage(error) {
