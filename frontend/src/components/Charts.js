@@ -11,17 +11,46 @@ export function Charts() {
     const [show, setShow] = useState(false);
     function handleClose(){setShow(false);}
     function handleShow() {setShow(true);}
+    const [questionnaire, setQuestionnare] = useState();
+
+    function handleClick(){
+        const url = `http://auth/google`;
+        const fetchData = async () => {
+            await fetch(url)
+                .then((response) => response.json())
+                .then((data) => {console.log(data); const d = [data]; setQuestionnare(d)});
+        };
+    }
+    console.log(questionnaire);
     function responseMessage(response){
+
         console.log(response);
+
+            // Send user data to backend API
+            fetch('/api/user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(response),
+            })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error(error));
+
     }
     function errorMessage(error) {
         console.log(error);
     }
 
     return (
+
             <div>
                 <img src={logo} className="App-logo" alt="logo" />
             <div>
+
+                <Button variant="primary" onClick ={handleClick()}>
+                </Button>
 
 <div>
     <Button variant="outline-info" onClick={handleShow}>
