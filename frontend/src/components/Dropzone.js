@@ -1,9 +1,10 @@
 import React from "react";
-import { useDropzone } from "react-dropzone";
-import "./CreateDiagram.css";
+import {useDropzone} from "react-dropzone";
+import "./NewChart.css";
 import Button from "react-bootstrap/Button";
-function Dropzone({ open }) {
-    const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
+
+function Dropzone({open}) {
+    const {getRootProps, getInputProps, isDragActive, acceptedFiles} =
         useDropzone({});
 
     const files = acceptedFiles.map((file) => (
@@ -13,7 +14,7 @@ function Dropzone({ open }) {
     ));
 
     return (
-        <div {...getRootProps({ className: "dropzone" })}>
+        <div {...getRootProps({className: "dropzone"})}>
             <input className="input-zone" {...getInputProps()} />
             <div className="text-center">
                 {isDragActive ? (
