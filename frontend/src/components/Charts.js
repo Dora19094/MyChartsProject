@@ -53,14 +53,9 @@ export function Charts() {
             <Button variant="secondary" onClick={handleClose}>
                 Close
             </Button>
-            <Button variant="primary" onClick={handleClose}>
-                Save Changes
-            </Button>
         </Modal.Footer>
     </Modal>
 </div>
-
-
                 <Carousel style={{ height: 500 }}>
                         <Carousel.Item style={{ height: 500 }}>
                             <Stack

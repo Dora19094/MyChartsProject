@@ -22,7 +22,7 @@ function Dropzone({ open }) {
                     </p>
                 ) : (
                     <p className="dropzone-content">
-                        Drag’n’drop some files here, or click to select files
+                        Select or drag file
                     </p>
                 )}
                 <Button variant="outline-info">Select file</Button>
