@@ -8,24 +8,24 @@ require("./passportConfig")(passport);
 
 db.connect();
 
- 
+
 app.get(
     "/auth/google",
     passport.authenticate("google", { scope: ["email", "profile"] })
 );
- 
+
 app.get(
     "/auth/google/callback",
     passport.authenticate("google", { session: false }),
-  (req, res) => {
-    res.redirect("/profile/");
-  }
+    (req, res) => {
+        res.redirect("/profile/");
+    }
 );
 
- 
+
 app.get("/profile", (req, res) => {
-  console.log(req);
-  res.send("Welcome");
+    console.log(req);
+    res.send("Welcome");
 });
 
 app.listen(PORT, () => {

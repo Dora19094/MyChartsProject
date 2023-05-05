@@ -2,9 +2,11 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
-import {GoogleLogin} from '@react-oauth/google';
+
 import logo from "../logo.svg";
 import {Card, Carousel, CarouselItem, Modal, Nav, Stack} from "react-bootstrap";
+import GoogleLoginButton from "./GoogleLoginButton";
+
 
 export function Charts() {
 
@@ -18,19 +20,6 @@ export function Charts() {
         setShow(true);
     }
 
-    const handleLogin = async googleData => {
-        const res = await fetch("/api/v1/auth/google", {
-            method: "POST",
-            body: JSON.stringify({
-                token: googleData.tokenId
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        const data = await res.json()
-        // store returned user somehow
-    }
 
     return (
         <div>
@@ -46,15 +35,7 @@ export function Charts() {
                             <Modal.Title>Welcome</Modal.Title>
                         </Modal.Header>
                         <Modal.Body> Sign in with your Google Account
-
-                            <GoogleLogin
-                                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                                buttonText="Log in with Google"
-                                onSuccess={handleLogin}
-                                onFailure={handleLogin}
-                                cookiePolicy={'single_host_origin'}
-                            />
-
+                            <GoogleLoginButton />
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleClose}>
