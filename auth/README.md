@@ -28,4 +28,4 @@
 * Mongoose
 * Redis
 
-(#### !Databases: it is easier to run docker containers for databases instead of local installation.) 
+#### (!Databases: it is easier to run docker containers for databases instead of local installation.) 
