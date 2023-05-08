@@ -24,7 +24,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start-mac": "PORT=3006 react-scripts start",
+    "start-mac": "PORT=3000 react-scripts start",
     "start-win": "set PORT=3000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

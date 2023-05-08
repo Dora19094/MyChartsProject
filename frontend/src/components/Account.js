@@ -16,7 +16,7 @@ export default function Account() {
 
     //a. {baseURL}/account/:accountID
     // useEffect(() => {
-    //     const url = `https://localhost:3006/account/${accountID}`;
+    //     const url = `https://localhost:3000/account/${accountID}`;
     //     const fetchData = async () => {
     //         await fetch(url)
     //             .then((response) => response.json())
