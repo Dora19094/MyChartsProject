@@ -10,6 +10,7 @@ import Account from "./components/Account";
 import BuyCredits from "./components/BuyCredits";
 import About from "./components/About";
 import {GoogleOAuthProvider} from '@react-oauth/google';
+import ErrorChart from "./components/ErrorChart";
 
 
 // function App() {
@@ -40,10 +41,11 @@ function App() {
                         <Routes>
                             <Route path="/" element={<Charts/>}/>
                             <Route path="/home" element={<Charts/>}/>
-                            <Route path="/newchart" element={<NewChart/>}/>
+                            <Route path="/account/:credentials/newchart" element={<NewChart/>}/>
                             <Route path="/account/:credentials" element={<Account/>}/>
-                            <Route path="/buy" element={<BuyCredits/>}/>
+                            <Route path="/account/:credentials/buy" element={<BuyCredits/>}/>
                             <Route path="/about" element={<About/>}/>
+                            <Route path="/error" element={<ErrorChart/>}/>
                         </Routes>
                     </BrowserRouter>
                 </header>
