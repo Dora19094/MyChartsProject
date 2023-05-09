@@ -11,6 +11,9 @@ import BuyCredits from "./components/BuyCredits";
 import About from "./components/About";
 import {GoogleOAuthProvider} from '@react-oauth/google';
 import ErrorChart from "./components/ErrorChart";
+import DisplayChartTest from "./components/chart_components/DisplayChart";
+import ChartSelector from "./components/chart_components/DisplayChart";
+import DisplayChart from "./components/chart_components/DisplayChart";
 
 
 // function App() {
@@ -46,6 +49,8 @@ function App() {
                             <Route path="/account/:credentials/buy" element={<BuyCredits/>}/>
                             <Route path="/about" element={<About/>}/>
                             <Route path="/error" element={<ErrorChart/>}/>
+                            <Route path="/test-chart" element={<DisplayChart/>}/>
+
                         </Routes>
                     </BrowserRouter>
                 </header>
