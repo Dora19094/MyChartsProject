@@ -65,7 +65,7 @@ function BasicLine({chartData}) {
         }
 
         function configFinal() {
-        console.log(chartData);
+        //console.log(chartData);
             chartConfig.title.text = chartData[0].Title;
             chartConfig.subtitle.text = chartData[0].Subtitle;
             chartConfig.xAxis.accessibility.rangeDescription = chartData[0].xAxisRange;
@@ -90,6 +90,7 @@ function BasicLine({chartData}) {
 
                 })
             });
+            console.log("Basic line code run");
             return chartConfig;
         }
 
