@@ -3,10 +3,15 @@ const getConfigMongo = require('../services/getConfigMongo');
 
 const chartConfig = (req, res) => {
         const chartType = req.params.chartType;
-        let config = getConfigMongo(chartType);
-        console.log("response")
-        console.log(config)
-        res.send(config);
+        getConfigMongo(chartType)
+            .then((config) => {
+                    console.log(config);
+                    res.send(config);
+            })
+            .catch(error => {
+                    console.log(error);
+                    res.sendStatus(500);
+            });
 }
 
 module.exports = chartConfig;
