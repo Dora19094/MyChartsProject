@@ -3,68 +3,69 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import _ from 'lodash';
 
-function BasicLine({chartData}) {
+function BasicLine({chartData,chartConfig}) {
 
-    let chartConfig =
-        {
-
-            title: {
-                text: 'something',
-                align: 'left'
-            },
-
-            subtitle: {
-                text: '',
-                align: 'left'
-            },
-
-            yAxis: {
-                title: {
-                    text: ''
-                }
-            },
-
-            xAxis: {
-                accessibility: {
-                    rangeDescription: ''
-                }
-            },
-
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle'
-            },
-
-            plotOptions: {
-                series: {
-                    label: {
-                        connectorAllowed: false
-                    },
-                    pointStart: 0
-                }
-            },
-
-            series: [],
-
-            responsive: {
-                rules: [{
-                    condition: {
-                        maxWidth: 500
-                    },
-                    chartOptions: {
-                        legend: {
-                            layout: 'horizontal',
-                            align: 'center',
-                            verticalAlign: 'bottom'
-                        }
-                    }
-                }]
-            }
-
-        }
+    // let chartConfig =
+    //     {
+    //
+    //         title: {
+    //             text: 'something',
+    //             align: 'left'
+    //         },
+    //
+    //         subtitle: {
+    //             text: '',
+    //             align: 'left'
+    //         },
+    //
+    //         yAxis: {
+    //             title: {
+    //                 text: ''
+    //             }
+    //         },
+    //
+    //         xAxis: {
+    //             accessibility: {
+    //                 rangeDescription: ''
+    //             }
+    //         },
+    //
+    //         legend: {
+    //             layout: 'vertical',
+    //             align: 'right',
+    //             verticalAlign: 'middle'
+    //         },
+    //
+    //         plotOptions: {
+    //             series: {
+    //                 label: {
+    //                     connectorAllowed: false
+    //                 },
+    //                 pointStart: 0
+    //             }
+    //         },
+    //
+    //         series: [],
+    //
+    //         responsive: {
+    //             rules: [{
+    //                 condition: {
+    //                     maxWidth: 500
+    //                 },
+    //                 chartOptions: {
+    //                     legend: {
+    //                         layout: 'horizontal',
+    //                         align: 'center',
+    //                         verticalAlign: 'bottom'
+    //                     }
+    //                 }
+    //             }]
+    //         }
+    //
+    //     }
 
         function configFinal() {
+
         //console.log(chartData);
             chartConfig.title.text = chartData[0].Title;
             chartConfig.subtitle.text = chartData[0].Subtitle;
