@@ -16,7 +16,7 @@
 *
 * */
 import React, {useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
 import logo from "../logo.svg";
@@ -25,9 +25,18 @@ import "./Account.css";
 import ChartWrapper from "./chart_components/DisplayChart";
 
 export default function ErrorChart() {
+
+    const navigate = useNavigate();
+    const {credentials} = useParams();
+
 // get file data
     function handleDiscard() {
         //navigate
+        navigate(`/account/${credentials}`, {
+            state: {
+                credentials: credentials,
+            },
+        });
     }
 
     const [showA, setShowA] = useState(true);

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
 import logo from "../logo.svg";
@@ -8,6 +8,8 @@ import "./Account.css";
 
 // url here needs accountID email
 export default function BuyCredits() {
+    const navigate = useNavigate();
+    const {credentials} = useParams();
 
     function handle5() {
         console.log("bought 5 credits!");
@@ -27,6 +29,11 @@ export default function BuyCredits() {
 
     function handleClick() {
         //navigate to previous page
+        navigate(`/account/${credentials}`, {
+            state: {
+                credentials: credentials,
+            },
+        });
     }
 
     return (

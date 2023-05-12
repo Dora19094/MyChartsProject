@@ -40,13 +40,14 @@
 import {useState} from 'react';
 import Dropzone from 'react-dropzone';
 import Button from "react-bootstrap/Button";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import React, {useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
 
 export default function MyDropzone() {
 
     const navigate = useNavigate();
+    const {credentials} = useParams();
 
     const onDrop = useCallback((acceptedFiles) => {
 
@@ -62,7 +63,7 @@ export default function MyDropzone() {
                 // Do whatever you want with the file contents
                 const binaryStr = reader.result
                 console.log(binaryStr)
-                navigate('/about', {state: {file: binaryStr}});
+                navigate(`/account/${credentials}/error`, {state: {file: binaryStr}});
             }
             reader.readAsArrayBuffer(file)
         })

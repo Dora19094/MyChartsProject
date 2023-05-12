@@ -49,7 +49,7 @@ function App() {
                             <Route path="/account/:credentials" element={<Account/>}/>
                             <Route path="/account/:credentials/buy" element={<BuyCredits/>}/>
                             <Route path="/about" element={<About/>}/>
-                            <Route path="/error" element={<ErrorChart/>}/>
+                            <Route path="/account/:credentials/error" element={<ErrorChart/>}/>
                             <Route path="/test-chart" element={<DisplayChart/>}/>
                             <Route path="/account/:credentials/mycharts" element={<MyCharts/>}/>
                         </Routes>
