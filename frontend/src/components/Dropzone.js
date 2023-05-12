@@ -49,6 +49,9 @@ export default function MyDropzone() {
     const navigate = useNavigate();
 
     const onDrop = useCallback((acceptedFiles) => {
+
+        // post FILE to backend
+        console.log(acceptedFiles);
         acceptedFiles.forEach((file) => {
             const reader = new FileReader()
 
@@ -60,7 +63,6 @@ export default function MyDropzone() {
                 const binaryStr = reader.result
                 console.log(binaryStr)
                 navigate('/about', {state: {file: binaryStr}});
-
             }
             reader.readAsArrayBuffer(file)
         })
@@ -76,8 +78,10 @@ export default function MyDropzone() {
     return (
         <div {...getRootProps()}>
             <input {...getInputProps()} />
-            <p>Drag 'n' drop some files here, or click to select files</p>
-            <Button onClick={handleDrop}> upload </Button>
+            <div className="d-flex-justify-content-center">
+                <p>Drag 'n' drop some files here, or click to select files</p>
+            </div>
+            <Button variant="outline-dark" onClick={handleDrop}> upload </Button>
         </div>
     )
 }

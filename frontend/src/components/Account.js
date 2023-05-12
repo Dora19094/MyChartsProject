@@ -39,16 +39,34 @@ export default function Account() {
 
     // console.log(state.accessToken, state.refreshToken);
 
+    const navigate = useNavigate();
+    const {credentials} = useParams();
+
     function handleMyCharts() {
         console.log("my charts");
+        navigate(`/account/${credentials}/mycharts`, {
+            state: {
+                credentials: credentials,
+            },
+        });
     }
 
     function handleNewChart() {
         console.log("new chart");
+        navigate(`/account/${credentials}/newchart`, {
+            state: {
+                credentials: credentials,
+            },
+        });
     }
 
     function handleBuyCredits() {
         console.log("buy credits");
+        navigate(`/account/${credentials}/buy`, {
+            state: {
+                credentials: credentials,
+            },
+        });
     }
 
     return (

@@ -14,6 +14,7 @@ import ErrorChart from "./components/ErrorChart";
 import DisplayChartTest from "./components/chart_components/DisplayChart";
 import ChartSelector from "./components/chart_components/DisplayChart";
 import DisplayChart from "./components/chart_components/DisplayChart";
+import {MyCharts} from "./components/MyCharts";
 
 
 // function App() {
@@ -44,13 +45,13 @@ function App() {
                         <Routes>
                             <Route path="/" element={<Charts/>}/>
                             <Route path="/home" element={<Charts/>}/>
-                            <Route path="/account/newchart" element={<NewChart/>}/>
+                            <Route path="/account/:credentials/newchart" element={<NewChart/>}/>
                             <Route path="/account/:credentials" element={<Account/>}/>
                             <Route path="/account/:credentials/buy" element={<BuyCredits/>}/>
                             <Route path="/about" element={<About/>}/>
                             <Route path="/error" element={<ErrorChart/>}/>
                             <Route path="/test-chart" element={<DisplayChart/>}/>
-
+                            <Route path="/account/:credentials/mycharts" element={<MyCharts/>}/>
                         </Routes>
                     </BrowserRouter>
                 </header>
