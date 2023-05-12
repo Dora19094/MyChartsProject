@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
+import {Link, useLocation, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
 import logo from "../logo.svg";
 import {ButtonGroup, ButtonToolbar, Card, Carousel, CarouselItem, Col, Modal, Row, Stack} from "react-bootstrap";
 import "./Account.css";
+import {useNavigate} from "react-router-dom";
+
+const {state} = useLocation();
 
 export default function Account() {
+// access token and refresh token
 
 //fetch account ID, user's email, charts & credits, date of last login
 //     const [account, setAccount] = useState();
@@ -33,6 +37,8 @@ export default function Account() {
     //     } // we add [0] because resource is & returns a list
     // }, []);
 
+
+    console.log(state.accessToken, state.refreshToken);
 
     function handleMyCharts() {
         console.log("my charts");
