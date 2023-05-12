@@ -40,6 +40,15 @@ function NewChart() {
         console.log("clicked");
     }
 
+    // const CSV_FILE_URL = "http://localhost:3000/file_csv.csv"
+    const downloadFileAtURL = (url) => {
+        const fileName = url.split("/").pop();
+        const aTag = document.createElement("a");
+        document.body.appendChild(aTag);
+        aTag.click();
+        aTag.remove();
+    };
+
     // Here the user will give me the file with the options and data for the chart he wants to display
     // He will click upload from the dropzone and we will take the file's data. When he clicks on the viewChart
     // button we will create and render his chart by sending the chartdata to the displayChart page where it will
@@ -60,8 +69,11 @@ function NewChart() {
                             <Carousel.Caption style={{color: "black", backgroundColor: "whitesmoke"}}>
                                 {chart.chartTitle}
                                 <div className="justify-content-xl-end">
-                                    <Button variant="outline-dark">
-                                        <a href={("../logo.svg")} download="myFile">Download Template</a>
+                                    <Button variant="outline-dark" onClick={() => {
+                                        downloadFileAtURL(chart.CSV_FILE_URL);
+                                    }
+                                    }>
+                                        Download Template
                                     </Button>
                                 </div>
                             </Carousel.Caption>
