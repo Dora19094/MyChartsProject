@@ -22,9 +22,10 @@ import "./Charts.css";
 import logo from "../logo.svg";
 import {ButtonGroup, ButtonToolbar, Card, Carousel, CarouselItem, Col, Modal, Row, Stack, Toast} from "react-bootstrap";
 import "./Account.css";
+import ChartWrapper from "./chart_components/DisplayChart";
 
 export default function ErrorChart() {
-
+// get file data
     function handleDiscard() {
         //navigate
     }
@@ -39,6 +40,9 @@ export default function ErrorChart() {
             <img src={logo} className="template-logo" alt="logo"/>
             <Card>
                 <img src={logo} style={{height: 56, width: 56}} className="App-logo" alt="logo"/>
+
+                {/*<ChartWrapper chartType ={"line"} chartData = {} ></ChartWrapper>*/}
+
                 <Card.Footer>
                     <p>
                         Created Chart // fetch/get chart and display here
