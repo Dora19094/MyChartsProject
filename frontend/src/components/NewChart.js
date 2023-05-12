@@ -61,8 +61,9 @@ function NewChart() {
                                 {chart.chartTitle}
                                 <div className="justify-content-xl-end">
                                     <Button variant="outline-dark">
-                                        select
-                                    </Button></div>
+                                        <a href={("../logo.svg")} download="myFile">Download Template</a>
+                                    </Button>
+                                </div>
                             </Carousel.Caption>
                         </CarouselItem>
                     ))}
