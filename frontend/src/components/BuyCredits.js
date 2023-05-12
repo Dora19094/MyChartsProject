@@ -7,24 +7,36 @@ import {ButtonGroup, ButtonToolbar, Card, Carousel, CarouselItem, Col, Modal, Ro
 import "./Account.css";
 
 // url here needs accountID email
-export default function BuyCredits() {
+export default async function BuyCredits() {
     const navigate = useNavigate();
     const {credentials} = useParams();
 
     function handle5() {
         console.log("bought 5 credits!");
+        setCredits({
+            added: 5
+        });
     }
 
     function handle10() {
         console.log("bought 10 credits!");
+        setCredits({
+            added: 10
+        });
     }
 
     function handle15() {
         console.log("bought 15 credits!");
+        setCredits({
+            added: 15
+        });
     }
 
     function handle20() {
         console.log("bought 20 credits!");
+        setCredits({
+            added: 20
+        });
     }
 
     function handleClick() {
@@ -34,6 +46,21 @@ export default function BuyCredits() {
                 credentials: credentials,
             },
         });
+    }
+
+    const [credits, setCredits] = useState();
+
+    if (credits) {
+        const requestOptions = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(credits),
+        };
+        const url = `https://localhost:3001/buyapi`
+        await fetch(url, requestOptions).then(
+            // (response) => response.json() // provokes error, ok when commenting it out
+        );
+        console.log(credits);
     }
 
     return (
