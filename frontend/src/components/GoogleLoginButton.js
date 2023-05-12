@@ -25,10 +25,10 @@ const GoogleLoginButton = () => {
         navigate(
             `/account/${response.credential}`,
             {
-                state: {
-                    accessToken: data.accessToken,
-                    refreshToken: data.refreshToken,
-                },
+                // state: {
+                //     accessToken: data.accessToken,
+                //     refreshToken: data.refreshToken,
+                // },
 
             });
     };

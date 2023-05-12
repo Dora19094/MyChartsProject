@@ -7,11 +7,10 @@ import {ButtonGroup, ButtonToolbar, Card, Carousel, CarouselItem, Col, Modal, Ro
 import "./Account.css";
 import {useNavigate} from "react-router-dom";
 
-const {state} = useLocation();
 
 export default function Account() {
 // access token and refresh token
-
+//     const {state} = useLocation();
 //fetch account ID, user's email, charts & credits, date of last login
 //     const [account, setAccount] = useState();
 //     const {accountID} = useParams();
@@ -38,7 +37,7 @@ export default function Account() {
     // }, []);
 
 
-    console.log(state.accessToken, state.refreshToken);
+    // console.log(state.accessToken, state.refreshToken);
 
     function handleMyCharts() {
         console.log("my charts");
