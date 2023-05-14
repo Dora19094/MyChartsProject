@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
+const amqp = require('amqplib');
 const port = process.env.PORT || 4000;
 
 const webConfig = require('./src/configs/web.config.js');
@@ -26,13 +27,7 @@ redisClient.on("error", (err) => {
     console.log("Error in the Connection");
 });
 
-
-// (async () => {
-//     await redisClient.set('key', 'value');
-//     const value = await redisClient.get('key');
-//     console.log(value);
-// })();
-
+//make the connection string from web config file
 app.use(cors({
     origin: 'http://localhost:3000'
 }));

@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const sendUserInfoRabbit = require("../services/sendUserInfoRabbit");
 
 //should fix return object and console logs
 
@@ -7,6 +8,7 @@ const addUser = (user) => {
       .then((existingUser) => {
         if (existingUser) {
           console.log(`User ${user.name} already exists`);
+          sendUserInfoRabbit(false, existingUser)
           return existingUser;
         }
   
@@ -20,6 +22,7 @@ const addUser = (user) => {
         newUser.save()
           .then(() => {
             console.log(`User ${user.name} added successfully`);
+            sendUserInfoRabbit(true, newUser)
             return newUser;
           })
           .catch((err) => {
@@ -28,14 +31,9 @@ const addUser = (user) => {
           });
       })
       .catch((err) => {
-        console.error('Error finding user', err);
-        next(err);
+        console.error('Error', err);
       });
   }
-  
-  
-  
-  
   
 
 module.exports = addUser;

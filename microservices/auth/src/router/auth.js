@@ -15,4 +15,3 @@ router.get('/authenticateToken', authenticateToken);
 router.delete('/logout', logout);
 
 module.exports = router;
-
