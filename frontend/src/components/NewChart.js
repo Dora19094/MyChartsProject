@@ -40,19 +40,28 @@ function NewChart() {
         console.log("clicked");
     }
 
-    // const CSV_FILE_URL = "http://localhost:3000/file_csv.csv"
-    const downloadFileAtURL = (url) => {
-        const fileName = url.split("/").pop();
-        const aTag = document.createElement("a");
-        document.body.appendChild(aTag);
-        aTag.click();
-        aTag.remove();
+    const downloadFile = (chartType) => {
+        fetch(`http://localhost:4002/create-chart/fetchTemplate/${chartType}`)
+            .then((response) => {
+                if (response.ok) {
+                    return response.blob();
+                } else {
+                    throw new Error('Error downloading template');
+                }
+            })
+            .then((blob) => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'template.xlsx';
+                a.click();
+                URL.revokeObjectURL(url);
+            })
+            .catch((error) => {
+                console.error(error);
+                // Handle error, e.g., show an error message to the user
+            });
     };
-
-    // Here the user will give me the file with the options and data for the chart he wants to display
-    // He will click upload from the dropzone and we will take the file's data. When he clicks on the viewChart
-    // button we will create and render his chart by sending the chartdata to the displayChart page where it will
-    // be rendered.
 
     return (
         <div>
@@ -69,10 +78,7 @@ function NewChart() {
                             <Carousel.Caption style={{color: "black", backgroundColor: "whitesmoke"}}>
                                 {chart.chartTitle}
                                 <div className="justify-content-xl-end">
-                                    <Button variant="outline-dark" onClick={() => {
-                                        downloadFileAtURL(chart.CSV_FILE_URL);
-                                    }
-                                    }>
+                                    <Button variant="outline-dark" onClick={() => {downloadFile(chart.chartType)}}>
                                         Download Template
                                     </Button>
                                 </div>
@@ -80,7 +86,6 @@ function NewChart() {
                         </CarouselItem>
                     ))}
                 </Carousel>
-
                 <div className='mt-5'>
                     <Dropzone/>
                 </div>

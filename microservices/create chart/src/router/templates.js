@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const templatesController = require('../controllers/templatesController');
+const templatesDownload = require("../controllers/templatesDownload");
 
 
-router.get('/fetchTemplate/:templateType', templatesController());
+router.get('/fetchTemplate/:templateType', templatesDownload);
 
 
 
