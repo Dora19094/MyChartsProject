@@ -50,18 +50,18 @@ export default async function BuyCredits() {
 
     const [credits, setCredits] = useState();
 
-    if (credits) {
-        const requestOptions = {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(credits),
-        };
-        const url = `https://localhost:3001/buyapi`
-        await fetch(url, requestOptions).then(
-            // (response) => response.json() // provokes error, ok when commenting it out
-        );
-        console.log(credits);
-    }
+    // if (credits) {
+    //     const requestOptions = {
+    //         method: "POST",
+    //         headers: {"Content-Type": "application/json"},
+    //         body: JSON.stringify(credits),
+    //     };
+    //     const url = `https://localhost:3001/buyapi`
+    //     await fetch(url, requestOptions).then(
+    //         // (response) => response.json() // provokes error, ok when commenting it out
+    //     );
+    //     console.log(credits);
+    // }
 
     return (
         <div>

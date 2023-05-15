@@ -1,0 +1,23 @@
+.vertical-scrollable > .row {
+    position: absolute;
+    top: 270px;
+    bottom: 50px;
+    left: 70px;
+    width: 50%;
+    overflow-y: scroll;
+}
+
+.col-sm-8 {
+    color: white;
+    font-size: 10px;
+    padding-bottom: 20px;
+    padding-top: 18px;
+}
+
+.col-sm-8:nth-child(2n+1) {
+    background: lightyellow;
+}
+
+.col-sm-8:nth-child(2n+2) {
+    background: lavenderblush;
+}
