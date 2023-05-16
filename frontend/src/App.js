@@ -15,6 +15,7 @@ import DisplayChartTest from "./components/chart_components/DisplayChart";
 import ChartSelector from "./components/chart_components/DisplayChart";
 import DisplayChart from "./components/chart_components/DisplayChart";
 import {MyCharts} from "./components/MyCharts";
+import Parse from "./components/csvtojson";
 
 
 // function App() {
@@ -52,6 +53,7 @@ function App() {
                             <Route path="/account/:credentials/error" element={<ErrorChart/>}/>
                             <Route path="/test-chart" element={<DisplayChart/>}/>
                             <Route path="/account/:credentials/mycharts" element={<MyCharts/>}/>
+                            <Route path="/parse" element={<Parse/>}/>
                         </Routes>
                     </BrowserRouter>
                 </header>
