@@ -43,32 +43,67 @@ import Button from "react-bootstrap/Button";
 import {useNavigate, useParams} from "react-router-dom";
 import React, {useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
+import Papa from "papaparse";
 
 export default function MyDropzone() {
 
     const navigate = useNavigate();
     const {credentials} = useParams();
+    const [files, setFiles] = useState([]);
 
     const onDrop = useCallback((acceptedFiles) => {
 
         // post FILE to backend
         console.log(acceptedFiles);
+        // -------------------------------------------
         acceptedFiles.forEach((file) => {
             const reader = new FileReader()
 
             reader.onabort = () => console.log('file reading was aborted')
             reader.onerror = () => console.log('file reading has failed')
-            reader.onload = () => {
+            reader.onload = async () => {
 
-                // Do whatever you want with the file contents
-                const binaryStr = reader.result
-                console.log(binaryStr)
-                navigate(`/account/${credentials}/error`, {state: {file: binaryStr}});
+                // POST
+                const formData = new FormData();
+                formData.append("file", file, file.name);
+
+                fetch("http://localhost:4001/create-chart/create", {
+                    method: "POST",
+                    body: formData,
+                })
+                    .then((response) => {
+                        // Handle the response from the backend
+                        console.log(response);
+                    })
+                    .catch((error) => {
+                        // Handle errors
+                        console.error(error);
+                    });
+
+                setFiles([...files, ...acceptedFiles]);
+
+                // const requestOptions = {
+                //     method: "POST",
+                //     headers: {"Content-Type": "application/json"},
+                //     body: JSON.stringify(parsedData.data),
+                // };
+                // const url = `http://localhost:4001/create-chart/create`
+                // await fetch(url, requestOptions).then(
+                //     // (response) => response.json() // provokes error, ok when commenting it out
+                // );
+                // reader.readAsText(file); // Pass the file object to readAsText
+                //
+                // setFiles([...files, ...acceptedFiles]);
+                // console.log(files);
+
+
+                //navigate(`/account/${credentials}/error`, {state: {file: file}});
             }
-            reader.readAsArrayBuffer(file)
-        })
+            //reader.readAsArrayBuffer(file)
 
-    }, [])
+        }) // accepted files
+    }, [files]) // onDrop
+
     const {getRootProps, getInputProps} = useDropzone({onDrop})
 
     function handleDrop() {
