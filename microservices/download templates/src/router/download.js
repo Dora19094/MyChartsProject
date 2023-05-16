@@ -4,7 +4,7 @@ const router = express.Router();
 const templatesDownload = require("../controllers/templatesDownload");
 
 
-router.get('/fetchTemplate/:templateType', templatesDownload);
+router.get('/template/:templateType', templatesDownload);
 
 
 

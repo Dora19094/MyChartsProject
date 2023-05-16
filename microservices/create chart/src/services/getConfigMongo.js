@@ -1,9 +1,10 @@
-const BasicLine = require("../models/BasicLineConfig");
+const chartConfig = require("../models/ChartConfig");
 
 
 const getConfigMongo = async (chartType) => {
+    //It returns a promise!
     return (
-        BasicLine.findOne({'chartType' : chartType})
+        chartConfig.findOne({'chartType' : chartType})
             .then(function(config)
             {
                 if (config) return config;

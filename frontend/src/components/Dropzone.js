@@ -13,7 +13,7 @@
 //         </li>
 //     ));
 //     // ------------------------------------------------------------------------------------------------------
-//     // after uploading csv press upload and create chart button and  navigate with the csv info to error chart page
+//     // after uploading csv press upload and download templates button and  navigate with the csv info to error chart page
 //     return (
 //         <div {...getRootProps({className: "dropzone"})}>
 //             <input className="input-zone" {...getInputProps()} />

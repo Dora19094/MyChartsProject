@@ -2,9 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
-const port = process.env.PORT || 4001;
+const port = process.env.PORT || 4002;
 const db = require('./src/services/mongoDbConnector.js');
-const configRouter = require('./src/router/display.js');
+const templatesRouter = require('./src/router/download.js');
 
 db.connect();
 
@@ -15,8 +15,8 @@ app.use(cors({
 
 app.use(bodyParser.json());
 
-app.use('/chartConfigs', configRouter);
+app.use('/download templates', templatesRouter);
 
 app.listen(port, () => {
-    console.log(`> Highcharts Server started on port ${port}`);
+    console.log(`> Create Chart Server started on port ${port}`);
 });
