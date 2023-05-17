@@ -5,7 +5,7 @@ const chartCreate = require('../controllers/createChartController');
 const dataValidation = require('../controllers/dataValidationController');
 
 
-router.get('/create', chartCreate);
+router.post('/create',chartCreate);
 
 router.get('/validateData',dataValidation);
 

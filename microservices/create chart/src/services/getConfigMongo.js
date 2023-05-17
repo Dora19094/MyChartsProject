@@ -12,8 +12,7 @@ const getConfigMongo = async (chartType) => {
             })
             .catch((err) =>{
                 console.log('Error finding Configuration', err);
-                res.status(500).send({error: err.message});
-                //next(err);
+                //return {error: err.message};
             })
     )
 };

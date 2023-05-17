@@ -43,7 +43,8 @@ import Button from "react-bootstrap/Button";
 import {useNavigate, useParams} from "react-router-dom";
 import React, {useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
-import Papa from "papaparse";
+import * as xlsx from 'xlsx';
+
 
 export default function MyDropzone() {
 
@@ -51,36 +52,54 @@ export default function MyDropzone() {
     const {credentials} = useParams();
     const [files, setFiles] = useState([]);
 
+
     const onDrop = useCallback((acceptedFiles) => {
 
         // post FILE to backend
         console.log(acceptedFiles);
         // -------------------------------------------
         acceptedFiles.forEach((file) => {
-            const reader = new FileReader()
+            const reader = new FileReader();
 
-            reader.onabort = () => console.log('file reading was aborted')
-            reader.onerror = () => console.log('file reading has failed')
+            reader.onabort = () => console.log('file reading was aborted');
+            reader.onerror = () => console.log('file reading has failed');
             reader.onload = async () => {
+                console.log("in the onload method");
+                const fileContent = reader.result;
+                const workbook = xlsx.read(fileContent, { type: 'binary' });
+                const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+                const jsonData = xlsx.utils.sheet_to_json(worksheet, { header: 1, blankrows:false});
 
-                // POST
-                const formData = new FormData();
-                formData.append("file", file, file.name);
-
-                fetch("http://localhost:4001/create-chart/create", {
-                    method: "POST",
-                    body: formData,
-                })
-                    .then((response) => {
-                        // Handle the response from the backend
-                        console.log(response);
-                    })
-                    .catch((error) => {
-                        // Handle errors
-                        console.error(error);
+                // Send the JSON data to the backend
+                try {
+                    const response = await fetch('http://localhost:4001/create-chart/create', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(jsonData),
                     });
 
-                setFiles([...files, ...acceptedFiles]);
+                    if (response.ok) {
+                        // Handle the successful response from the backend
+                        console.log('Request sent successfully');
+                        const data = await response.json();
+                        console.log('Response:', data);
+                    } else {
+                        // Handle the error response from the backend
+                        console.log('Request failed:', response.status, response.statusText);
+                    }
+                } catch (error) {
+                    // Handle network errors or other exceptions
+                    console.error('An error occurred:', error);
+                }
+            };
+
+            reader.readAsBinaryString(file);
+        });
+
+        setFiles([...files, ...acceptedFiles]);
+    }, [files]);
 
                 // const requestOptions = {
                 //     method: "POST",
@@ -98,11 +117,7 @@ export default function MyDropzone() {
 
 
                 //navigate(`/account/${credentials}/error`, {state: {file: file}});
-            }
-            //reader.readAsArrayBuffer(file)
 
-        }) // accepted files
-    }, [files]) // onDrop
 
     const {getRootProps, getInputProps} = useDropzone({onDrop})
 
