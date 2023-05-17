@@ -1,17 +1,15 @@
 const createChart = require('../services/createChart');
 
-const createChartController = (req, res) => {
+
+const createChartController = async (req, res) => {
 
         try {
-                console.log("controller activated");
                 const jsonData = req.body; // JSON data sent from the frontend
                 console.log(jsonData);
-
-                // Process the JSON data as needed
-                // ...
-
+                const chartType = jsonData[2][jsonData[2].length-1];
+                const result = await createChart(jsonData,chartType);
                 // Send a response back to the frontend
-                res.send({ message: 'Data received and processed successfully' });
+                res.send(result);
         } catch (error) {
                 // Handle any errors that occur during processing
                 console.error(error);

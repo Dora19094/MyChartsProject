@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 //Flexible Schema to support all types of charts
 const ConfigSchema = new Schema({
 
-    chartType :{
+    chartType: {
         type: String
     },
     title: {
