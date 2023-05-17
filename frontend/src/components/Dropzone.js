@@ -66,9 +66,9 @@ export default function MyDropzone() {
             reader.onload = async () => {
                 console.log("in the onload method");
                 const fileContent = reader.result;
-                const workbook = xlsx.read(fileContent, { type: 'binary' });
+                const workbook = xlsx.read(fileContent, {type: 'binary'});
                 const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-                const jsonData = xlsx.utils.sheet_to_json(worksheet, { header: 1, blankrows:false});
+                const jsonData = xlsx.utils.sheet_to_json(worksheet, {header: 1, blankrows: false});
 
                 // Send the JSON data to the backend
                 try {
@@ -85,6 +85,8 @@ export default function MyDropzone() {
                         console.log('Request sent successfully');
                         const data = await response.json();
                         console.log('Response:', data);
+                        navigate(`/account/${credentials}/error`, {state: {files: response}});
+                        
                     } else {
                         // Handle the error response from the backend
                         console.log('Request failed:', response.status, response.statusText);
@@ -101,22 +103,19 @@ export default function MyDropzone() {
         setFiles([...files, ...acceptedFiles]);
     }, [files]);
 
-                // const requestOptions = {
-                //     method: "POST",
-                //     headers: {"Content-Type": "application/json"},
-                //     body: JSON.stringify(parsedData.data),
-                // };
-                // const url = `http://localhost:4001/create-chart/create`
-                // await fetch(url, requestOptions).then(
-                //     // (response) => response.json() // provokes error, ok when commenting it out
-                // );
-                // reader.readAsText(file); // Pass the file object to readAsText
-                //
-                // setFiles([...files, ...acceptedFiles]);
-                // console.log(files);
-
-
-                //navigate(`/account/${credentials}/error`, {state: {file: file}});
+    // const requestOptions = {
+    //     method: "POST",
+    //     headers: {"Content-Type": "application/json"},
+    //     body: JSON.stringify(parsedData.data),
+    // };
+    // const url = `http://localhost:4001/create-chart/create`
+    // await fetch(url, requestOptions).then(
+    //     // (response) => response.json() // provokes error, ok when commenting it out
+    // );
+    // reader.readAsText(file); // Pass the file object to readAsText
+    //
+    // setFiles([...files, ...acceptedFiles]);
+    // console.log(files);
 
 
     const {getRootProps, getInputProps} = useDropzone({onDrop})

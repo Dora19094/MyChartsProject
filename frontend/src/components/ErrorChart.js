@@ -16,18 +16,20 @@
 *
 * */
 import React, {useEffect, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
 import logo from "../logo.svg";
 import {ButtonGroup, ButtonToolbar, Card, Carousel, CarouselItem, Col, Modal, Row, Stack, Toast} from "react-bootstrap";
 import "./Account.css";
-import ChartWrapper from "./chart_components/DisplayChart";
+import Highcharts from 'highcharts';
+import HighchartsReact from "highcharts-react-official";
 
 export default function ErrorChart() {
 
     const navigate = useNavigate();
     const {credentials} = useParams();
+    const {files} = useLocation();
 
 // get file data
     function handleDiscard() {
@@ -50,7 +52,9 @@ export default function ErrorChart() {
             <Card>
                 <img src={logo} style={{height: 56, width: 56}} className="App-logo" alt="logo"/>
 
-                {/*<ChartWrapper chartType ={"line"} chartData = {} ></ChartWrapper>*/}
+                <HighchartsReact highcharts={Highcharts}
+                                 options={files.response}
+                />
 
                 <Card.Footer>
                     <p>
