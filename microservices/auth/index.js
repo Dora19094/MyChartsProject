@@ -24,7 +24,7 @@ redisClient.on("ready", () => {
 });
   
 redisClient.on("error", (err) => {
-    console.log("Error in the Connection");
+    console.log("Redis: Error in the Connection");
 });
 
 //make the connection string from web config file

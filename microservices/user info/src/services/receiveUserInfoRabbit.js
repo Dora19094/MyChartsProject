@@ -1,9 +1,10 @@
 const amqp = require('amqplib');
-const registerUserInfo = require('./registerUserInfo');
 
+const registerUserInfo = require('./registerUserInfo');
+const rabbit_config = require('../configs/rabbitmq.config');
 
 async function receiveUserInfoRabbit(queueName) {
-    const connection = await amqp.connect('amqp://localhost');
+    const connection = await amqp.connect(rabbit_config.proto + '://' + rabbit_config.host);
     const channel = await connection.createChannel();
     await channel.assertQueue(queueName, { durable: false });
     channel.consume(queueName, (message) => {

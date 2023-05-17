@@ -9,7 +9,7 @@
 ### Installation Guide
 * Run npm install to install all dependencies
 * Configure a MongoDB database and a Redis database 
-* Create an .env file in your project root folder and add your variables(It may already exist).
+* Create an .env file in your project root folder and add your variables (It may already exist).
  
 ### Usage
 * `Run npm dev` to start the application.
