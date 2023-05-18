@@ -19,6 +19,8 @@ const basicColumnParser = async (chartUserData,chartConfig) => {
         }
         chartConfig.series.push(func);
     }
+    delete chartConfig._id;
+    delete chartConfig.id;
     console.log(chartConfig);
     return chartConfig;
 

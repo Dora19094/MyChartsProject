@@ -9,7 +9,7 @@ const getConfig = require("./getConfigMongo");
 
 const createChart = async (jsonData,chartType) => {
     const chartCon = await getConfig(chartType);
-    const chartConfig = chartCon.toObject({ getters: true });
+    const chartConfig = await chartCon.toObject({ getters: true });
     //console.log(chartConfig);
 
     switch(chartType){
