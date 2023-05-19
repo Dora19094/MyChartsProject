@@ -12,6 +12,15 @@ const ConfigSchema = new Schema({
             type: String,
         }
     },
+    exporting: {
+        enabled: Boolean, // Enable exporting
+        buttons: {
+            contextButton: {
+                menuItems: [String]
+            }
+        }
+    },
+    chartName: String
 
 },{ strict: false });
 

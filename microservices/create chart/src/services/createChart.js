@@ -11,6 +11,7 @@ const createChart = async (jsonData,chartType) => {
     const chartCon = await getConfig(chartType);
     const chartConfig = await chartCon.toObject({ getters: true });
     //console.log(chartConfig);
+    await Object.assign(chartConfig,{chartName: jsonData[2][jsonData[2].length-2]});
 
     switch(chartType){
         case "basicLine": return(basicLineParser(jsonData,chartConfig));

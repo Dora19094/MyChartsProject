@@ -49,6 +49,7 @@ const lineWithAnnotationsParser = async (chartUserData,chartConfig) => {
 
     }
 
+    chartConfig.series[0].data = my_data
     delete chartConfig._id;
     delete chartConfig.id;
     console.log(chartConfig);
