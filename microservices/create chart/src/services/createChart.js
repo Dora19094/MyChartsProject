@@ -1,9 +1,9 @@
-const basicColumnParser = require("./basicColumnParser")
-const basicLineParser = require("./basicLineParser");
-const networkParser = require("./networkParser");
-const dependencyWheelParser = require("./dependencyWheelParser");
-const polarParser = require("./polarParser");
-const lineWithAnnotationsParser = require("./lineWithAnnotationsParser");
+const basicColumnParser = require("./parsers/basicColumnParser")
+const basicLineParser = require("./parsers/basicLineParser");
+const networkParser = require("./parsers/networkParser");
+const dependencyWheelParser = require("./parsers/dependencyWheelParser");
+const polarParser = require("./parsers/polarParser");
+const lineWithAnnotationsParser = require("./parsers/lineWithAnnotationsParser");
 const getConfig = require("./getConfigMongo");
 
 

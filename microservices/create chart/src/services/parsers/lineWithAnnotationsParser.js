@@ -1,3 +1,4 @@
+const validateData = require("../validate");
 
 
 const lineWithAnnotationsParser = async (chartUserData,chartConfig) => {
@@ -32,6 +33,8 @@ const lineWithAnnotationsParser = async (chartUserData,chartConfig) => {
     //Get data
     for (let row = 5;row<chartUserData.length;row++)
     {
+        if (!chartUserData[row][0].isNumber() || !chartUserData[row][1].isNumber())
+            return {status:"error"};
         my_data.push([chartUserData[row][0],chartUserData[row][1]]);
     }
 
@@ -53,6 +56,12 @@ const lineWithAnnotationsParser = async (chartUserData,chartConfig) => {
     delete chartConfig._id;
     delete chartConfig.id;
     console.log(chartConfig);
+    try {
+        validateData(chartConfig)
+    }catch(err){
+        console.log(err.message);
+        return {status:"error"};
+    }
     return chartConfig;
 
 
