@@ -8,7 +8,7 @@ const validationSchemas = {
     }).unknown(),
     //basicColumn
     basicColumn: Joi.object({
-        yAxis: Joi.object({min:Joi.number()}),
+        yAxis: Joi.object({min:Joi.number()}).unknown(),
     }).unknown(),
     //network
     network: Joi.object().unknown(),

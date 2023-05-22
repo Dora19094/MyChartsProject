@@ -27,7 +27,8 @@ const basicColumnParser = async (chartUserData,chartConfig) => {
                     return {status:"error"};
             }
         }
-
+        if (func.data.length !== chartConfig.xAxis.categories.length)
+            return {status: "error"};
         chartConfig.series.push(func);
     }
 
