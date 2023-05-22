@@ -1,4 +1,5 @@
 const validateData = require("../validate");
+const {isNumber} = require("lodash");
 const dependencyWheelParser = async (chartUserData,chartConfig) => {
 
     console.log(chartConfig);
@@ -6,7 +7,7 @@ const dependencyWheelParser = async (chartUserData,chartConfig) => {
 
     for (let row = 5; row < chartUserData.length; row++) {
         if (chartUserData[row][0] == null || chartUserData[row][1] == null
-            || !chartUserData[row][2].isNumber())
+            || !isNumber(chartUserData[row][2]))
             return {status:"error"};
 
         chartConfig.series[0].data.push(chartUserData[row])

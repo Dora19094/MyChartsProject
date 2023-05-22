@@ -1,4 +1,5 @@
 const validateData = require("../validate");
+const {isNumber} = require("lodash");
 
 const basicColumnParser = async (chartUserData,chartConfig) => {
 
@@ -20,7 +21,7 @@ const basicColumnParser = async (chartUserData,chartConfig) => {
                 || chartUserData[row][col] === null)
                 func.data.push(null);
             else{
-                if (chartUserData[row][col].isNumber())
+                if (isNumber(chartUserData[row][col]))
                     func.data.push(chartUserData[row][col]);
                 else
                     return {status:"error"};

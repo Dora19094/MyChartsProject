@@ -29,7 +29,8 @@ export default function ErrorChart() {
 
     const navigate = useNavigate();
     const {credentials} = useParams();
-    const {files} = useLocation();
+    const location = useLocation();
+    const { files } = location.state;
 
 // get file data
     function handleDiscard() {
@@ -49,11 +50,11 @@ export default function ErrorChart() {
         <div>
             <h5>Your -selected type- chart is ready. </h5>
             <img src={logo} className="template-logo" alt="logo"/>
-            <Card>
+            <Card style={{height: 500, width: 600}}>
                 <img src={logo} style={{height: 56, width: 56}} className="App-logo" alt="logo"/>
 
                 <HighchartsReact highcharts={Highcharts}
-                                 options={files.response}
+                                 options={files}
                 />
 
                 <Card.Footer>

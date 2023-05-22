@@ -1,4 +1,5 @@
 const validateData = require("../validate");
+const {isNumber} = require("lodash");
 
 
 const lineWithAnnotationsParser = async (chartUserData,chartConfig) => {
@@ -33,7 +34,7 @@ const lineWithAnnotationsParser = async (chartUserData,chartConfig) => {
     //Get data
     for (let row = 5;row<chartUserData.length;row++)
     {
-        if (!chartUserData[row][0].isNumber() || !chartUserData[row][1].isNumber())
+        if (!isNumber(chartUserData[row][0]) || !isNumber(chartUserData[row][1]))
             return {status:"error"};
         my_data.push([chartUserData[row][0],chartUserData[row][1]]);
     }

@@ -1,4 +1,5 @@
 const validateData = require("../validate");
+const {isNumber} = require("lodash");
 
 const polarParser = async (chartUserData,chartConfig) => {
 
@@ -21,7 +22,7 @@ const polarParser = async (chartUserData,chartConfig) => {
     {
         for (let i =0;i<seriesObjects.length;i++)
         {
-            if (!chartUserData[row][i*2].isNumber())
+            if (!isNumber(chartUserData[row][i*2]))
                 return {status:"error"};
             if (chartUserData[row][i*2] === undefined)
                 seriesObjects[i].data.push(null);
