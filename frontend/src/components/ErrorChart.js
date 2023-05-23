@@ -27,10 +27,38 @@ import HighchartsReact from "highcharts-react-official";
 
 export default function ErrorChart() {
 
+
     const navigate = useNavigate();
     const {credentials} = useParams();
     const location = useLocation();
-    const { files } = location.state;
+    const {files} = location.state;
+    const [answer, setAnswer] = useState();
+
+
+//----------------------------------------------
+
+    const today = new Date(),
+        date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+    this.state = {
+        currentDate: date
+    }
+//------------------------------------
+    if (answer && date) {
+        const requestOptions = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(answer),
+        };
+        const url = `http://localhost:4003/user-chart/save/${date}/${credentials}`
+        /*await*/
+        fetch(url, requestOptions).then(
+            // (response) => response.json() // provokes error, ok when commenting it out
+        );
+        console.log(answer);
+    }
+//---------------------------------------------
+
 
 // get file data
     function handleDiscard() {
@@ -46,6 +74,12 @@ export default function ErrorChart() {
 
     const toggleShowA = () => setShowA(!showA);
 
+    function handleSave() {
+
+        setAnswer(files);
+        // files.state;
+    }
+
     return (
         <div>
             <h5>Your -selected type- chart is ready. </h5>
@@ -59,13 +93,13 @@ export default function ErrorChart() {
 
                 <Card.Footer>
                     <p>
-                        Created Chart // fetch/get chart and display here
+                        Created Chart
                     </p>
                 </Card.Footer>
             </Card>
             <ButtonToolbar className='mt-3'>
                 <ButtonGroup className="me-2">
-                    <Button variant={"outline-info"}>
+                    <Button variant={"outline-info"} onClick={handleSave}>
                         Save to my charts
                     </Button>
                 </ButtonGroup>
