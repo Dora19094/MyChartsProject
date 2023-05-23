@@ -9,6 +9,7 @@ import {useNavigate} from "react-router-dom";
 
 
 export default function Account() {
+
 // access token and refresh token
 //     const {state} = useLocation();
 //fetch account ID, user's email, charts & credits, date of last login
@@ -38,6 +39,25 @@ export default function Account() {
 
 
     // console.log(state.accessToken, state.refreshToken);
+
+
+    const [nocharts, setNoCharts] = useState();
+
+    useEffect(() => {
+        const url = `http://localhost:4003/user-chart/countCharts`;
+        const fetchData = async () => {
+            await fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    setNoCharts(data)
+                });
+        };
+
+        fetchData();
+        console.log(nocharts);
+    }, []);
+
 
     const navigate = useNavigate();
     const {credentials} = useParams();
@@ -86,6 +106,7 @@ export default function Account() {
                         <Row>
                             <h6>
                                 n. of charts {/* no of charts: account.noCharts */}
+                                {nocharts}
                             </h6>
                         </Row>
                     </div>
