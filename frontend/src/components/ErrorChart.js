@@ -68,7 +68,10 @@ export default function ErrorChart() {
     const toggleShowA = () => setShowA(!showA);
 
     function handleSave() {
-        setAnswer({files});
+        if (!answer) {
+            setAnswer({files});
+        }
+        // setAnswer({files});
     }
 
     return (
