@@ -27,23 +27,18 @@ import HighchartsReact from "highcharts-react-official";
 
 export default function ErrorChart() {
 
-
     const navigate = useNavigate();
     const {credentials} = useParams();
     const location = useLocation();
     const {files} = location.state;
     const [answer, setAnswer] = useState();
 
-
 //----------------------------------------------
 
     const today = new Date(),
         date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
-    this.state = {
-        currentDate: date
-    }
-//------------------------------------
+//----------------------------------------------
     if (answer && date) {
         const requestOptions = {
             method: "POST",
@@ -53,12 +48,10 @@ export default function ErrorChart() {
         const url = `http://localhost:4003/user-chart/save/${date}/${credentials}`
         /*await*/
         fetch(url, requestOptions).then(
-            // (response) => response.json() // provokes error, ok when commenting it out
         );
         console.log(answer);
     }
 //---------------------------------------------
-
 
 // get file data
     function handleDiscard() {
@@ -75,9 +68,7 @@ export default function ErrorChart() {
     const toggleShowA = () => setShowA(!showA);
 
     function handleSave() {
-
-        setAnswer(files);
-        // files.state;
+        setAnswer({files});
     }
 
     return (
