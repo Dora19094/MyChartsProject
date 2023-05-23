@@ -65,8 +65,8 @@ export function MyCharts() {
                                         <Card key={chart.chartName}>
                                             <Card.Body>
                                                 <Card.Title>{chart.chartName}</Card.Title>
-                                                <Card.Text>{chart.chartType}</Card.Text>
-                                                <Card.Text>{chart.createdOn}</Card.Text>
+                                                <Card.Text>{chart.chartType}
+                                                    {chart.createdOn}</Card.Text>
                                             </Card.Body>
                                         </Card>
                                     </Col>
