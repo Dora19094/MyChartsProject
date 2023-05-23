@@ -64,9 +64,9 @@ export function MyCharts() {
                                     <Col>
                                         <Card key={chart._id}>
                                             <Card.Body>
-                                                <Card.Title>{chart.chartName}</Card.Title>
-                                                <Card.Text>{chart.files.chartType}
-                                                    {chart.createdOn}</Card.Text>
+                                                <Card.Title>{chart.files.chartName}</Card.Title>
+                                                <Card.Text>{chart.files.chartType}</Card.Text>
+                                                <Card.Text>  {chart.createdOn}</Card.Text>
                                             </Card.Body>
                                         </Card>
                                     </Col>
