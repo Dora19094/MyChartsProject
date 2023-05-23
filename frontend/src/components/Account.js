@@ -106,7 +106,7 @@ export default function Account() {
                         <Row>
                             <h6>
                                 n. of charts {/* no of charts: account.noCharts */}
-                                {nocharts}
+                                {nocharts && (nocharts)}
                             </h6>
                         </Row>
                     </div>
