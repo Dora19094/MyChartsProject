@@ -13,6 +13,7 @@ import {GoogleOAuthProvider} from '@react-oauth/google';
 import ErrorChart from "./components/ErrorChart";
 import {MyCharts} from "./components/MyCharts";
 import Parse from "./components/csvtojson";
+import {ErrorMessage} from "./components/ErrorMessage";
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
                             <Route path="/about" element={<About/>}/>
                             <Route path="/account/:credentials/error" element={<ErrorChart/>}/>
                             <Route path="/account/:credentials/mycharts" element={<MyCharts/>}/>
+                            <Route path="/account/:credentials/errormessage" element={<ErrorMessage/>}/>
                             <Route path="/parse" element={<Parse/>}/>
                         </Routes>
                     </BrowserRouter>

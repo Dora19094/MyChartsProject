@@ -85,11 +85,13 @@ export default function MyDropzone() {
                         console.log('Request sent successfully');
                         const data = await response.json();
                         console.log('Response:', data);
-                        navigate(`/account/${credentials}/error`, {state:{files: data}});
-                        
+                        navigate(`/account/${credentials}/error`, {state: {files: data}});
+
                     } else {
                         // Handle the error response from the backend
                         console.log('Request failed:', response.status, response.statusText);
+                        navigate(`/account/${credentials}/errormessage`,);
+
                     }
                 } catch (error) {
                     // Handle network errors or other exceptions
