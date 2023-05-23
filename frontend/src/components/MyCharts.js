@@ -4,32 +4,28 @@ import Button from "react-bootstrap/Button";
 import "./Charts.css";
 import logo from "../logo.svg";
 import {Card, Col, Container, Row} from "react-bootstrap";
-import {charts} from "./data";
+// import {charts} from "./data";
 import "./MyCharts.css";
 
 export function MyCharts() {
 
-    // const [charts, setCharts] = useState();
-    // const credentials = useParams();
-    //
-    // useEffect(() => {
-    //     const url = `https://localhost:3001/account/${credentials}/mycharts/chartsview`;
-    //
-    //     const fetchData = async () => {
-    //         await fetch(url)
-    //             .then((response) => response.json())
-    //             .then((data) => {
-    //                 console.log(data);
-    //                // const d = [data];
-    //                 setCharts(data)
-    //             });
-    //     };
-    //
-    //     fetchData();
-    //     //console.log(charts);
-    // }, []);
+    const [charts, setCharts] = useState();
 
-    //charts.chartID, charts.chartTitle, charts.....
+    useEffect(() => {
+        const url = `http://localhost:4003/user-chart/fetch`;
+        const fetchData = async () => {
+            await fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    setCharts(data)
+                });
+        };
+
+        fetchData();
+        console.log(charts);
+    }, []);
+
 
     const navigate = useNavigate();
     const {credentials} = useParams();
@@ -66,10 +62,11 @@ export function MyCharts() {
                             <Container>
                                 <Row className="align-items-start">
                                     <Col>
-                                        <Card key={chart.chartID}>
+                                        <Card key={chart.chartName}>
                                             <Card.Body>
-                                                <Card.Title>{chart.chartTitle}</Card.Title>
-                                                <Card.Text>{chart.library}</Card.Text>
+                                                <Card.Title>{chart.chartName}</Card.Title>
+                                                <Card.Text>{chart.chartType}</Card.Text>
+                                                <Card.Text>{chart.createdOn}</Card.Text>
                                             </Card.Body>
                                         </Card>
                                     </Col>

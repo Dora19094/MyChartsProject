@@ -45,7 +45,7 @@ export default function ErrorChart() {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(answer),
         };
-        const url = `http://localhost:4003/user-chart/save/${date}/${credentials}`
+        const url = `http://localhost:4003/user-chart/save/${date}`
         /*await*/
         fetch(url, requestOptions).then(
         );
