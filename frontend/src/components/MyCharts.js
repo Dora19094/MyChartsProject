@@ -62,10 +62,10 @@ export function MyCharts() {
                             <Container>
                                 <Row className="align-items-start">
                                     <Col>
-                                        <Card key={chart.chartName}>
+                                        <Card key={chart._id}>
                                             <Card.Body>
                                                 <Card.Title>{chart.chartName}</Card.Title>
-                                                <Card.Text>{chart.chartType}
+                                                <Card.Text>{chart.files.chartType}
                                                     {chart.createdOn}</Card.Text>
                                             </Card.Body>
                                         </Card>
