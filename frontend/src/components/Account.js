@@ -11,18 +11,20 @@ import "./GoogleLoginButton.js";
 export default function Account() {
 
     const {state} = useLocation();
+    // const {loginData} = useParams();
     // const location = useLocation();
     // const {accessToken, refreshToken} = location.state;
 
     console.log(state.accessToken, state.refreshToken);
 
-    console.log("State")
+    console.log("State");
     console.log(state.accessToken, state.refreshToken);
 //fetch account ID, user's email, no of charts & credits, date of last login
 
     const navigate = useNavigate();
-    const {credentials} = useParams();
+    const {credentials, loginData} = useParams();
     const [account, setAccount] = useState();
+    console.log(loginData);
 
     // useEffect(() => {
     //     const url = `https://localhost:5000//userInfo/getInfo`;
@@ -45,7 +47,7 @@ export default function Account() {
             method: 'GET',
             //credentials: "include",
             headers: {
-                'Authorization': `Bearer ${state.accessToken}`,
+                'Authorization': `Bearer ${loginData.accessToken}`,
                 'Content-Type': 'application/json'
             },
         })

@@ -32,7 +32,7 @@ const GoogleLoginButton = () => {
                             console.log("Old user logged in")
                             console.log(loginData);
                             navigate(
-                                `/account/${googleResponse.credential}`,
+                                `/account/${googleResponse.credential}/${loginData.accessToken}`,
                                 {
                                     state: {
                                         accessToken: loginData.accessToken,
