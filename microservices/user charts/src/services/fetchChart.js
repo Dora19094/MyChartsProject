@@ -1,14 +1,15 @@
 const chartConfig = require("../models/ChartConfig");
 
 
-const fetchChart = async (chartName/*,userId*/) => {
+const fetchChart = async () => {
     //It returns a promise!
     const user = 12;
     return (
-         chartConfig.findOne({'chartName' : chartName,userId: user})
-             .then(function(chart)
+         chartConfig.find({userId: user})
+             .then(function(charts)
             {
-                 if (chart) return chart;
+                 console.log(charts);
+                 if (charts) return charts;
                  else throw new Error("No such chart found!");
              })
              .catch((err) =>{

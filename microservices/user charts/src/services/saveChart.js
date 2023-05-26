@@ -1,9 +1,9 @@
 const chartConfig = require("../models/ChartConfig");
 
-const saveChart = async (userData) => {
-    //const date = '10/5/21';
+const saveChart = async (userData,date) => {
+
     const user = 12;
-    await Object.assign(userData,{/*createdOn: date,*/ userId : user});
+    await Object.assign(userData,{createdOn: date, userId : user});
     let chart = new chartConfig(userData);
     console.log(chart);
 

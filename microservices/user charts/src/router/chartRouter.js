@@ -3,12 +3,13 @@ const router = express.Router();
 
 const chartSave = require('../controllers/chartSaveController');
 const chartFetch = require('../controllers/chartFetchController');
+const countCharts = require('../controllers/countFetchController');
 
+router.post('/save/:date',chartSave);
 
-router.post('/save',chartSave);
+router.get('/fetch',chartFetch);
 
-router.get('/fetch/:chartName',chartFetch);
-
+router.get('/countCharts',countCharts);
 
 
 module.exports = router;
