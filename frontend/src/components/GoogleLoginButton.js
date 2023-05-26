@@ -31,12 +31,14 @@ const GoogleLoginButton = () => {
                         .then(loginData => {
                             console.log("Old user logged in")
                             console.log(loginData);
+                            const logindata = JSON.parse(loginData);
+                            console.log(logindata);
                             navigate(
-                                `/account/${googleResponse.credential}/${loginData.accessToken}`,
+                                `/account/${googleResponse.credential}`,
                                 {
                                     state: {
-                                        accessToken: loginData.accessToken,
-                                        refreshToken: loginData.refreshToken,
+                                        accessToken: logindata.accessToken,
+                                        refreshToken: logindata.refreshToken,
                                     },
                                     // var accessToken = gapi.auth. getToken () .access_ token;
 
