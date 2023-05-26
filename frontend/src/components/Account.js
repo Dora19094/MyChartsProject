@@ -47,7 +47,7 @@ export default function Account() {
             method: 'GET',
             //credentials: "include",
             headers: {
-                'Authorization': `Bearer ${loginData.accessToken}`,
+                'Authorization': `Bearer ${loginData}`,
                 'Content-Type': 'application/json'
             },
         })
