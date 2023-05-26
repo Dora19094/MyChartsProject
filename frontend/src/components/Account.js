@@ -121,6 +121,7 @@ export default function Account() {
         });
     }
 
+    const date = new Date(account.lastLogin);
     return (
         <div>
             <img src={logo} className="App-logo" alt="logo"/>
@@ -155,7 +156,7 @@ export default function Account() {
                         <Row>
                             <h6>
                                 last login {/* last date of log in: account.dateLogin */}
-                                {account && (dayjs(account.lastLogin).format('MMMM DD, YYYY, hh:mm A'))}
+                                {account && (date.toDateString())}
                             </h6>
                         </Row>
                     </div>
