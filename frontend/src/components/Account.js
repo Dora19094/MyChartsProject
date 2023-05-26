@@ -10,14 +10,14 @@ import "./GoogleLoginButton.js";
 
 export default function Account() {
 
-    // const {state} = useLocation();
-    const location = useLocation();
-    const {accessToken, refreshToken} = location.state;
+    const {state} = useLocation();
+    // const location = useLocation();
+    // const {accessToken, refreshToken} = location.state;
 
-    console.log(accessToken, refreshToken);
+    console.log(state.accessToken, state.refreshToken);
 
     console.log("State")
-    console.log(accessToken, refreshToken);
+    console.log(state.accessToken, state.refreshToken);
 //fetch account ID, user's email, no of charts & credits, date of last login
 
     const navigate = useNavigate();
@@ -45,7 +45,7 @@ export default function Account() {
             method: 'GET',
             //credentials: "include",
             headers: {
-                'Authorization': `Bearer ${accessToken}`,
+                'Authorization': `Bearer ${state.accessToken}`,
                 'Content-Type': 'application/json'
             },
         })
