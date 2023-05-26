@@ -7,6 +7,7 @@ import {ButtonGroup, ButtonToolbar, Card, Carousel, CarouselItem, Col, Modal, Ro
 import "./Account.css";
 import {useNavigate} from "react-router-dom";
 import "./GoogleLoginButton.js";
+import dayjs from "dayjs";
 
 export default function Account() {
 
@@ -154,7 +155,7 @@ export default function Account() {
                         <Row>
                             <h6>
                                 last login {/* last date of log in: account.dateLogin */}
-                                {account && (account.lastlogin.toString())}
+                                {account && (dayjs(account.lastLogin).format('MMMM DD, YYYY, hh:mm A'))}
                             </h6>
                         </Row>
                     </div>

@@ -16,7 +16,7 @@ db.connect();
 
 app.use(cors({
     //origin: 'http://localhost:3000'
-    origin: '*'
+    origin: "*"
 }));
 
 app.use(bodyParser.json());
