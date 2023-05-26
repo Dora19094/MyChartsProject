@@ -55,6 +55,7 @@ export default function Account() {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
+                setAccount(data);
             })
     }, []);
 
@@ -73,6 +74,7 @@ export default function Account() {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
+                setNoCharts(data);
             })
     }, []);
     // useEffect(() => {
