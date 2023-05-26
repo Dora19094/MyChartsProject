@@ -10,12 +10,15 @@ import {useNavigate} from "react-router-dom";
 
 export default function Account() {
 
-//     const {state} = useLocation();
+    const {state} = useLocation();
 //fetch account ID, user's email, no of charts & credits, date of last login
-//     const [account, setAccount] = useState();
-    
+
+    const navigate = useNavigate();
+    const {credentials} = useParams();
+    const [account, setAccount] = useState();
+
     // useEffect(() => {
-    //     const url = `https://localhost:3000/account/${accountID}`;
+    //     const url = `https://localhost:5000//userInfo/getInfo`;
     //     const fetchData = async () => {
     //         await fetch(url)
     //             .then((response) => response.json())
@@ -28,8 +31,21 @@ export default function Account() {
     //     fetchData();
     //     if (account) {
     //         console.log(account);
-    //     } // we add [0] because resource is & returns a list
+    //     }
     // }, []);
+    useEffect(() => {
+        fetch('https://localhost:5000//userInfo/getInfo', {
+            method: 'GET',
+            headers: {
+                'Authorization': state.credentials,
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+    }, []);
 
 
     // console.log(state.accessToken, state.refreshToken);
@@ -52,9 +68,6 @@ export default function Account() {
         console.log(nocharts);
     }, []);
 
-
-    const navigate = useNavigate();
-    const {credentials} = useParams();
 
     function handleMyCharts() {
         console.log("my charts");

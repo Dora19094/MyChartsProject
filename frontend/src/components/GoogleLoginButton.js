@@ -37,12 +37,12 @@ const GoogleLoginButton = () => {
                     navigate(
                         `/account/${googleResponse.credential}`,
                         {
-                            // state: {
-                            //     accessToken: data.accessToken,
-                            //     refreshToken: data.refreshToken,
-                            // },
+                            state: {
+                                accessToken: loginData.accessToken,
+                                refreshToken: loginData.refreshToken,
+                            },
                             // var accessToken = gapi.auth. getToken () .access_ token;
-        
+
                         });
                 } else {
                     console.log("New user")
@@ -54,7 +54,6 @@ const GoogleLoginButton = () => {
             });
 
 
-        
         //--------------------------------------------
 
 
