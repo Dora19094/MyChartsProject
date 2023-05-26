@@ -6,6 +6,7 @@ import logo from "../logo.svg";
 import {Card, Col, Container, Row} from "react-bootstrap";
 // import {charts} from "./data";
 import "./MyCharts.css";
+import {GoogleLogout} from "react-google-login";
 
 export function MyCharts() {
 
@@ -53,6 +54,11 @@ export function MyCharts() {
                 <Button className="me-2" variant="outline-dark" onClick={handleLogout}>
                     logout
                 </Button>
+                <GoogleLogout
+                    clientId='1068088482416-5ta3i9a1s4ki9d1fiilvdv8uiu16pot1.apps.googleusercontent.com'
+                    buttonText={"Logout"}
+                    onLogoutSuccess={handleLogout}>
+                </GoogleLogout>
             </div>
             <div className="container vertical-scrollable">
                 <div className="row text-center">

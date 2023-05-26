@@ -45,13 +45,27 @@ import React, {useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
 import * as xlsx from 'xlsx';
 
-
 export default function MyDropzone() {
 
     const navigate = useNavigate();
     const {credentials} = useParams();
     const [files, setFiles] = useState([]);
+    const [credits, setCredits] = useState([]);
+    const minus = [1];
 
+    if (credits) {
+        const requestOptions = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(credits),
+        };
+        const url = `https://localhost:3001/intelliq_api/`
+        /*await*/
+        fetch(url, requestOptions).then(
+            // (response) => response.json() // provokes error, ok when commenting it out
+        );
+        console.log(credits);
+    }
 
     const onDrop = useCallback((acceptedFiles) => {
 
@@ -86,6 +100,8 @@ export default function MyDropzone() {
                         const data = await response.json();
                         console.log('Response:', data);
                         navigate(`/account/${credentials}/error`, {state: {files: data}});
+                        // update setCredits(minus), minus being 1.
+                        setCredits(minus);
 
                     } else {
                         // Handle the error response from the backend
@@ -104,21 +120,6 @@ export default function MyDropzone() {
 
         setFiles([...files, ...acceptedFiles]);
     }, [files]);
-
-    // const requestOptions = {
-    //     method: "POST",
-    //     headers: {"Content-Type": "application/json"},
-    //     body: JSON.stringify(parsedData.data),
-    // };
-    // const url = `http://localhost:4001/create-chart/create`
-    // await fetch(url, requestOptions).then(
-    //     // (response) => response.json() // provokes error, ok when commenting it out
-    // );
-    // reader.readAsText(file); // Pass the file object to readAsText
-    //
-    // setFiles([...files, ...acceptedFiles]);
-    // console.log(files);
-
 
     const {getRootProps, getInputProps} = useDropzone({onDrop})
 

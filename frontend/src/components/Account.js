@@ -10,15 +10,10 @@ import {useNavigate} from "react-router-dom";
 
 export default function Account() {
 
-// access token and refresh token
 //     const {state} = useLocation();
-//fetch account ID, user's email, charts & credits, date of last login
+//fetch account ID, user's email, no of charts & credits, date of last login
 //     const [account, setAccount] = useState();
-//     const {accountID} = useParams();
-    // const navigate = useNavigate();
-    //    const paramAccountID = account.accountID; //_id on db
-
-    //a. {baseURL}/account/:accountID
+    
     // useEffect(() => {
     //     const url = `https://localhost:3000/account/${accountID}`;
     //     const fetchData = async () => {
@@ -26,8 +21,7 @@ export default function Account() {
     //             .then((response) => response.json())
     //             .then((data) => {
     //                 console.log(data);
-    //                 const d = [data];
-    //                 setAccount(d)
+    //                 setAccount(data)
     //             });
     //     };
     //

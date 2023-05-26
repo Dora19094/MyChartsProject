@@ -10,6 +10,8 @@ import "./Account.css";
 export default async function BuyCredits() {
     const navigate = useNavigate();
     const {credentials} = useParams();
+    const [credits, setCredits] = useState();
+    const five = [5], ten = [10], fifteen = [15], twenty = [20];
 
     function handle5() {
         console.log("bought 5 credits!");
@@ -34,9 +36,7 @@ export default async function BuyCredits() {
 
     function handle20() {
         console.log("bought 20 credits!");
-        setCredits({
-            added: 20
-        });
+        setCredits(twenty);
     }
 
     function handleClick() {
@@ -48,20 +48,18 @@ export default async function BuyCredits() {
         });
     }
 
-    const [credits, setCredits] = useState();
-
-    // if (credits) {
-    //     const requestOptions = {
-    //         method: "POST",
-    //         headers: {"Content-Type": "application/json"},
-    //         body: JSON.stringify(credits),
-    //     };
-    //     const url = `https://localhost:3001/buyapi`
-    //     await fetch(url, requestOptions).then(
-    //         // (response) => response.json() // provokes error, ok when commenting it out
-    //     );
-    //     console.log(credits);
-    // }
+    if (credits) {
+        const requestOptions = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(credits),
+        };
+        const url = `https://localhost:3001/buyapi`
+        await fetch(url, requestOptions).then(
+            // (response) => response.json() // provokes error, ok when commenting it out
+        );
+        console.log(credits);
+    }
 
     return (
         <div>
