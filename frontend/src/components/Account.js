@@ -61,6 +61,20 @@ export default function Account() {
 
     const [nocharts, setNoCharts] = useState();
 
+    useEffect(() => {
+        fetch('http://localhost:4003/user-chart/countCharts', {
+            method: 'GET',
+            //credentials: "include",
+            headers: {
+                'Authorization': `Bearer ${state.accessToken}`,
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+    }, []);
     // useEffect(() => {
     //     const url = `http://localhost:4003/user-chart/countCharts`;
     //     const fetchData = async () => {
