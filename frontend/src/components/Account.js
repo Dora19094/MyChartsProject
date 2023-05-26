@@ -130,6 +130,7 @@ export default function Account() {
                         <Row>
                             <h3>
                                 hello {/* google account goes here:  account.email*/}
+                                {account && (account.email)}
                             </h3>
                         </Row>
                     </div>
@@ -145,6 +146,7 @@ export default function Account() {
                         <Row>
                             <h6>
                                 available credits {/* user's credits: account.credits */}
+                                {account && (account.numberOfCredits)}
                             </h6>
                         </Row>
                     </div>
@@ -152,6 +154,7 @@ export default function Account() {
                         <Row>
                             <h6>
                                 last login {/* last date of log in: account.dateLogin */}
+                                {account && (account.lastlogin.toString())}
                             </h6>
                         </Row>
                     </div>
