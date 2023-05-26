@@ -6,13 +6,13 @@ import logo from "../logo.svg";
 import {ButtonGroup, ButtonToolbar, Card, Carousel, CarouselItem, Col, Modal, Row, Stack} from "react-bootstrap";
 import "./Account.css";
 import {useNavigate} from "react-router-dom";
-import "./GoogleLoginButton";
+import "./GoogleLoginButton.js";
 
 export default function Account() {
 
-    // const {state} = useLocation();
-    const location = useLocation();
-    const state = location.state;
+    const {state} = useLocation();
+    console.log("State")
+    console.log(state.accessToken, state.refreshToken);
 //fetch account ID, user's email, no of charts & credits, date of last login
 
     const navigate = useNavigate();
@@ -36,11 +36,11 @@ export default function Account() {
     //     }
     // }, []);
     useEffect(() => {
-        fetch('https://localhost:5000//userInfo/getInfo', {
+        fetch('http://localhost:5000/userInfo/getInfo', {
             method: 'GET',
-            credentials: "include",
+            //credentials: "include",
             headers: {
-                'Authorization': state.accessToken,
+                'Authorization': `Bearer ${state.accessToken}`,
                 'Content-Type': 'application/json'
             },
         })
@@ -51,7 +51,7 @@ export default function Account() {
     }, []);
 
 
-    // console.log(state.accessToken, state.refreshToken);
+   
 
 
     const [nocharts, setNoCharts] = useState();
