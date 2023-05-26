@@ -7,15 +7,10 @@ import {ButtonGroup, ButtonToolbar, Card, Carousel, CarouselItem, Col, Modal, Ro
 import "./Account.css";
 import {useNavigate} from "react-router-dom";
 import "./GoogleLoginButton.js";
-import dayjs from "dayjs";
 
 export default function Account() {
 
     const {state} = useLocation();
-    // const {loginData} = useParams();
-    // const location = useLocation();
-    // const {accessToken, refreshToken} = location.state;
-
     console.log(state.accessToken, state.refreshToken);
 
     console.log("State");
@@ -28,22 +23,6 @@ export default function Account() {
     // const {state} = useLocation();
     // console.log(loginData);
 
-    // useEffect(() => {
-    //     const url = `https://localhost:5000//userInfo/getInfo`;
-    //     const fetchData = async () => {
-    //         await fetch(url)
-    //             .then((response) => response.json())
-    //             .then((data) => {
-    //                 console.log(data);
-    //                 setAccount(data)
-    //             });
-    //     };
-    //
-    //     fetchData();
-    //     if (account) {
-    //         console.log(account);
-    //     }
-    // }, []);
     useEffect(() => {
         fetch('http://localhost:5000/userInfo/getInfo', {
             method: 'GET',
@@ -78,21 +57,6 @@ export default function Account() {
                 setNoCharts(data);
             })
     }, []);
-    // useEffect(() => {
-    //     const url = `http://localhost:4003/user-chart/countCharts`;
-    //     const fetchData = async () => {
-    //         await fetch(url)
-    //             .then((response) => response.json())
-    //             .then((data) => {
-    //                 console.log(data);
-    //                 setNoCharts(data)
-    //             });
-    //     };
-
-    //     fetchData();
-    //     console.log(nocharts);
-    // }, []);
-
 
     function handleMyCharts() {
         console.log("my charts");
@@ -156,7 +120,7 @@ export default function Account() {
                         <Row>
                             <h6>
                                 last login {/* last date of log in: account.dateLogin */}
-                                {account && (date.toDateString())}
+                                {account && (account.lastLogin)}
                             </h6>
                         </Row>
                     </div>
