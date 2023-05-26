@@ -36,6 +36,7 @@ export default function Account() {
     useEffect(() => {
         fetch('https://localhost:5000//userInfo/getInfo', {
             method: 'GET',
+            credentials: "include",
             headers: {
                 'Authorization': state.accessToken,
                 'Content-Type': 'application/json'
