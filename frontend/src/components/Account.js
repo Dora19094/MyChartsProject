@@ -10,7 +10,9 @@ import "./GoogleLoginButton";
 
 export default function Account() {
 
-    const {state} = useLocation();
+    // const {state} = useLocation();
+    const location = useLocation();
+    const state = location.state;
 //fetch account ID, user's email, no of charts & credits, date of last login
 
     const navigate = useNavigate();
