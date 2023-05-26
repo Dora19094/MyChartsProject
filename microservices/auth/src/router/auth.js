@@ -5,6 +5,7 @@ const login = require('../controllers/loginController');
 const token = require('../controllers/tokenController');
 const logout = require('../controllers/logoutController');
 const authenticateToken = require('../controllers/authenticateToken');
+const checkIfNewUser = require('../controllers/checkIfNewUser');
 
 router.post('/token', token);
 
@@ -13,5 +14,7 @@ router.post('/login', login);
 router.get('/authenticateToken', authenticateToken);
 
 router.delete('/logout', logout);
+
+router.post('/checkIfNewUser', checkIfNewUser);
 
 module.exports = router;

@@ -43,7 +43,7 @@ import Button from "react-bootstrap/Button";
 import {useNavigate, useParams} from "react-router-dom";
 import React, {useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
-import * as xlsx from 'xlsx';
+import * as xlsx from "xlsx";
 
 
 export default function MyDropzone() {
