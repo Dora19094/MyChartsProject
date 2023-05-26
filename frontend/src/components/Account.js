@@ -121,7 +121,7 @@ export default function Account() {
         });
     }
 
-    const date = new Date(account.lastLogin);
+    const date = account ? new Date(account.lastLogin) : null;
     return (
         <div>
             <img src={logo} className="App-logo" alt="logo"/>
