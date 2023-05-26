@@ -10,7 +10,9 @@ import "./GoogleLoginButton.js";
 
 export default function Account() {
 
-    const {state} = useLocation();
+    // const {state} = useLocation();
+    const location = useLocation();
+    const state = location.state;
     console.log("State")
     console.log(state.accessToken, state.refreshToken);
 //fetch account ID, user's email, no of charts & credits, date of last login
@@ -49,9 +51,6 @@ export default function Account() {
                 console.log(data);
             })
     }, []);
-
-
-   
 
 
     const [nocharts, setNoCharts] = useState();
