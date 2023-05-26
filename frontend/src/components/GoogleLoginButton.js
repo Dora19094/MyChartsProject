@@ -5,9 +5,7 @@ import {useNavigate} from "react-router-dom";
 const GoogleLoginButton = () => {
     const navigate = useNavigate();
 
-    const success = (response) => {
-
-
+    const success = (googleResponse) => {
         //--------------------------------------------
 
         fetch('http://localhost:4000/auth/checkIfNewUser', {
@@ -15,56 +13,48 @@ const GoogleLoginButton = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(response)
+            body: JSON.stringify(googleResponse)
         })
-            .then(response => response.text())
-            .then(data => {
-                console.log(data);
+            .then(newUserResponse => newUserResponse.text())
+            .then(newUserResponse => {
+                let newUserResponseJSobj = JSON.parse(newUserResponse)
+                if (newUserResponseJSobj.newUser === false) {
+                    fetch('http://localhost:4000/auth/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(googleResponse)
+                    })
+                        .then(loginResponse => loginResponse.text())
+                        .then(loginData => {
+                            console.log("Old user logged in")
+                            console.log(loginData);
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                    navigate(
+                        `/account/${googleResponse.credential}`,
+                        {
+                            // state: {
+                            //     accessToken: data.accessToken,
+                            //     refreshToken: data.refreshToken,
+                            // },
+                            // var accessToken = gapi.auth. getToken () .access_ token;
+        
+                        });
+                } else {
+                    console.log("New user")
+                    //code for new user
+                }
             })
             .catch(error => {
                 console.error(error);
             });
 
 
-        if (response.newUser === false) {
-
-            //console.log('Login success. Response:', response);
-            fetch('http://localhost:4000/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(response)
-            })
-                .then(response1 => response1.text())
-                .then(data1 => {
-                    console.log(data1);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-            navigate(
-                `/account/${response.credential}`,
-                {
-                    // state: {
-                    //     accessToken: data.accessToken,
-                    //     refreshToken: data.refreshToken,
-                    // },
-                    // var accessToken = gapi.auth. getToken () .access_ token;
-
-                });
-        } else {
-            navigate(
-                `/account/${response.newUser}/false`,
-                {
-                    // state: {
-                    //     accessToken: data.accessToken,
-                    //     refreshToken: data.refreshToken,
-                    // },
-                    // var accessToken = gapi.auth. getToken () .access_ token;
-
-                });
-        }
+        
         //--------------------------------------------
 
 
