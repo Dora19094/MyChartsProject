@@ -12,9 +12,12 @@ export default function Account() {
 
     // const {state} = useLocation();
     const location = useLocation();
-    const state = location.state;
+    const {accessToken, refreshToken} = location.state;
+
+    console.log(accessToken, refreshToken);
+
     console.log("State")
-    console.log(state.accessToken, state.refreshToken);
+    console.log(accessToken, refreshToken);
 //fetch account ID, user's email, no of charts & credits, date of last login
 
     const navigate = useNavigate();
@@ -42,7 +45,7 @@ export default function Account() {
             method: 'GET',
             //credentials: "include",
             headers: {
-                'Authorization': `Bearer ${state.accessToken}`,
+                'Authorization': `Bearer ${accessToken}`,
                 'Content-Type': 'application/json'
             },
         })
