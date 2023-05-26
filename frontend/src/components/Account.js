@@ -6,7 +6,7 @@ import logo from "../logo.svg";
 import {ButtonGroup, ButtonToolbar, Card, Carousel, CarouselItem, Col, Modal, Row, Stack} from "react-bootstrap";
 import "./Account.css";
 import {useNavigate} from "react-router-dom";
-
+import "./GoogleLoginButton";
 
 export default function Account() {
 
