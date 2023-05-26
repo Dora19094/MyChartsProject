@@ -54,20 +54,20 @@ export default function Account() {
 
     const [nocharts, setNoCharts] = useState();
 
-    useEffect(() => {
-        const url = `http://localhost:4003/user-chart/countCharts`;
-        const fetchData = async () => {
-            await fetch(url)
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log(data);
-                    setNoCharts(data)
-                });
-        };
+    // useEffect(() => {
+    //     const url = `http://localhost:4003/user-chart/countCharts`;
+    //     const fetchData = async () => {
+    //         await fetch(url)
+    //             .then((response) => response.json())
+    //             .then((data) => {
+    //                 console.log(data);
+    //                 setNoCharts(data)
+    //             });
+    //     };
 
-        fetchData();
-        console.log(nocharts);
-    }, []);
+    //     fetchData();
+    //     console.log(nocharts);
+    // }, []);
 
 
     function handleMyCharts() {

@@ -1,7 +1,6 @@
 const chartConfig = require('../models/ChartConfig');
-const getCount = async () => {
+const getCount = async (user) => {
     //It returns a promise!
-    const user = 12;
     return (
         chartConfig.count({userId: user})
             .then(function(count)

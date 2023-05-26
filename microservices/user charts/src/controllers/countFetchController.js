@@ -2,7 +2,7 @@ const getCount = require('../services/getCount');
 const {isNumber} = require("lodash");
 const countFetchController = async (req, res) => {
 
-    const result = await getCount();
+    const result = await getCount(req.user_id);
     if (isNumber(result))
         res.send({count : result});
     else{

@@ -1,9 +1,8 @@
 const chartConfig = require("../models/ChartConfig");
 
 
-const fetchChart = async () => {
+const fetchChart = async (user) => {
     //It returns a promise!
-    const user = 12;
     return (
          chartConfig.find({userId: user})
              .then(function(charts)

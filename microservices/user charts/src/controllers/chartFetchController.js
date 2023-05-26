@@ -2,7 +2,7 @@ const fetchChart = require('../services/fetchChart');
 const chartFetchController = async (req, res) => {
 
     try {
-        const result = await fetchChart();
+        const result = await fetchChart(req.user_id);
         // Send a response back to the frontend
         res.send(result);
     } catch (error) {

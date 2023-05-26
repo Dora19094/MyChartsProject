@@ -3,7 +3,7 @@ const chartSaveController = async (req, res) => {
 
         const date = req.params.date;
         const jsonData = req.body; // JSON data sent from the frontend
-        const result = await saveChart(jsonData,date);
+        const result = await saveChart(jsonData,date,req.user_id);
         if (result.status === 'ok')
                 res.send(result);
         else{
