@@ -37,7 +37,7 @@ export default function Account() {
         fetch('https://localhost:5000//userInfo/getInfo', {
             method: 'GET',
             headers: {
-                'Authorization': state.credentials,
+                'Authorization': state.accessToken,
                 'Content-Type': 'application/json'
             },
         })
