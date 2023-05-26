@@ -34,7 +34,7 @@ const GoogleLoginButton = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(response1)
+                body: JSON.stringify(response)
             })
                 .then(response1 => response1.text())
                 .then(data1 => {
@@ -44,7 +44,7 @@ const GoogleLoginButton = () => {
                     console.error(error);
                 });
             navigate(
-                `/account/${response1.credential}`,
+                `/account/${response.credential}`,
                 {
                     // state: {
                     //     accessToken: data.accessToken,
