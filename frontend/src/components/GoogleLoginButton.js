@@ -30,20 +30,30 @@ const GoogleLoginButton = () => {
                         .then(loginData => {
                             console.log("Old user logged in")
                             console.log(loginData);
+                            navigate(
+                                `/account/${googleResponse.credential}`,
+                                {
+                                    state: {
+                                        accessToken: loginData.accessToken,
+                                        refreshToken: loginData.refreshToken,
+                                    },
+                                    // var accessToken = gapi.auth. getToken () .access_ token;
+
+                                });
                         })
                         .catch(error => {
                             console.error(error);
                         });
-                    navigate(
-                        `/account/${googleResponse.credential}`,
-                        {
-                            state: {
-                                accessToken: loginData.accessToken,
-                                refreshToken: loginData.refreshToken,
-                            },
-                            // var accessToken = gapi.auth. getToken () .access_ token;
-
-                        });
+                    // navigate(
+                    //     `/account/${googleResponse.credential}`,
+                    //     {
+                    //         state: {
+                    //             accessToken: loginData.accessToken,
+                    //             refreshToken: loginData.refreshToken,
+                    //         },
+                    //         // var accessToken = gapi.auth. getToken () .access_ token;
+                    //
+                    //     });
                 } else {
                     console.log("New user")
                     //code for new user
