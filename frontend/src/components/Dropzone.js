@@ -38,7 +38,6 @@
 //
 // export default Dropzone;
 import {useState} from 'react';
-import Dropzone from 'react-dropzone';
 import Button from "react-bootstrap/Button";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import React, {useCallback} from 'react'

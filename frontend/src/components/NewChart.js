@@ -2,7 +2,7 @@ import React, {useEffect, useState, useCallback} from "react";
 import Button from "react-bootstrap/Button";
 import "./NewChart.css";
 import logo from "../logo.svg";
-import {Card, Carousel, CarouselItem, Col, Stack} from "react-bootstrap";
+import {Carousel, CarouselItem, Col} from "react-bootstrap";
 import Dropzone from "./Dropzone";
 import {charts} from './data.js';
 import {useLocation} from "react-router-dom";

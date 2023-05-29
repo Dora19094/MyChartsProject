@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {Link, useLocation, useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
 import logo from "../logo.svg";
-import {ButtonGroup, ButtonToolbar, Card, Carousel, CarouselItem, Col, Modal, Row, Stack} from "react-bootstrap";
+import {ButtonGroup, ButtonToolbar, Col, Row} from "react-bootstrap";
 import "./Account.css";
 import {useNavigate} from "react-router-dom";
 import "./GoogleLoginButton.js";

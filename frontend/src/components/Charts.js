@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import React, {useState} from "react";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
 
@@ -35,7 +34,7 @@ export function Charts() {
                             <Modal.Title>Welcome</Modal.Title>
                         </Modal.Header>
                         <Modal.Body> Sign in with your Google Account
-                            <GoogleLoginButton />
+                            <GoogleLoginButton/>
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleClose}>

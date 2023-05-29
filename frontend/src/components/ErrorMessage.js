@@ -1,10 +1,8 @@
-import React, {useEffect, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import React from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
 import logo from "../logo.svg";
-import {Card, Col, Container, Row} from "react-bootstrap";
-// import {charts} from "./data";
 import "./MyCharts.css";
 
 export function ErrorMessage() {

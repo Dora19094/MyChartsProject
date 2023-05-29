@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
+import React, {useState} from "react";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
 import logo from "../logo.svg";
