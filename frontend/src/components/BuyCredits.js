@@ -3,7 +3,7 @@ import {useLocation, useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
 import logo from "../logo.svg";
-import {ButtonGroup, ButtonToolbar, Card, Carousel, CarouselItem, Col, Modal, Row, Stack} from "react-bootstrap";
+import {ButtonGroup, ButtonToolbar} from "react-bootstrap";
 import "./Account.css";
 import "./GoogleLoginButton.js"
 // url here needs accountID email
