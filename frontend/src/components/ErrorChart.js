@@ -37,12 +37,15 @@ export default function ErrorChart() {
 
     const today = new Date(),
         date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-
+    const {state} = useLocation();
 //----------------------------------------------
     if (answer && date) {
         const requestOptions = {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                'Authorization': `Bearer ${state.accessToken}`,
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(answer),
         };
         const url = `http://localhost:4003/user-chart/save/${date}`

@@ -5,6 +5,7 @@ import logo from "../logo.svg";
 import {Card, Carousel, CarouselItem, Col, Stack} from "react-bootstrap";
 import Dropzone from "./Dropzone";
 import {charts} from './data.js';
+import {useLocation} from "react-router-dom";
 
 function NewChart() {
 
@@ -40,8 +41,16 @@ function NewChart() {
         console.log("clicked");
     }
 
+    const {state} = useLocation();
     const downloadFile = (chartType) => {
-        fetch(`http://localhost:4002/create-chart/fetchTemplate/${chartType}`)
+
+        fetch(`http://localhost:4003/user-chart/fetch`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${state.accessToken}`,
+                'Content-Type': 'application/json'
+            },
+        })
             .then((response) => {
                 if (response.ok) {
                     return response.blob();
@@ -78,7 +87,9 @@ function NewChart() {
                             <Carousel.Caption style={{color: "black", backgroundColor: "whitesmoke"}}>
                                 {chart.chartTitle}
                                 <div className="justify-content-xl-end">
-                                    <Button variant="outline-dark" onClick={() => {downloadFile(chart.chartType)}}>
+                                    <Button variant="outline-dark" onClick={() => {
+                                        downloadFile(chart.chartType)
+                                    }}>
                                         Download Template
                                     </Button>
                                 </div>

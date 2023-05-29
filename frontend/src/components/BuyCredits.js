@@ -1,17 +1,18 @@
 import React, {useEffect, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
 import logo from "../logo.svg";
 import {ButtonGroup, ButtonToolbar, Card, Carousel, CarouselItem, Col, Modal, Row, Stack} from "react-bootstrap";
 import "./Account.css";
-
+import "./GoogleLoginButton.js"
 // url here needs accountID email
 export default async function BuyCredits() {
     const navigate = useNavigate();
     const {credentials} = useParams();
     const [credits, setCredits] = useState();
     const five = [5], ten = [10], fifteen = [15], twenty = [20];
+    const {state} = useLocation();
 
     function handle5() {
         console.log("bought 5 credits!");
@@ -48,15 +49,36 @@ export default async function BuyCredits() {
         });
     }
 
+
+    // const [nocharts, setNoCharts] = useState();
+
+    // useEffect(() => {
+    //     fetch('http://localhost:4003/user-chart/countCharts', {
+    //         method: 'GET',
+    //         //credentials: "include",
+    //         headers: {
+    //             'Authorization': `Bearer ${state.accessToken}`,
+    //             'Content-Type': 'application/json'
+    //         },
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log(data);
+    //             setNoCharts(data);
+    //         })
+    // }, []);
+
     if (credits) {
         const requestOptions = {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                'Authorization': `Bearer ${state.accessToken}`,
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(credits),
         };
         const url = `https://localhost:3001/buyapi`
         await fetch(url, requestOptions).then(
-            // (response) => response.json() // provokes error, ok when commenting it out
         );
         console.log(credits);
     }

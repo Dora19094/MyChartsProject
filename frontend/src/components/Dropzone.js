@@ -40,7 +40,7 @@
 import {useState} from 'react';
 import Dropzone from 'react-dropzone';
 import Button from "react-bootstrap/Button";
-import {useNavigate, useParams} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import React, {useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
 import * as xlsx from "xlsx";
@@ -52,17 +52,20 @@ export default function MyDropzone() {
     const [files, setFiles] = useState([]);
     const [credits, setCredits] = useState([]);
     const minus = [1];
+    const {state} = useLocation();
 
     if (credits) {
         const requestOptions = {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                'Authorization': `Bearer ${state.accessToken}`,
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(credits),
         };
         const url = `https://localhost:3001/intelliq_api/`
         /*await*/
         fetch(url, requestOptions).then(
-            // (response) => response.json() // provokes error, ok when commenting it out
         );
         console.log(credits);
     }
@@ -89,6 +92,7 @@ export default function MyDropzone() {
                     const response = await fetch('http://localhost:4001/create-chart/create', {
                         method: 'POST',
                         headers: {
+                            'Authorization': `Bearer ${state.accessToken}`,
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify(jsonData),
@@ -107,7 +111,6 @@ export default function MyDropzone() {
                         // Handle the error response from the backend
                         console.log('Request failed:', response.status, response.statusText);
                         navigate(`/account/${credentials}/errormessage`,);
-
                     }
                 } catch (error) {
                     // Handle network errors or other exceptions

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
 import logo from "../logo.svg";
@@ -11,21 +11,37 @@ import {GoogleLogout} from "react-google-login";
 export function MyCharts() {
 
     const [charts, setCharts] = useState();
+    const {state} = useLocation();
 
     useEffect(() => {
-        const url = `http://localhost:4003/user-chart/fetch`;
-        const fetchData = async () => {
-            await fetch(url)
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log(data);
-                    setCharts(data)
-                });
-        };
-
-        fetchData();
-        console.log(charts);
+        fetch('http://localhost:4003/user-chart/fetch', {
+            method: 'GET',
+            //credentials: "include",
+            headers: {
+                'Authorization': `Bearer ${state.accessToken}`,
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setCharts(data);
+            })
     }, []);
+    // useEffect(() => {
+    //     const url = `http://localhost:4003/user-chart/fetch`;
+    //     const fetchData = async () => {
+    //         await fetch(url)
+    //             .then((response) => response.json())
+    //             .then((data) => {
+    //                 console.log(data);
+    //                 setCharts(data)
+    //             });
+    //     };
+    //
+    //     fetchData();
+    //     console.log(charts);
+    // }, []);
 
 
     const navigate = useNavigate();

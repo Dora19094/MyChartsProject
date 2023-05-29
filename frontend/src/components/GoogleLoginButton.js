@@ -7,7 +7,6 @@ const GoogleLoginButton = () => {
     const navigate = useNavigate();
 
     const success = (googleResponse) => {
-        //--------------------------------------------
 
         fetch('http://localhost:4000/auth/checkIfNewUser', {
             method: 'POST',
@@ -47,16 +46,7 @@ const GoogleLoginButton = () => {
                         .catch(error => {
                             console.error(error);
                         });
-                    // navigate(
-                    //     `/account/${googleResponse.credential}`,
-                    //     {
-                    //         state: {
-                    //             accessToken: loginData.accessToken,
-                    //             refreshToken: loginData.refreshToken,
-                    //         },
-                    //         // var accessToken = gapi.auth. getToken () .access_ token;
-                    //
-                    //     });
+
                 } else {
                     console.log("New user")
                     //code for new user
@@ -65,36 +55,6 @@ const GoogleLoginButton = () => {
             .catch(error => {
                 console.error(error);
             });
-
-
-        //--------------------------------------------
-
-
-        //     console.log('Login success. Response:', response);
-        //     fetch('http://localhost:4000/auth/login', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify(response)
-        //     })
-        //         .then(response => response.text())
-        //         .then(data => {
-        //             console.log(data);
-        //         })
-        //         .catch(error => {
-        //             console.error(error);
-        //         });
-        //     navigate(
-        //         `/account/${response.credential}`,
-        //         {
-        //             // state: {
-        //             //     accessToken: data.accessToken,
-        //             //     refreshToken: data.refreshToken,
-        //             // },
-        //             // var accessToken = gapi.auth. getToken () .access_ token;
-        //
-        //         });
     };
 
 
