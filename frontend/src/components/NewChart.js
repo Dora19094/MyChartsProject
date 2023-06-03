@@ -44,7 +44,7 @@ function NewChart() {
     const {state} = useLocation();
     const downloadFile = (chartType) => {
 
-        fetch(`http://localhost:4003/user-chart/fetch`, {
+        fetch(`http://localhost:4002/create-chart/fetchTemplate/${chartType}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${state.accessToken}`,
