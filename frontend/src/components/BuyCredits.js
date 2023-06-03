@@ -10,7 +10,7 @@ import "./Account.css";
 export default async function BuyCredits() {
     const navigate = useNavigate();
     const {credentials} = useParams();
-    const [credits, setCredits] = useState([]);
+    const [credits, setCredits] = useState(null);
     // const five = [5], ten = [10], fifteen = [15], twenty = [20];
     const {state} = useLocation();
 
@@ -100,6 +100,7 @@ export default async function BuyCredits() {
             fetch(`http://localhost:6000/credits/purchaseCredits/${credits[0]}`, {
                 method: "POST",
                 headers: {
+
                     Authorization: `Bearer ${state.accessToken}`,
                     "Content-Type": "application/json",
                 },
