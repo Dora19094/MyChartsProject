@@ -87,7 +87,7 @@ export default function BuyCredits() {
                 body: JSON.stringify(credits)
             })
                 .then(response => response.json())
-                .then(data => setCredits(data));
+                .then(data => console.log(data));
         }
 
 
