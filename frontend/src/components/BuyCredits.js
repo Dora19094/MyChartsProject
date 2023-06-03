@@ -53,7 +53,7 @@ export default async function BuyCredits() {
     // const [nocharts, setNoCharts] = useState();
 
     // useEffect(() => {
-    //     fetch('http://localhost:4003/user-chart/countCharts', {
+    //     fetch('http://localhost:6000/user-chart/countCharts', {
     //         method: 'GET',
     //         //credentials: "include",
     //         headers: {
@@ -78,7 +78,7 @@ export default async function BuyCredits() {
             },
             body: JSON.stringify(credits),
         };
-        const url = `https://localhost:3001/buyapi`
+        const url = `https://localhost:6000/credits/purchaseCredits/${credits}`
         await fetch(url, requestOptions).then(
         );
         console.log(credits);
