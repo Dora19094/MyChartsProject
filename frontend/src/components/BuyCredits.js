@@ -98,13 +98,15 @@ export default function BuyCredits() {
                     method: "POST",
                     headers: {
                         'Authorization': `Bearer ${state.accessToken}`,
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
                     },
-                    body: JSON.stringify(credits),
+                    // body: JSON.stringify(credits),
                 };
-                const url = `http://localhost:6000/credits/purchaseCredits/${credits}`
-                fetch(url, requestOptions).then(
-                );
+                const url = `http://localhost:4500/credits/purchaseCredits/${credits}`
+                fetch(url, requestOptions)
+                .then()
+                .catch(err => console.log(err));
                 console.log(credits);
             }
         }
