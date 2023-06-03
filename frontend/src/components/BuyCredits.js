@@ -66,19 +66,31 @@ export default async function BuyCredits() {
 
     // useEffect(() => {
     if (credits) {
-        const requestOptions = {
-            method: "POST",
+        // const requestOptions = {
+        //     method: "POST",
+        //     headers: {
+        //         'Authorization': `Bearer ${state.accessToken}`,
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify(credits),
+        // };
+        // const url = `http://localhost:6000/credits/purchaseCredits/${credits}`
+        // await
+        //     fetch(url, requestOptions).then(
+        //     );
+        // console.log(credits);
+
+        fetch(`http://localhost:6000/credits/purchaseCredits/${credits}`, {
+            method: 'POST',
             headers: {
-                'Authorization': `Bearer ${state.accessToken}`,
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(credits),
-        };
-        const url = `http://localhost:6000/credits/purchaseCredits/${credits}`
-        await
-            fetch(url, requestOptions).then(
-            );
-        console.log(credits);
+            body: JSON.stringify(credits)
+        })
+            .then(response => console.log(response))
+            .then(data => console.log(data));
+
+
     }
     // }, []);
 
