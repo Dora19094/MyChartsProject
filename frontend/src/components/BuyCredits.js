@@ -102,7 +102,7 @@ export default function BuyCredits() {
             },
             body: JSON.stringify(credits),
         };
-        const url = `http://localhost:6000/credits/purchaseCredits/${credits.count}`
+        const url = `http://localhost:6000/credits/purchaseCredits/${credits}`
         fetch(url, requestOptions).then(
         );
         console.log(credits);
