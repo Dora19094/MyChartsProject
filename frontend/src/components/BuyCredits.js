@@ -16,24 +16,24 @@ export default async function BuyCredits() {
 
     function handle5() {
         console.log("bought 5 credits!");
-        // setCredits([5]
-        // );
+        setCredits([5]
+        );
     }
 
     function handle10() {
         console.log("bought 10 credits!");
-        // setCredits([10]
-        // );
+        setCredits([10]
+        );
     }
 
     function handle15() {
         console.log("bought 15 credits!");
-        // setCredits([15]);
+        setCredits([15]);
     }
 
     function handle20() {
         console.log("bought 20 credits!");
-        // setCredits([20]);
+        setCredits([20]);
     }
 
     function handleClick() {
@@ -63,35 +63,57 @@ export default async function BuyCredits() {
     //             setNoCharts(data);
     //         })
     // }, []);
-
+//-------------
     // useEffect(() => {
-    if (credits) {
-        // const requestOptions = {
-        //     method: "POST",
-        //     headers: {
-        //         'Authorization': `Bearer ${state.accessToken}`,
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify(credits),
-        // };
-        // const url = `http://localhost:6000/credits/purchaseCredits/${credits}`
-        // await
-        //     fetch(url, requestOptions).then(
-        //     );
-        // console.log(credits);
-
-        fetch(`http://localhost:6000/credits/purchaseCredits/${credits}`, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${state.accessToken}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(credits)
-        })
-            .then(response => response.json())
-            .then(data => setCredits(data));
-    }
+    // if (credits) {
+    // const requestOptions = {
+    //     method: "POST",
+    //     headers: {
+    //         'Authorization': `Bearer ${state.accessToken}`,
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(credits),
+    // };
+    // const url = `http://localhost:6000/credits/purchaseCredits/${credits}`
+    // await
+    //     fetch(url, requestOptions).then(
+    //     );
+    // console.log(credits);
+    //
+    //     fetch(`http://localhost:6000/credits/purchaseCredits/${credits}`, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Authorization': `Bearer ${state.accessToken}`,
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(credits)
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => setCredits(data));
+    // }
+    // -------------------
     // }, []);
+
+
+    useEffect(() => {
+        if (credits.length > 0) {
+            fetch(`http://localhost:6000/credits/purchaseCredits/${credits[0]}`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${state.accessToken}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(credits),
+            })
+                .then((response) => response.json())
+                .then((data) => setCredits(data))
+                .catch((error) => {
+                    console.error("Error purchasing credits:", error);
+                    setCredits([]); // Reset credits on error
+                });
+        }
+    }, [credits, state.accessToken]);
+
 
     return (
         credits && (
