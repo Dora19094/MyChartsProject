@@ -12,6 +12,7 @@ export default function BuyCredits() {
     const {credentials} = useParams();
     const [credits, setCredits] = useState(0);
     const {state} = useLocation();
+    const {stateC} = useLocation();
 
     function handle5() {
         console.log("bought 5 credits!");
@@ -36,7 +37,7 @@ export default function BuyCredits() {
     function handleClick() {
         //navigate to previous page
         navigate(`/account/${credentials}`, {
-            state: {
+            stateC: {
                 credentials: credentials,
             },
         });
@@ -78,13 +79,13 @@ export default function BuyCredits() {
             //         );
             //     console.log(credits);
             //
-            fetch(`http://localhost:6000/credits/purchaseCredits/${{credits: credits}}`, {
+            fetch(`http://localhost:6000/credits/purchaseCredits/${credits}`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${state.accessToken}`,
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({credits: credits})
+                body: JSON.stringify(credits)
             })
                 .then(response => response.json())
                 .then(data => console.log(data));
