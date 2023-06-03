@@ -19,47 +19,47 @@ const GoogleLoginButton = () => {
         }
     }, []);
 
-    const success = (response) => {
+    const success = (googleResponse) => {
 
         //--------------------------------------------
-        const success = (googleResponse) => {
+        // const success = (googleResponse) => {
 
-            fetch('http://localhost:4000/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(googleResponse)
+        fetch('http://localhost:4000/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(googleResponse)
+        })
+            .then(loginResponse => loginResponse.text())
+            .then(loginData => {
+                console.log("Old user logged in")
+                console.log(loginData);
+                const logindata = JSON.parse(loginData);
+                console.log(logindata);
+
+                // store access token in local storage
+                const {accessToken} = googleResponse.accessToken;
+                setAccessToken(accessToken);
+                setIsLoggedIn(true);
+                localStorage.setItem('accessToken', accessToken);
+
+                // navigate to user account page, account.js
+                navigate(
+                    `/account/${googleResponse.credential}`,
+                    {
+                        state: {
+                            accessToken: logindata.accessToken,
+                            refreshToken: logindata.refreshToken,
+                        },
+                    });
             })
-                .then(loginResponse => loginResponse.text())
-                .then(loginData => {
-                    console.log("Old user logged in")
-                    console.log(loginData);
-                    const logindata = JSON.parse(loginData);
-                    console.log(logindata);
+            .catch(error => {
+                console.error(error);
+            });
 
-                    // store access token in local storage
-                    const {accessToken} = googleResponse.accessToken;
-                    setAccessToken(accessToken);
-                    setIsLoggedIn(true);
-                    localStorage.setItem('accessToken', accessToken);
-
-                    // navigate to user account page, account.js
-                    navigate(
-                        `/account/${googleResponse.credential}`,
-                        {
-                            state: {
-                                accessToken: logindata.accessToken,
-                                refreshToken: logindata.refreshToken,
-                            },
-                        });
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-
-            //--------------------------------------------
-        };
+        //--------------------------------------------
+        // };
     }
     const failure = (error) => {
         console.log('Login failure. Error:', error);
