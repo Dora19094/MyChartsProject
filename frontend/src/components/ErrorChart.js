@@ -30,7 +30,7 @@ export default function ErrorChart() {
     const navigate = useNavigate();
     const {credentials} = useParams();
     const location = useLocation();
-    const {files} = location.state;
+    const {files} = useLocation();
     const [answer, setAnswer] = useState();
 
 //----------------------------------------------
@@ -60,9 +60,10 @@ export default function ErrorChart() {
     function handleDiscard() {
         //navigate
         navigate(`/account/${credentials}`, {
-            // state: {
-            //     credentials: credentials,
-            // },
+            state: {
+                accessToken: state.accessToken,
+                refreshToken: state.refreshToken
+            },
         });
     }
 

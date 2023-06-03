@@ -36,9 +36,10 @@ export default function BuyCredits() {
     function handleClick() {
         //navigate to previous page
         navigate(`/account/${credentials}`, {
-            // stateC: {
-            //     credentials: credentials,
-            // },
+            state: {
+                accessToken: state.accessToken,
+                refreshToken: state.refreshToken
+            },
         });
     }
 

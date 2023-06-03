@@ -102,7 +102,11 @@ export default function MyDropzone() {
                         console.log('Request sent successfully');
                         const data = await response.json();
                         console.log('Response:', data);
-                        navigate(`/account/${credentials}/error`, {state: {files: data}});
+                        navigate(`/account/${credentials}/error`, {
+                                state:
+                                    {files: data}
+                            }
+                        );
                         // update setCredits(minus), minus being 1.
                         setCredits(minus);
 
