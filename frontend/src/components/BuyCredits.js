@@ -78,13 +78,13 @@ export default function BuyCredits() {
             //         );
             //     console.log(credits);
             //
-            fetch(`http://localhost:6000/credits/purchaseCredits/${credits}`, {
+            fetch(`http://localhost:6000/credits/purchaseCredits/${{credits: credits}}`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${state.accessToken}`,
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(credits)
+                body: JSON.stringify({credits: credits})
             })
                 .then(response => response.json())
                 .then(data => console.log(data));
