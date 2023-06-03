@@ -16,28 +16,24 @@ export default async function BuyCredits() {
 
     function handle5() {
         console.log("bought 5 credits!");
-        setCredits({
-            added: 5
-        });
+        setCredits(5
+        );
     }
 
     function handle10() {
         console.log("bought 10 credits!");
-        setCredits({
-            added: 10
-        });
+        setCredits(10
+        );
     }
 
     function handle15() {
         console.log("bought 15 credits!");
-        setCredits({
-            added: 15
-        });
+        setCredits(15);
     }
 
     function handle20() {
         console.log("bought 20 credits!");
-        setCredits(twenty);
+        setCredits(20);
     }
 
     function handleClick() {
