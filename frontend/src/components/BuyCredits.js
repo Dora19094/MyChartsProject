@@ -10,7 +10,7 @@ import "./Account.css";
 export default async function BuyCredits() {
     const navigate = useNavigate();
     const {credentials} = useParams();
-    const [credits, setCredits] = useState(null);
+    const [credits, setCredits] = useState();
     // const five = [5], ten = [10], fifteen = [15], twenty = [20];
     const {state} = useLocation();
 
@@ -65,20 +65,21 @@ export default async function BuyCredits() {
     // }, []);
 //-------------
     // useEffect(() => {
+    //now
     // if (credits) {
-    // const requestOptions = {
-    //     method: "POST",
-    //     headers: {
-    //         'Authorization': `Bearer ${state.accessToken}`,
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify(credits),
-    // };
-    // const url = `http://localhost:6000/credits/purchaseCredits/${credits}`
-    // await
-    //     fetch(url, requestOptions).then(
-    //     );
-    // console.log(credits);
+    //     const requestOptions = {
+    //         method: "POST",
+    //         headers: {
+    //             'Authorization': `Bearer ${state.accessToken}`,
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify(credits),
+    //     };
+    //     const url = `http://localhost:6000/credits/purchaseCredits/${credits}`
+    //     await
+    //         fetch(url, requestOptions).then(
+    //         );
+    //     console.log(credits);
     //
     //     fetch(`http://localhost:6000/credits/purchaseCredits/${credits}`, {
     //         method: 'POST',
@@ -91,65 +92,88 @@ export default async function BuyCredits() {
     //         .then(response => response.json())
     //         .then(data => setCredits(data));
     // }
-    // -------------------
+
+
+//------------------
+    if (credits) {
+        const requestOptions = {
+            method: "POST",
+            headers: {
+                'Authorization': `Bearer ${state.accessToken}`,
+
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(credits),
+        };
+        const url = `http://localhost:6000/credits/purchaseCredits/${credits}`
+        await fetch(url, requestOptions).then(
+            // (response) => response.json() // provokes error, ok when commenting it out
+        );
+        console.log(credits);
+    }
+
+
+//----------------
+
+
+// -------------------
     // }, []);
 
 
-    useEffect(() => {
-        if (credits.length > 0) {
-            fetch(`http://localhost:6000/credits/purchaseCredits/${credits[0]}`, {
-                method: "POST",
-                headers: {
-
-                    Authorization: `Bearer ${state.accessToken}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(credits),
-            })
-                .then((response) => response.json())
-                .then((data) => setCredits(data))
-                .catch((error) => {
-                    console.error("Error purchasing credits:", error);
-                    setCredits([]); // Reset credits on error
-                });
-        }
-    }, [credits, state.accessToken]);
+    // useEffect(() => {
+    //     if (credits.length > 0) {
+    //         fetch(`http://localhost:6000/credits/purchaseCredits/${credits[0]}`, {
+    //             method: "POST",
+    //             headers: {
+    //
+    //                 Authorization: `Bearer ${state.accessToken}`,
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify(credits),
+    //         })
+    //             .then((response) => response.json())
+    //             .then((data) => setCredits(data))
+    //             .catch((error) => {
+    //                 console.error("Error purchasing credits:", error);
+    //                 setCredits([]); // Reset credits on error
+    //             });
+    //     }
+    // }, [credits, state.accessToken]);
 
 
     return (
-        credits && (
-            <div>
-                <img src={logo} className="template-logo" alt="logo"/>
-                <div className="justify-content-start">
-                    <h3 className='mt-5'> you're logged in as </h3>
-                    <div className='mt-5'>
-                        <ButtonToolbar>
-                            <ButtonGroup className="me-2">
-                                <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle5}>
-                                    5 credits
-                                </Button>
-                            </ButtonGroup>
-                            <ButtonGroup className="me-2">
-                                <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle10}>
-                                    10 credits
-                                </Button>
-                            </ButtonGroup>
-                            <ButtonGroup className="me-2">
-                                <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle15}>
-                                    15 credits
-                                </Button>
-                            </ButtonGroup>
-                            <ButtonGroup className="me-2">
-                                <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle20}>
-                                    20 credits
-                                </Button>
-                            </ButtonGroup>
-                        </ButtonToolbar>
-                        <Button className="mt-5" variant="outline-dark" onClick={handleClick}>
-                            cancel purchase
-                        </Button>
-                    </div>
+        <div>
+            <img src={logo} className="template-logo" alt="logo"/>
+            <div className="justify-content-start">
+                <h3 className='mt-5'> you're logged in as </h3>
+                <div className='mt-5'>
+                    <ButtonToolbar>
+                        <ButtonGroup className="me-2">
+                            <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle5}>
+                                5 credits
+                            </Button>
+                        </ButtonGroup>
+                        <ButtonGroup className="me-2">
+                            <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle10}>
+                                10 credits
+                            </Button>
+                        </ButtonGroup>
+                        <ButtonGroup className="me-2">
+                            <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle15}>
+                                15 credits
+                            </Button>
+                        </ButtonGroup>
+                        <ButtonGroup className="me-2">
+                            <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle20}>
+                                20 credits
+                            </Button>
+                        </ButtonGroup>
+                    </ButtonToolbar>
+                    <Button className="mt-5" variant="outline-dark" onClick={handleClick}>
+                        cancel purchase
+                    </Button>
                 </div>
             </div>
-        ));
+        </div>
+    );
 }
