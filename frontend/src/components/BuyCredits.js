@@ -10,8 +10,7 @@ import "./GoogleLoginButton.js"
 export default function BuyCredits() {
     const navigate = useNavigate();
     const {credentials} = useParams();
-    const [credits, setCredits] = useState();
-    // const five = [5], ten = [10], fifteen = [15], twenty = [20];
+    const [credits, setCredits] = useState([]);
     const {state} = useLocation();
 
     function handle5() {
@@ -79,7 +78,7 @@ export default function BuyCredits() {
             //         );
             //     console.log(credits);
             //
-            fetch(`http://localhost:6000/credits/purchaseCredits/${credits[5]}`, {
+            fetch(`http://localhost:6000/credits/purchaseCredits/${credits[0]}`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${state.accessToken}`,
