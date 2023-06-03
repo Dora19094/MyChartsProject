@@ -64,23 +64,23 @@ export default async function BuyCredits() {
     //         })
     // }, []);
 
-    useEffect(() => {
-        if (credits) {
-            const requestOptions = {
-                method: "POST",
-                headers: {
-                    'Authorization': `Bearer ${state.accessToken}`,
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(credits),
-            };
-            const url = `http://localhost:6000/credits/purchaseCredits/${credits}`
-            /*await*/
-            fetch(url, requestOptions).then(
-            );
-            console.log(credits);
-        }
-    }, []);
+    // useEffect(() => {
+    if (credits) {
+        const requestOptions = {
+            method: "POST",
+            headers: {
+                'Authorization': `Bearer ${state.accessToken}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(credits),
+        };
+        const url = `http://localhost:6000/credits/purchaseCredits/${credits}`
+        /*await*/
+        fetch(url, requestOptions).then(
+        );
+        console.log(credits);
+    }
+    // }, []);
 
     return (
         <div>
