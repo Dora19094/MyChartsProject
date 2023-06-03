@@ -75,9 +75,9 @@ export default async function BuyCredits() {
             body: JSON.stringify(credits),
         };
         const url = `http://localhost:6000/credits/purchaseCredits/${credits}`
-        /*await*/
-        fetch(url, requestOptions).then(
-        );
+        await
+            fetch(url, requestOptions).then(
+            );
         console.log(credits);
     }
     // }, []);
