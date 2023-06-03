@@ -11,7 +11,7 @@ export default async function BuyCredits() {
     const navigate = useNavigate();
     const {credentials} = useParams();
     const [credits, setCredits] = useState([]);
-    const five = [5], ten = [10], fifteen = [15], twenty = [20];
+    // const five = [5], ten = [10], fifteen = [15], twenty = [20];
     const {state} = useLocation();
 
     function handle5() {
@@ -64,22 +64,23 @@ export default async function BuyCredits() {
     //         })
     // }, []);
 
-    // useEffect(() => {
-    if (credits) {
-        const requestOptions = {
-            method: "POST",
-            headers: {
-                'Authorization': `Bearer ${state.accessToken}`,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(credits),
-        };
-        const url = `https://localhost:6000/credits/purchaseCredits/${credits}`
-        await fetch(url, requestOptions).then(
-        );
-        console.log(credits);
-    }
-    // }, []);
+    useEffect(() => {
+        if (credits) {
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    'Authorization': `Bearer ${state.accessToken}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(credits),
+            };
+            const url = `http://localhost:6000/credits/purchaseCredits/${credits}`
+            /*await*/
+            fetch(url, requestOptions).then(
+            );
+            console.log(credits);
+        }
+    }, []);
 
     return (
         <div>
