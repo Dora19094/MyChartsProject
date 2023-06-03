@@ -10,7 +10,7 @@ import "./GoogleLoginButton.js"
 export default function BuyCredits() {
     const navigate = useNavigate();
     const {credentials} = useParams();
-    const [credits, setCredits] = useState([]);
+    const [credits, setCredits] = useState();
     // const five = [5], ten = [10], fifteen = [15], twenty = [20];
     const {state} = useLocation();
 
