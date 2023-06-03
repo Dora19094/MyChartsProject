@@ -60,9 +60,9 @@ export default function ErrorChart() {
     function handleDiscard() {
         //navigate
         navigate(`/account/${credentials}`, {
-            state: {
-                credentials: credentials,
-            },
+            // state: {
+            //     credentials: credentials,
+            // },
         });
     }
 
