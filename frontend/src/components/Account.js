@@ -61,27 +61,27 @@ export default function Account() {
     function handleMyCharts() {
         console.log("my charts");
         navigate(`/account/${credentials}/mycharts`, {
-            stateC: {
-                credentials: credentials,
-            },
+            // stateC: {
+            //     credentials: credentials,
+            // },
         });
     }
 
     function handleNewChart() {
         console.log("new chart");
         navigate(`/account/${credentials}/newchart`, {
-            stateC: {
-                credentials: credentials,
-            },
+            // stateC: {
+            //     credentials: credentials,
+            // },
         });
     }
 
     function handleBuyCredits() {
         console.log("buy credits");
         navigate(`/account/${credentials}/buy`, {
-            stateC: {
-                credentials: credentials,
-            },
+            // stateC: {
+            //     credentials: credentials,
+            // },
         });
     }
 

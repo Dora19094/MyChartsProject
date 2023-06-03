@@ -12,7 +12,6 @@ export default function BuyCredits() {
     const {credentials} = useParams();
     const [credits, setCredits] = useState(0);
     const {state} = useLocation();
-    const {stateC} = useLocation();
 
     function handle5() {
         console.log("bought 5 credits!");
@@ -37,9 +36,9 @@ export default function BuyCredits() {
     function handleClick() {
         //navigate to previous page
         navigate(`/account/${credentials}`, {
-            stateC: {
-                credentials: credentials,
-            },
+            // stateC: {
+            //     credentials: credentials,
+            // },
         });
     }
 
