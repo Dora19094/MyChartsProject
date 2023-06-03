@@ -88,8 +88,8 @@ export default async function BuyCredits() {
             },
             body: JSON.stringify(credits)
         })
-            .then(response => console.log(response))
-            .then(data => console.log(data));
+            .then(response => response.json())
+            .then(data => setCredits(data));
 
 
     }
