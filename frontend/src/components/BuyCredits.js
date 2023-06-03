@@ -94,38 +94,39 @@ export default async function BuyCredits() {
     // }, []);
 
     return (
-        <div>
-            <img src={logo} className="template-logo" alt="logo"/>
-            <div className="justify-content-start">
-                <h3 className='mt-5'> you're logged in as </h3>
-                <div className='mt-5'>
-                    <ButtonToolbar>
-                        <ButtonGroup className="me-2">
-                            <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle5}>
-                                5 credits
-                            </Button>
-                        </ButtonGroup>
-                        <ButtonGroup className="me-2">
-                            <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle10}>
-                                10 credits
-                            </Button>
-                        </ButtonGroup>
-                        <ButtonGroup className="me-2">
-                            <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle15}>
-                                15 credits
-                            </Button>
-                        </ButtonGroup>
-                        <ButtonGroup className="me-2">
-                            <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle20}>
-                                20 credits
-                            </Button>
-                        </ButtonGroup>
-                    </ButtonToolbar>
-                    <Button className="mt-5" variant="outline-dark" onClick={handleClick}>
-                        cancel purchase
-                    </Button>
+        credits && (
+            <div>
+                <img src={logo} className="template-logo" alt="logo"/>
+                <div className="justify-content-start">
+                    <h3 className='mt-5'> you're logged in as </h3>
+                    <div className='mt-5'>
+                        <ButtonToolbar>
+                            <ButtonGroup className="me-2">
+                                <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle5}>
+                                    5 credits
+                                </Button>
+                            </ButtonGroup>
+                            <ButtonGroup className="me-2">
+                                <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle10}>
+                                    10 credits
+                                </Button>
+                            </ButtonGroup>
+                            <ButtonGroup className="me-2">
+                                <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle15}>
+                                    15 credits
+                                </Button>
+                            </ButtonGroup>
+                            <ButtonGroup className="me-2">
+                                <Button variant="outline-info" style={{height: 200, width: 150}} onClick={handle20}>
+                                    20 credits
+                                </Button>
+                            </ButtonGroup>
+                        </ButtonToolbar>
+                        <Button className="mt-5" variant="outline-dark" onClick={handleClick}>
+                            cancel purchase
+                        </Button>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        ));
 }
