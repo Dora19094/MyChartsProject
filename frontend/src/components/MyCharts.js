@@ -11,8 +11,8 @@ export function MyCharts() {
 
     const [charts, setCharts] = useState();
     const {state} = useLocation();
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
-    const [accessToken, setAccessToken] = useState(state.accessToken);
+    // const [isLoggedIn, setIsLoggedIn] = useState(true);
+    // const [accessToken, setAccessToken] = useState(state.accessToken);
 
     useEffect(() => {
         fetch('http://localhost:4003/user-chart/fetch', {
@@ -55,10 +55,10 @@ export function MyCharts() {
 
     function handleLogout() {
         //logout go to start page
-        setIsLoggedIn(false);
-        setAccessToken('');
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('expiresAt');
+        // setIsLoggedIn(false);
+        // setAccessToken('');
+        // localStorage.removeItem('accessToken');
+        // localStorage.removeItem('expiresAt');
         navigate(`/home`);
     }
 

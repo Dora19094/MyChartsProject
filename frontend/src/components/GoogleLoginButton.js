@@ -5,18 +5,18 @@ import "./Account.js";
 
 const GoogleLoginButton = () => {
     const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [accessToken, setAccessToken] = useState('');
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // const [accessToken, setAccessToken] = useState('');
 
 
-    useEffect(() => {
-        // Check if access token exists in local storage
-        const storedAccessToken = localStorage.getItem('accessToken');
-        if (storedAccessToken) {
-            setAccessToken(storedAccessToken);
-            setIsLoggedIn(true);
-        }
-    }, []);
+    // useEffect(() => {
+    //     // Check if access token exists in local storage
+    //     const storedAccessToken = localStorage.getItem('accessToken');
+    //     if (storedAccessToken) {
+    //         setAccessToken(storedAccessToken);
+    //         setIsLoggedIn(true);
+    //     }
+    // }, []);
 
 
     const success = (googleResponse) => {
@@ -47,10 +47,10 @@ const GoogleLoginButton = () => {
                             console.log(logindata);
 
                             // store access token in local storage
-                            const {accessToken} = googleResponse.accessToken;
-                            setAccessToken(accessToken);
-                            setIsLoggedIn(true);
-                            localStorage.setItem('accessToken', accessToken);
+                            // const {accessToken} = googleResponse.accessToken;
+                            // setAccessToken(accessToken);
+                            // setIsLoggedIn(true);
+                            // localStorage.setItem('accessToken', accessToken);
 
                             // navigate to user account page, account.js
                             navigate(
@@ -78,7 +78,7 @@ const GoogleLoginButton = () => {
                 console.error(error);
             });
     };
-    
+
     const failure = (error) => {
         console.log('Login failure. Error:', error);
     };

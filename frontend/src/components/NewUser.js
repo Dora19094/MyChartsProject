@@ -6,18 +6,18 @@ import Button from "react-bootstrap/Button";
 const GoogleLoginButton = () => {
     const navigate = useNavigate();
     const {state} = useLocation();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [accessToken, setAccessToken] = useState('');
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // const [accessToken, setAccessToken] = useState('');
 
 
-    useEffect(() => {
-        // Check if access token exists in local storage
-        const storedAccessToken = localStorage.getItem('accessToken');
-        if (storedAccessToken) {
-            setAccessToken(storedAccessToken);
-            setIsLoggedIn(true);
-        }
-    }, []);
+    // useEffect(() => {
+    //     // Check if access token exists in local storage
+    //     const storedAccessToken = localStorage.getItem('accessToken');
+    //     if (storedAccessToken) {
+    //         setAccessToken(storedAccessToken);
+    //         setIsLoggedIn(true);
+    //     }
+    // }, []);
 
     const success = (googleResponse) => {
 
@@ -33,16 +33,16 @@ const GoogleLoginButton = () => {
         })
             .then(loginResponse => loginResponse.text())
             .then(loginData => {
-                console.log("Old user logged in")
+                console.log("New user logged in")
                 console.log(loginData);
                 const logindata = JSON.parse(loginData);
                 console.log(logindata);
 
                 // store access token in local storage
-                const {accessToken} = googleResponse.accessToken;
-                setAccessToken(accessToken);
-                setIsLoggedIn(true);
-                localStorage.setItem('accessToken', accessToken);
+                // const {accessToken} = googleResponse.accessToken;
+                // setAccessToken(accessToken);
+                // setIsLoggedIn(true);
+                // localStorage.setItem('accessToken', accessToken);
 
                 // navigate to user account page, account.js
                 navigate(
