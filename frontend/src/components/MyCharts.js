@@ -50,7 +50,7 @@ export function MyCharts() {
 
     function handleAccount() {
         //navigate account/${credentials}
-        navigate(`/account/${credentials}`, {state: {credentials: credentials}});
+        navigate(`/account/${credentials}`, {});
     }
 
     function handleLogout() {
