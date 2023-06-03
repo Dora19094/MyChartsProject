@@ -16,24 +16,22 @@ export default async function BuyCredits() {
 
     function handle5() {
         console.log("bought 5 credits!");
-        setCredits([5]
-        );
+        // setCredits([5]);
     }
 
     function handle10() {
         console.log("bought 10 credits!");
-        setCredits([10]
-        );
+        // setCredits([10]);
     }
 
     function handle15() {
         console.log("bought 15 credits!");
-        setCredits([15]);
+        // setCredits([15]);
     }
 
     function handle20() {
         console.log("bought 20 credits!");
-        setCredits([20]);
+        // setCredits([20]);
     }
 
     function handleClick() {
@@ -95,7 +93,7 @@ export default async function BuyCredits() {
 
 
 //------------------
-    if (credits) {
+    if (credits.count) {
         const requestOptions = {
             method: "POST",
             headers: {
@@ -104,7 +102,7 @@ export default async function BuyCredits() {
             },
             body: JSON.stringify(credits),
         };
-        const url = `http://localhost:6000/credits/purchaseCredits/${credits}`
+        const url = `http://localhost:6000/credits/purchaseCredits/${credits.count}`
         await fetch(url, requestOptions).then(
         );
         console.log(credits);
