@@ -7,7 +7,7 @@ import {ButtonGroup, ButtonToolbar} from "react-bootstrap";
 import "./Account.css";
 import "./GoogleLoginButton.js"
 // url here needs accountID email
-export default async function BuyCredits() {
+export default function BuyCredits() {
     const navigate = useNavigate();
     const {credentials} = useParams();
     const [credits, setCredits] = useState([]);
@@ -103,7 +103,7 @@ export default async function BuyCredits() {
             body: JSON.stringify(credits),
         };
         const url = `http://localhost:6000/credits/purchaseCredits/${credits.count}`
-        await fetch(url, requestOptions).then(
+        fetch(url, requestOptions).then(
         );
         console.log(credits);
     }
