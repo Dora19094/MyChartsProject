@@ -83,6 +83,7 @@ export default async function BuyCredits() {
         fetch(`http://localhost:6000/credits/purchaseCredits/${credits}`, {
             method: 'POST',
             headers: {
+                'Authorization': `Bearer ${state.accessToken}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(credits)
