@@ -5,33 +5,33 @@ import "./Charts.css";
 import logo from "../logo.svg";
 import {ButtonGroup, ButtonToolbar} from "react-bootstrap";
 import "./Account.css";
-// import "./GoogleLoginButton.js"
+import "./GoogleLoginButton.js"
 // url here needs accountID email
 export default async function BuyCredits() {
     const navigate = useNavigate();
     const {credentials} = useParams();
-    const [credits, setCredits] = useState();
+    const [credits, setCredits] = useState([]);
     // const five = [5], ten = [10], fifteen = [15], twenty = [20];
     const {state} = useLocation();
 
     function handle5() {
         console.log("bought 5 credits!");
-        // setCredits([5]);
+        setCredits([5]);
     }
 
     function handle10() {
         console.log("bought 10 credits!");
-        // setCredits([10]);
+        setCredits([10]);
     }
 
     function handle15() {
         console.log("bought 15 credits!");
-        // setCredits([15]);
+        setCredits([15]);
     }
 
     function handle20() {
         console.log("bought 20 credits!");
-        // setCredits([20]);
+        setCredits([20]);
     }
 
     function handleClick() {
@@ -93,7 +93,7 @@ export default async function BuyCredits() {
 
 
 //------------------
-    if (credits.count) {
+    if (credits) {
         const requestOptions = {
             method: "POST",
             headers: {
