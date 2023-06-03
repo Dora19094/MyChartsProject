@@ -1,10 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {GoogleLogin} from '@react-oauth/google';
 import {useNavigate} from "react-router-dom";
 import "./Account.js";
 
 const GoogleLoginButton = () => {
     const navigate = useNavigate();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [accessToken, setAccessToken] = useState('');
+
+
+    useEffect(() => {
+        // Check if access token exists in local storage
+        const storedAccessToken = localStorage.getItem('accessToken');
+        if (storedAccessToken) {
+            setAccessToken(storedAccessToken);
+            setIsLoggedIn(true);
+        }
+    }, []);
+
 
     const success = (googleResponse) => {
 
@@ -32,6 +45,14 @@ const GoogleLoginButton = () => {
                             console.log(loginData);
                             const logindata = JSON.parse(loginData);
                             console.log(logindata);
+
+                            // store access token in local storage
+                            const {accessToken} = googleResponse.accessToken;
+                            setAccessToken(accessToken);
+                            setIsLoggedIn(true);
+                            localStorage.setItem('accessToken', accessToken);
+
+                            // navigate to user account page, account.js
                             navigate(
                                 `/account/${googleResponse.credential}`,
                                 {
@@ -39,8 +60,6 @@ const GoogleLoginButton = () => {
                                         accessToken: logindata.accessToken,
                                         refreshToken: logindata.refreshToken,
                                     },
-                                    // var accessToken = gapi.auth. getToken () .access_ token;
-
                                 });
                         })
                         .catch(error => {
@@ -48,7 +67,10 @@ const GoogleLoginButton = () => {
                         });
 
                 } else {
-                    console.log("New user")
+                    console.log("New user");
+                    navigate(
+                        `/account/newuser`,
+                        {});
                     //code for new user
                 }
             })
@@ -56,8 +78,7 @@ const GoogleLoginButton = () => {
                 console.error(error);
             });
     };
-
-
+    
     const failure = (error) => {
         console.log('Login failure. Error:', error);
     };

@@ -1,46 +1,66 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {GoogleLogin} from '@react-oauth/google';
 import {useLocation, useNavigate} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 const GoogleLoginButton = () => {
     const navigate = useNavigate();
+    const {state} = useLocation();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [accessToken, setAccessToken] = useState('');
+
+
+    useEffect(() => {
+        // Check if access token exists in local storage
+        const storedAccessToken = localStorage.getItem('accessToken');
+        if (storedAccessToken) {
+            setAccessToken(storedAccessToken);
+            setIsLoggedIn(true);
+        }
+    }, []);
 
     const success = (response) => {
 
-        const {state} = useLocation();
         //--------------------------------------------
+        const success = (googleResponse) => {
 
-        // const handleContinue(){
-        fetch('http://localhost:4000/auth/login', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${state.accessToken}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(response)
-        })
-            .then(response => response.text())
-            .then(data => {
-                console.log(data);
+            fetch('http://localhost:4000/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(googleResponse)
             })
-            .catch(error => {
-                console.error(error);
-            });
-        navigate(
-            `/account/${response.credential}`,
-            {
-                // state: {
-                //     accessToken: data.accessToken,
-                //     refreshToken: data.refreshToken,
-                // },
-                // var accessToken = gapi.auth. getToken () .access_ token;
+                .then(loginResponse => loginResponse.text())
+                .then(loginData => {
+                    console.log("Old user logged in")
+                    console.log(loginData);
+                    const logindata = JSON.parse(loginData);
+                    console.log(logindata);
 
-            });
+                    // store access token in local storage
+                    const {accessToken} = googleResponse.accessToken;
+                    setAccessToken(accessToken);
+                    setIsLoggedIn(true);
+                    localStorage.setItem('accessToken', accessToken);
 
-        //--------------------------------------------
-    };
+                    // navigate to user account page, account.js
+                    navigate(
+                        `/account/${googleResponse.credential}`,
+                        {
+                            state: {
+                                accessToken: logindata.accessToken,
+                                refreshToken: logindata.refreshToken,
+                            },
+                        });
+                })
+                .catch(error => {
+                    console.error(error);
+                });
 
+            //--------------------------------------------
+        };
+    }
     const failure = (error) => {
         console.log('Login failure. Error:', error);
     };
@@ -50,7 +70,6 @@ const GoogleLoginButton = () => {
     }
 
     return (
-
         <div>
             <h3>
                 Are you sure you want to log in with google? Your data will be stored in our database and will be

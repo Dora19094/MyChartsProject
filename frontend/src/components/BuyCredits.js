@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
@@ -68,6 +68,7 @@ export default async function BuyCredits() {
     //         })
     // }, []);
 
+    // useEffect(() => {
     if (credits) {
         const requestOptions = {
             method: "POST",
@@ -82,6 +83,7 @@ export default async function BuyCredits() {
         );
         console.log(credits);
     }
+    // }, []);
 
     return (
         <div>

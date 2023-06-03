@@ -12,6 +12,7 @@ import ErrorChart from "./components/ErrorChart";
 import {MyCharts} from "./components/MyCharts";
 import Parse from "./components/csvtojson";
 import {ErrorMessage} from "./components/ErrorMessage";
+import NewUser from "./components/NewUser";
 
 function App() {
     return (
@@ -30,6 +31,8 @@ function App() {
                             <Route path="/account/:credentials/mycharts" element={<MyCharts/>}/>
                             <Route path="/account/:credentials/errormessage" element={<ErrorMessage/>}/>
                             <Route path="/parse" element={<Parse/>}/>
+                            <Route path="/account/newuser" element={<NewUser/>}/>
+
                         </Routes>
                     </BrowserRouter>
                 </header>
