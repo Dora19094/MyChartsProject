@@ -73,7 +73,8 @@ export default function Account() {
         navigate(`/account/${credentials}/newchart`, {
             state: {
                 accessToken: state.accessToken,
-                refreshToken: state.refreshToken
+                refreshToken: state.refreshToken,
+                credits: account.numberOfCredits
             },
         });
     }

@@ -49,27 +49,33 @@ export default function MyDropzone() {
     const navigate = useNavigate();
     const {credentials} = useParams();
     const [files, setFiles] = useState([]);
-    const [credits, setCredits] = useState([]);
+    const [credits, setCredits] = useState();
     const minus = [1];
     const {state} = useLocation();
+    console.log("THis is in dropzone component");
+    console.log(state);
 
-    if (credits) {
-        const requestOptions = {
-            method: "POST",
-            headers: {
-                'Authorization': `Bearer ${state.accessToken}`,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(credits),
-        };
-        const url = `https://localhost:3001/intelliq_api/`
-        /*await*/
-        fetch(url, requestOptions).then(
-        );
-        console.log(credits);
-    }
+
+
+    // if (credits) {
+    //     const requestOptions = {
+    //         method: "POST",
+    //         headers: {
+    //             'Authorization': `Bearer ${state.accessToken}`,
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify(credits),
+    //     };
+    //     const url = `http://localhost:3001/intelliq_api/`
+    //     /*await*/
+    //     fetch(url, requestOptions).then(
+    //     );
+    //     console.log(credits);
+    //}
+
 
     const onDrop = useCallback((acceptedFiles) => {
+
 
         // post FILE to backend
         console.log(acceptedFiles);
@@ -103,8 +109,11 @@ export default function MyDropzone() {
                         const data = await response.json();
                         console.log('Response:', data);
                         navigate(`/account/${credentials}/error`, {
-                                state:
-                                    {files: data}
+                                state:{
+                                    files: data,
+                                    accessToken: state.accessToken,
+                                    refreshToken: state.refreshToken
+                                }
                             }
                         );
                         // update setCredits(minus), minus being 1.

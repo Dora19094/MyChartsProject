@@ -29,15 +29,15 @@ export default function ErrorChart() {
 
     const navigate = useNavigate();
     const {credentials} = useParams();
-    const location = useLocation();
-    const {files} = useLocation();
+    const {state} = useLocation();
     const [answer, setAnswer] = useState();
+    console.log(state);
+
 
 //----------------------------------------------
 
     const today = new Date(),
         date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    const {state} = useLocation();
 //----------------------------------------------
     if (answer && date) {
         const requestOptions = {
@@ -73,7 +73,7 @@ export default function ErrorChart() {
 
     function handleSave() {
         if (!answer) {
-            setAnswer({files});
+            setAnswer(state.files);
         }
         // setAnswer({files});
     }
@@ -86,7 +86,7 @@ export default function ErrorChart() {
                 <img src={logo} style={{height: 56, width: 56}} className="App-logo" alt="logo"/>
 
                 <HighchartsReact highcharts={Highcharts}
-                                 options={files}
+                                 options={state.files}
                 />
 
                 <Card.Footer>

@@ -10,12 +10,13 @@ db.connect();
 
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    //origin: 'http://localhost:3000'
+    origin:"*"
 }));
 
 app.use(bodyParser.json());
 
-app.use('/download templates', templatesRouter);
+app.use('/download-templates', templatesRouter);
 
 app.listen(port, () => {
     console.log(`> Create Chart Server started on port ${port}`);

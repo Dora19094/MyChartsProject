@@ -42,9 +42,10 @@ function NewChart() {
     }
 
     const {state} = useLocation();
+    console.log(state);
     const downloadFile = (chartType) => {
 
-        fetch(`http://localhost:4002/create-chart/fetchTemplate/${chartType}`, {
+        fetch(`http://localhost:4002/download-templates/template/${chartType}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${state.accessToken}`,
