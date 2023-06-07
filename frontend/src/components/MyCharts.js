@@ -5,7 +5,7 @@ import "./Charts.css";
 import logo from "../logo.svg";
 import {Card, Col, Container, Row} from "react-bootstrap";
 import "./MyCharts.css";
-import {GoogleLogout} from "react-google-login";
+//import {GoogleLogout} from "react-google-login";
 
 export function MyCharts() {
 
@@ -50,7 +50,12 @@ export function MyCharts() {
 
     function handleAccount() {
         //navigate account/${credentials}
-        navigate(`/account/${credentials}`, {});
+        navigate(`/account/${credentials}`, {
+            state: {
+                accessToken: state.accessToken,
+                refreshToken: state.refreshToken
+            },
+        });
     }
 
     function handleLogout() {
@@ -75,11 +80,11 @@ export function MyCharts() {
                 <Button className="me-2" variant="outline-dark" onClick={handleLogout}>
                     logout
                 </Button>
-                <GoogleLogout
-                    clientId='1068088482416-5ta3i9a1s4ki9d1fiilvdv8uiu16pot1.apps.googleusercontent.com'
-                    buttonText={"Logout"}
-                    onLogoutSuccess={handleLogout}>
-                </GoogleLogout>
+                {/*<GoogleLogout*/}
+                {/*    clientId='1068088482416-5ta3i9a1s4ki9d1fiilvdv8uiu16pot1.apps.googleusercontent.com'*/}
+                {/*    buttonText={"Logout"}*/}
+                {/*    onLogoutSuccess={handleLogout}>*/}
+                {/*</GoogleLogout>*/}
             </div>
             <div className="container vertical-scrollable">
                 <div className="row text-center">
@@ -91,8 +96,8 @@ export function MyCharts() {
                                     <Col>
                                         <Card key={chart._id}>
                                             <Card.Body>
-                                                <Card.Title>{chart.files.chartName}</Card.Title>
-                                                <Card.Text>{chart.files.chartType}</Card.Text>
+                                                <Card.Title>{chart.chartName}</Card.Title>
+                                                <Card.Text>{chart.chartType}</Card.Text>
                                                 <Card.Text>  {chart.createdOn}</Card.Text>
                                             </Card.Body>
                                         </Card>

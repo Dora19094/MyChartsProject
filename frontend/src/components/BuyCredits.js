@@ -10,27 +10,48 @@ import "./GoogleLoginButton.js"
 export default function BuyCredits() {
     const navigate = useNavigate();
     const {credentials} = useParams();
-    const [credits, setCredits] = useState(0);
     const {state} = useLocation();
 
-    function handle5() {
+    async function postCredits(credits){
+        if (credits !== 0) {
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    'Authorization': `Bearer ${state.accessToken}`,
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                // body: JSON.stringify(credits),
+            };
+            const url = `http://localhost:4500/credits/purchaseCredits/${credits}`
+            await fetch(url, requestOptions)
+                .then((res) => {console.log(res)})
+                .catch(err => console.log(err));
+            console.log(credits);
+        }
+    }
+    async function handle5() {
         console.log("bought 5 credits!");
-        setCredits(5);
+        //setCredits(5);
+        await postCredits(5);
     }
 
-    function handle10() {
+    async function handle10() {
         console.log("bought 10 credits!");
-        setCredits(10);
+        //setCredits(10);
+        await postCredits(10);
     }
 
-    function handle15() {
+    async function handle15() {
         console.log("bought 15 credits!");
-        setCredits(15);
+        //setCredits(15);
+        await postCredits(15);
     }
 
-    function handle20() {
+    async function handle20() {
         console.log("bought 20 credits!");
-        setCredits(20);
+        //setCredits(20);
+        await postCredits(20);
     }
 
     function handleClick() {
@@ -62,9 +83,9 @@ export default function BuyCredits() {
     //         })
     // }, []);
 //-------------
-    useEffect(() => {
+    //useEffect(() => {
         //now
-        if (credits) {
+        //if (credits) {
             //     const requestOptions = {
             //         method: "POST",
             //         headers: {
@@ -93,30 +114,16 @@ export default function BuyCredits() {
 
 
 //------------------
-            if (credits) {
-                const requestOptions = {
-                    method: "POST",
-                    headers: {
-                        'Authorization': `Bearer ${state.accessToken}`,
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
-                    },
-                    // body: JSON.stringify(credits),
-                };
-                const url = `http://localhost:4500/credits/purchaseCredits/${credits}`
-                fetch(url, requestOptions)
-                .then()
-                .catch(err => console.log(err));
-                console.log(credits);
-            }
-        }
+
+
+       // }
 
 
 //----------------
 
 
 // -------------------
-    }, [credits]);
+   // }, [credits]);
 
 
     // useEffect(() => {

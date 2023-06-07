@@ -34,28 +34,6 @@ export default function ErrorChart() {
     console.log(state);
 
 
-//----------------------------------------------
-
-    const today = new Date(),
-        date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-//----------------------------------------------
-    if (answer && date) {
-        const requestOptions = {
-            method: "POST",
-            headers: {
-                'Authorization': `Bearer ${state.accessToken}`,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(answer),
-        };
-        const url = `http://localhost:4003/user-chart/save/${date}`
-        /*await*/
-        fetch(url, requestOptions).then(
-        );
-        console.log(answer);
-    }
-//---------------------------------------------
-
 // get file data
     function handleDiscard() {
         //navigate
@@ -71,11 +49,35 @@ export default function ErrorChart() {
 
     const toggleShowA = () => setShowA(!showA);
 
-    function handleSave() {
-        if (!answer) {
-            setAnswer(state.files);
+    async function handleSave() {
+        console.log(state.files);
+        if (state.credits > 0){
+            //get one credit from this user!
+            const today = new Date(),
+                date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    'Authorization': `Bearer ${state.accessToken}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(state.files),
+            };
+            const url = `http://localhost:4003/user-chart/save/${date}`
+            /*await*/
+            await fetch(url, requestOptions).then((res) => {
+                console.log("Your chart has been saved and the backend response is:");
+                console.log(res);
+            });
+
+            navigate(`/account/${credentials}/mycharts`, {
+                state: {
+                    accessToken: state.accessToken,
+                    refreshToken: state.refreshToken
+                },
+            });
         }
-        // setAnswer({files});
     }
 
     return (

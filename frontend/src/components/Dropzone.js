@@ -112,7 +112,8 @@ export default function MyDropzone() {
                                 state:{
                                     files: data,
                                     accessToken: state.accessToken,
-                                    refreshToken: state.refreshToken
+                                    refreshToken: state.refreshToken,
+                                    credits: state.credits
                                 }
                             }
                         );
