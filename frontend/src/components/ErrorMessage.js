@@ -1,5 +1,5 @@
 import React from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
 import logo from "../logo.svg";
@@ -9,9 +9,15 @@ export function ErrorMessage() {
 
     const navigate = useNavigate();
     const {credentials} = useParams();
-
+    const {state} = useLocation();
     function handleBack() {
-        navigate(`/account/${credentials}/newchart`,);
+        navigate(`/account/${credentials}/newchart`,{
+            state:{
+                accessToken: state.accessToken,
+                refreshToken: state.refreshToken,
+                credits: state.credits
+            }
+        });
     }
 
     return (

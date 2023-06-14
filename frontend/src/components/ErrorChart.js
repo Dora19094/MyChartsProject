@@ -15,7 +15,7 @@
 *
 *
 * */
-import React, {useState} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./Charts.css";
@@ -24,6 +24,14 @@ import {ButtonGroup, ButtonToolbar, Card, Toast} from "react-bootstrap";
 import "./Account.css";
 import Highcharts from 'highcharts';
 import HighchartsReact from "highcharts-react-official";
+import HighchartSankey from "highcharts/modules/sankey";
+import HighchartsWheel from "highcharts/modules/dependency-wheel";
+import HighchartsMore from 'highcharts/highcharts-more';
+import HighchartsNetwork from "highcharts/modules/networkgraph";
+HighchartsMore(Highcharts);
+HighchartSankey(Highcharts);
+HighchartsWheel(Highcharts);
+HighchartsNetwork(Highcharts);
 
 export default function ErrorChart() {
 
@@ -33,6 +41,14 @@ export default function ErrorChart() {
     const [answer, setAnswer] = useState();
     console.log(state);
 
+    const chartRef = useRef(null);
+
+    useEffect(() => {
+        if (chartRef.current && chartRef.current.chart) {
+            // Call chart.reflow() to make the chart responsive
+            chartRef.current.chart.reflow();
+        }
+    }, [chartRef.current]);
 
 // get file data
     function handleDiscard() {
@@ -51,7 +67,6 @@ export default function ErrorChart() {
 
     async function handleSave() {
         console.log(state.files);
-        if (state.credits > 0){
             //get one credit from this user!
             const today = new Date(),
                 date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -77,19 +92,21 @@ export default function ErrorChart() {
                     refreshToken: state.refreshToken
                 },
             });
-        }
+
     }
 
     return (
         <div>
             <h5>Your -selected type- chart is ready. </h5>
             <img src={logo} className="template-logo" alt="logo"/>
-            <Card style={{height: 500, width: 600}}>
+            <Card style={{height: 500, width: 500}}>
                 <img src={logo} style={{height: 56, width: 56}} className="App-logo" alt="logo"/>
-
-                <HighchartsReact highcharts={Highcharts}
-                                 options={state.files}
+                <div style={{ height: '80%' }} ref={chartRef}>
+                <HighchartsReact
+                    highcharts={Highcharts}
+                    options={state.files}
                 />
+                </div>
 
                 <Card.Footer>
                     <p>
