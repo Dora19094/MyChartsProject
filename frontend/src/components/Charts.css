@@ -25,24 +25,28 @@
     margin-bottom: 6px;
 }
 
-.card-title{
-    color:black;
+.card-title {
+    color: black;
 }
-.card-text{
+
+.card-text {
     color: dimgrey;
 }
-.card-body{
+
+.card-body {
     background-color: whitesmoke;
 }
 
-h5{
+h5 {
     color: dimgrey;
     font-size: calc(3px + 2vmin);
 }
-p{
+
+p {
     color: dimgrey;
     font-size: calc(3px + 1vmin);
 }
+
 .btn-primary {
     background-color: darkslateblue;
     border: darkslateblue;
@@ -60,4 +64,10 @@ p{
     border-color: #d2bed2;
     text-align: center;
     position: relative;
+}
+
+.logo-main {
+    width: 250px;
+    height: 20vh;
+
 }

@@ -3,6 +3,12 @@ import Button from "react-bootstrap/Button";
 import "./Charts.css";
 
 import logo from "../logo.svg";
+import network from "../chartimages/netwrokgraph.jpg";
+import column from "../chartimages/basiccolumn.png";
+import line from "../chartimages/basicline.png";
+import dependency from "../chartimages/Dependency.png";
+import polar from "../chartimages/polar.png";
+import annotation from "../chartimages/annotation.png";
 import {Card, Carousel, CarouselItem, Modal, Nav, Stack} from "react-bootstrap";
 import GoogleLoginButton from "./GoogleLoginButton";
 
@@ -56,6 +62,7 @@ export function Charts() {
                                     <Card.Text>
                                         library: 'highcharts'.
                                     </Card.Text>
+                                    <img src={network} className="logo-main" alt="logo"/>
                                     <Button variant="outline-info">Choose</Button>
                                 </Card.Body>
                             </Card>
@@ -66,16 +73,18 @@ export function Charts() {
                                     <Card.Text>
                                         library: 'highcharts'
                                     </Card.Text>
+                                    <img src={polar} className="logo-main" alt="logo"/>
                                     <Button variant="outline-info">Choose</Button>
                                 </Card.Body>
                             </Card>
 
                             <Card style={{width: "18rem"}}>
                                 <Card.Body>
-                                    <Card.Title>Stem plot</Card.Title>
+                                    <Card.Title>Basic Line chart</Card.Title>
                                     <Card.Text>
-                                        library: 'matplotlib'
+                                        library: 'highcharts'
                                     </Card.Text>
+                                    <img src={line} className="logo-main" alt="logo"/>
                                     <Button variant="outline-info">Choose</Button>
                                 </Card.Body>
                             </Card>
@@ -89,30 +98,33 @@ export function Charts() {
                         >
                             <Card style={{width: "18rem"}}>
                                 <Card.Body>
-                                    <Card.Title>Bar chart on polar axis</Card.Title>
+                                    <Card.Title>Basic Column chart</Card.Title>
                                     <Card.Text>
-                                        library: 'matplotlib'
+                                        library: 'highcharts'
                                     </Card.Text>
+                                    <img src={column} className="logo-main" alt="logo"/>
                                     <Button variant="outline-info">Choose</Button>
                                 </Card.Body>
                             </Card>
 
                             <Card style={{width: "18rem"}}>
                                 <Card.Body>
-                                    <Card.Title>Bubble</Card.Title>
+                                    <Card.Title>Dependency Wheel chart</Card.Title>
                                     <Card.Text>
-                                        library: 'chartjs'
+                                        library: 'highcharts'
                                     </Card.Text>
+                                    <img src={dependency} className="logo-main" alt="logo"/>
                                     <Button variant="outline-info">Choose</Button>
                                 </Card.Body>
                             </Card>
 
                             <Card style={{width: "18rem"}}>
                                 <Card.Body>
-                                    <Card.Title>Scatter</Card.Title>
+                                    <Card.Title>Line with annotations chart</Card.Title>
                                     <Card.Text>
-                                        library: 'chartjs'
+                                        library: 'highcharts'
                                     </Card.Text>
+                                    <img src={annotation} className="logo-main" alt="logo"/>
                                     <Button variant="outline-info">Choose</Button>
                                 </Card.Body>
                             </Card>
