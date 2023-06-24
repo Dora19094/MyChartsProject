@@ -8,7 +8,7 @@ import Account from "./components/Account";
 import BuyCredits from "./components/BuyCredits";
 import About from "./components/About";
 import {GoogleOAuthProvider} from '@react-oauth/google';
-import ErrorChart from "./components/ErrorChart";
+import DisplayChart from "./components/DisplayChart";
 import {MyCharts} from "./components/MyCharts";
 import Parse from "./components/csvtojson";
 import {ErrorMessage} from "./components/ErrorMessage";
@@ -27,7 +27,7 @@ function App() {
                             <Route path="/account/:credentials" element={<Account/>}/>
                             <Route path="/account/:credentials/buy" element={<BuyCredits/>}/>
                             <Route path="/about" element={<About/>}/>
-                            <Route path="/account/:credentials/error" element={<ErrorChart/>}/>
+                            <Route path="/account/:credentials/error" element={<DisplayChart/>}/>
                             <Route path="/account/:credentials/mycharts" element={<MyCharts/>}/>
                             <Route path="/account/:credentials/errormessage" element={<ErrorMessage/>}/>
                             <Route path="/parse" element={<Parse/>}/>

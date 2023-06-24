@@ -3,28 +3,18 @@ import {GoogleLogin} from '@react-oauth/google';
 import {useLocation, useNavigate} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
-const GoogleLoginButton = () => {
+const NewUser = () => {
     const navigate = useNavigate();
-    const {state} = useLocation();
-    // const [isLoggedIn, setIsLoggedIn] = useState(false);
-    // const [accessToken, setAccessToken] = useState('');
+    const {state}= useLocation();
+    const googleResponse = state.googleRes;
+    console.log(googleResponse);
 
+    function handleCancel() {
+        navigate('/home');
+    }
 
-    // useEffect(() => {
-    //     // Check if access token exists in local storage
-    //     const storedAccessToken = localStorage.getItem('accessToken');
-    //     if (storedAccessToken) {
-    //         setAccessToken(storedAccessToken);
-    //         setIsLoggedIn(true);
-    //     }
-    // }, []);
-
-    const success = (googleResponse) => {
-
-        //--------------------------------------------
-        // const success = (googleResponse) => {
-
-        fetch('http://localhost:4000/auth/login', {
+    async function handleContinue() {
+        await fetch('http://localhost:4000/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -37,14 +27,6 @@ const GoogleLoginButton = () => {
                 console.log(loginData);
                 const logindata = JSON.parse(loginData);
                 console.log(logindata);
-
-                // store access token in local storage
-                // const {accessToken} = googleResponse.accessToken;
-                // setAccessToken(accessToken);
-                // setIsLoggedIn(true);
-                // localStorage.setItem('accessToken', accessToken);
-
-                // navigate to user account page, account.js
                 navigate(
                     `/account/${googleResponse.credential}`,
                     {
@@ -57,37 +39,22 @@ const GoogleLoginButton = () => {
             .catch(error => {
                 console.error(error);
             });
-
-        //--------------------------------------------
-        // };
-    }
-    const failure = (error) => {
-        console.log('Login failure. Error:', error);
-    };
-
-    function handleCancel() {
-        navigate('/home');
     }
 
     return (
         <div>
-            <h3>
+            <h3 style ={{padding: '100px'}}>
                 Are you sure you want to log in with google? Your data will be stored in our database and will be
                 processed based on our policy.
             </h3>
-            <GoogleLogin
-                onSuccess={credentialResponse => {
-                    success(credentialResponse);
-                }}
-                onError={(error) => {
-                    failure(error);
-                }}
-            />
-            <Button variant="outline-dark" onClick={handleCancel}>
+            <Button variant="outline-info" style={{marginRight : '5px'}} onClick={handleContinue}>
+                Continue
+            </Button>
+            <Button variant="outline-info" onClick={handleCancel}>
                 Cancel
             </Button>
         </div>
     );
 };
 
-export default GoogleLoginButton;
+export default NewUser;

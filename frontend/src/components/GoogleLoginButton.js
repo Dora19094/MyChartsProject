@@ -69,8 +69,10 @@ const GoogleLoginButton = () => {
                 } else {
                     console.log("New user");
                     navigate(
-                         `/account/newuser`,
-                        {});
+                         `/account/newuser`, {
+                        state :{
+                            googleRes: googleResponse}
+                        });
                     //code for new user
                 }
             })

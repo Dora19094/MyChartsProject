@@ -1,20 +1,4 @@
-/*
-* here i must do a get request and return
-* (on success return sucess page and save chart to my charts or discard and go back (useNavigate)
-* )
-* :(
-* on error return error page (toast message))
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-* */
+
 import React, {useState, useRef, useEffect} from "react";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
@@ -33,7 +17,7 @@ HighchartSankey(Highcharts);
 HighchartsWheel(Highcharts);
 HighchartsNetwork(Highcharts);
 
-export default function ErrorChart() {
+export default function DisplayChart() {
 
     const navigate = useNavigate();
     const {credentials} = useParams();
@@ -60,10 +44,6 @@ export default function ErrorChart() {
             },
         });
     }
-
-    const [showA, setShowA] = useState(true);
-
-    const toggleShowA = () => setShowA(!showA);
 
     async function handleSave() {
         console.log(state.files);
@@ -128,13 +108,6 @@ export default function ErrorChart() {
             </ButtonToolbar>
 
             <label htmlFor="selectToastPlacement">Toast position</label>
-            <Toast show={showA} onClose={toggleShowA}>
-                <Toast.Header>
-                    <strong className="me-auto">Error</strong>
-                    <small>11 mins ago</small>
-                </Toast.Header>
-                <Toast.Body><p>Cannot prepare your chart. Your uploaded file contains errors.</p></Toast.Body>
-            </Toast>
         </div>
     );
 }

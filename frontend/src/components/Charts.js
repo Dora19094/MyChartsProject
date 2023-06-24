@@ -31,7 +31,7 @@ export function Charts() {
             <img src={logo} className="App-logo" alt="logo"/>
             <div>
                 <div>
-                    <Button variant="outline-info" onClick={handleShow}>
+                    <Button variant="outline-info" onClick={handleShow} className="button1">
                         Log in or Sign in with Google
                     </Button>
 

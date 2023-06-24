@@ -29,27 +29,11 @@ export function MyCharts() {
                 setCharts(data);
             })
     }, []);
-    // useEffect(() => {
-    //     const url = `http://localhost:4003/user-chart/fetch`;
-    //     const fetchData = async () => {
-    //         await fetch(url)
-    //             .then((response) => response.json())
-    //             .then((data) => {
-    //                 console.log(data);
-    //                 setCharts(data)
-    //             });
-    //     };
-    //
-    //     fetchData();
-    //     console.log(charts);
-    // }, []);
-
 
     const navigate = useNavigate();
     const {credentials} = useParams();
 
     function handleAccount() {
-        //navigate account/${credentials}
         navigate(`/account/${credentials}`, {
             state: {
                 accessToken: state.accessToken,
@@ -67,9 +51,13 @@ export function MyCharts() {
         navigate(`/home`);
     }
 
+    function selectChart(){
+        console.log("Chart selected");
+    }
+
     return (
         <div>
-            <img src={logo} className="App-logo" alt="logo"/>
+            <img src={logo} className="App-logo" alt="logo" style={{marginBottom: '30px'}}/>
             <div className="d-flex justify-content-md-start">
                 <h3 className="me-2">
                     (email)@gmail.com
@@ -94,7 +82,7 @@ export function MyCharts() {
                             <Container>
                                 <Row className="align-items-start">
                                     <Col>
-                                        <Card key={chart._id}>
+                                        <Card key={chart._id} onClick={selectChart}>
                                             <Card.Body>
                                                 <Card.Title>{chart.chartName}</Card.Title>
                                                 <Card.Text>{chart.chartType}</Card.Text>

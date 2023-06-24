@@ -99,8 +99,7 @@ export default function Account() {
                     <div className='mt-5'>
                         <Row>
                             <h3>
-                                hello {/* google account goes here:  account.email*/}
-                                {account && (account.email)}
+                                Hello {account && (account.email)}
                             </h3>
                         </Row>
                     </div>
