@@ -9,6 +9,11 @@
     margin-top:10px;
 }
 
+.foot{
+    position:absolute;
+    bottom: 80px;
+}
+
 .charts-grid .div-card {
     background: whitesmoke;
     color: #333;

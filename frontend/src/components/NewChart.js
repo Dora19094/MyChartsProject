@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useCallback} from "react";
 import Button from "react-bootstrap/Button";
-import "./NewChart.css";
+import "./style/NewChart.css";
 import logo from "../logo.svg";
 import {Carousel, CarouselItem, Col} from "react-bootstrap";
 import Dropzone from "./Dropzone";

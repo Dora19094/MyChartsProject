@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {useLocation, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import "./Charts.css";
+import "./style/Charts.css";
 import logo from "../logo.svg";
 import {ButtonGroup, ButtonToolbar, Col, Row} from "react-bootstrap";
-import "./Account.css";
+import "./style/Account.css";
 import {useNavigate} from "react-router-dom";
 import "./GoogleLoginButton.js";
 

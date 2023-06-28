@@ -3,9 +3,18 @@
     position: absolute;
     top: 270px;
     bottom: 50px;
-    left: 70px;
+    left: 30px;
     width: 50%;
     overflow-y: scroll;
+}
+
+
+#chart-container{
+    position: absolute;
+    top: 270px;
+    bottom: 50px;
+    right: 30px;
+    width: 40%;
 }
 
 .col-sm-8 {

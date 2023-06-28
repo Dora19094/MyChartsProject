@@ -94,8 +94,6 @@ export default function MyDropzone() {
                         }
                     }
                 );
-                // update setCredits(minus), minus being 1.
-                //setCredits(minus);
 
             } else {
                 // Handle the error response from the backend
