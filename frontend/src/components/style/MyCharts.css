@@ -24,10 +24,3 @@
     padding-top: 18px;
 }
 
-.col-sm-8:nth-child(2n+1) {
-    background: lightyellow;
-}
-
-.col-sm-8:nth-child(2n+2) {
-    background: lavenderblush;
-}

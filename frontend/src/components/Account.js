@@ -12,16 +12,11 @@ export default function Account() {
 
     const {state} = useLocation();
     console.log(state.accessToken, state.refreshToken);
-
-    console.log("State");
-    console.log(state.accessToken, state.refreshToken);
 //fetch account ID, user's email, no of charts & credits, date of last login
 
     const navigate = useNavigate();
     const {credentials} = useParams();
     const [account, setAccount] = useState();
-    // const {state} = useLocation();
-    // console.log(loginData);
 
     useEffect(() => {
         fetch('http://localhost:5000/userInfo/getInfo', {
@@ -63,7 +58,8 @@ export default function Account() {
         navigate(`/account/${credentials}/mycharts`, {
             state: {
                 accessToken: state.accessToken,
-                refreshToken: state.refreshToken
+                refreshToken: state.refreshToken,
+                email: account.email
             },
         });
     }
@@ -74,7 +70,8 @@ export default function Account() {
             state: {
                 accessToken: state.accessToken,
                 refreshToken: state.refreshToken,
-                credits: account.numberOfCredits
+                credits: account.numberOfCredits,
+                email: account.email
             },
         });
     }
@@ -84,9 +81,27 @@ export default function Account() {
         navigate(`/account/${credentials}/buy`, {
             state: {
                 accessToken: state.accessToken,
-                refreshToken: state.refreshToken
+                refreshToken: state.refreshToken,
+                email: account.email
             },
         });
+    }
+
+    function handleLogout(){
+        console.log("logout");
+        console.log(state.refreshToken);
+        fetch('http://localhost:4000/auth/logout/', {
+            method: 'POST',
+            body: JSON.stringify({refreshToken :state.refreshToken}),
+            headers: {
+                'Authorization': `Bearer ${state.accessToken}`,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((res) => {
+                console.log(res.status);
+                navigate(`/`, {})
+            });
     }
 
     const date = account ? new Date(account.lastLogin) : null;
@@ -133,18 +148,21 @@ export default function Account() {
                 <ButtonToolbar>
                     <ButtonGroup className="me-2">
                         <Button variant="outline-info" onClick={handleMyCharts}>
-                            my charts
+                            My charts
                         </Button>
                     </ButtonGroup>
                     <ButtonGroup className="me-2">
                         <Button variant="outline-info" onClick={handleNewChart}>
-                            new chart
+                            New chart
                         </Button>
                     </ButtonGroup>
                     <ButtonGroup className="me-2">
                         <Button variant="outline-info" onClick={handleBuyCredits}>
-                            buy credits
+                            Buy credits
                         </Button>
+                    </ButtonGroup>
+                    <ButtonGroup className="me-2">
+                    <Button variant="outline-info" onClick={handleLogout}>Logout</Button>
                     </ButtonGroup>
                 </ButtonToolbar>
             </div>

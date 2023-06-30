@@ -6,36 +6,9 @@ import {Carousel, CarouselItem, Col} from "react-bootstrap";
 import Dropzone from "./Dropzone";
 import {charts} from './data.js';
 import {useLocation} from "react-router-dom";
+import template from "../template.png"
 
 function NewChart() {
-
-    //fetch  chartID, chartΙmage, chart's csv prototype, type
-    // {charts [ {chardID, chartImage, chartCSV, chartType} ]}
-//     const [account, setAccount] = useState();
-//     const {accountID} = useParams();
-    // const navigate = useNavigate();
-    //    const paramAccountID = accountID; //from url
-    //    const paramChartID = charts.chartID
-
-    //a. {baseURL}/account/:accountID/charts/:chartID
-    // useEffect(() => {
-    //     const url = `https://localhost:3006/account/${accountID}/charts/:chartID`;
-    //     const fetchData = async () => {
-    //         await fetch(url)
-    //             .then((response) => response.json())
-    //             .then((data) => {
-    //                 console.log(data);
-    //                 const d = [data];
-    //                 setAccount(d)
-    //             });
-    //     };
-    //
-    //     fetchData();
-    //     if (account) {
-    //         console.log(account);
-    //     } // we add [0] because resource is & returns a list
-    // }, []);
-
 
     function handleClick() {
         console.log("clicked");
@@ -81,12 +54,15 @@ function NewChart() {
             <Col>
                 <h2 className='mt-5'> Let's create your own chart!</h2>
 
-                <Carousel style={{backgroundColor: "whitesmoke", borderColor: "black"}}>
+                <Carousel style={{backgroundColor: "lightblue", borderColor: "black"}}>
                     {charts.map((chart) => (
                         <CarouselItem key={chart.chartID}
                                       style={{height: 280}}>
-                            <Carousel.Caption style={{color: "black", backgroundColor: "whitesmoke"}}>
+                            <Carousel.Caption style={{color: "black", backgroundColor: " #lightblue"}}>
                                 {chart.chartTitle}
+                                <div style={{ display: "flex", justifyContent: "center" }}>
+                                    <img src={template} style={{ maxWidth: "50%", maxHeight: "50%" }} />
+                                </div>
                                 <div className="justify-content-xl-end">
                                     <Button variant="outline-dark" onClick={() => {
                                         downloadFile(chart.chartType)

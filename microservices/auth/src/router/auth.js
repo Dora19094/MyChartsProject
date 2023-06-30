@@ -13,7 +13,7 @@ router.post('/login', login);
 
 router.get('/authenticateToken', authenticateToken);
 
-router.delete('/logout', logout);
+router.post('/logout', logout);
 
 router.post('/checkIfNewUser', checkIfNewUser);
 

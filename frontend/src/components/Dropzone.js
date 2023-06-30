@@ -35,7 +35,8 @@ export default function MyDropzone() {
                 const jsonData = xlsx.utils.sheet_to_json(worksheet, {header: 1, blankrows: false});
                 setChartData(jsonData);
                 toast.info('Upload completed!', {
-                    position: toast.POSITION.TOP_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
+                    hideProgressBar: true
                 });
             };
             reader.readAsBinaryString(file);
@@ -64,7 +65,8 @@ export default function MyDropzone() {
         }
         else {
             toast.info('Not enough credits!', {
-                position: toast.POSITION.TOP_RIGHT
+                position: toast.POSITION.TOP_RIGHT,
+                hideProgressBar: true
             });
             return;
         }
@@ -90,7 +92,8 @@ export default function MyDropzone() {
                             files: data,
                             accessToken: state.accessToken,
                             refreshToken: state.refreshToken,
-                            credits: state.credits
+                            credits: state.credits,
+                            email:state.email,
                         }
                     }
                 );

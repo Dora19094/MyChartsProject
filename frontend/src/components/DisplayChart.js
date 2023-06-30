@@ -69,7 +69,8 @@ export default function DisplayChart() {
             navigate(`/account/${credentials}/mycharts`, {
                 state: {
                     accessToken: state.accessToken,
-                    refreshToken: state.refreshToken
+                    refreshToken: state.refreshToken,
+                    email:state.email,
                 },
             });
 

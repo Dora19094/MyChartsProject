@@ -31,7 +31,8 @@ export default function BuyCredits() {
             console.log(credits);
             //inform the user of the purchase
             toast.info('You bought ' + credits + ' credits!', {
-                position: toast.POSITION.TOP_RIGHT
+                position: toast.POSITION.TOP_RIGHT,
+                hideProgressBar: true
             });
         }
     }
@@ -51,7 +52,8 @@ export default function BuyCredits() {
         <div>
             <img src={logo} className="template-logo" alt="logo"/>
             <div className="justify-content-start">
-                <h3 className='mt-5'> you're logged in as </h3>
+                <h3 className='mt-5'> You're logged in as {state.email}</h3>
+
                 <div className='mt-5'>
                     <ButtonToolbar>
                         <ButtonGroup className="me-2">
@@ -75,8 +77,8 @@ export default function BuyCredits() {
                             </Button>
                         </ButtonGroup>
                     </ButtonToolbar>
-                    <Button className="mt-5" variant="outline-dark" onClick={handleClick}>
-                        cancel purchase
+                    <Button className="mt-5" variant="outline-info" onClick={handleClick}>
+                        Back
                     </Button>
                 </div>
             </div>

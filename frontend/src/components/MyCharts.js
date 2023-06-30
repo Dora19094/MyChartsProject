@@ -51,14 +51,7 @@ export function MyCharts() {
         });
     }
 
-    function handleLogout() {
-        //logout go to start page
-        // setIsLoggedIn(false);
-        // setAccessToken('');
-        // localStorage.removeItem('accessToken');
-        // localStorage.removeItem('expiresAt');
-        navigate(`/home`);
-    }
+
 
     function selectChart(chartOptions){
         console.log("Chart selected");
@@ -100,19 +93,11 @@ export function MyCharts() {
             <img src={logo} className="App-logo" alt="logo" style={{marginBottom: '30px'}}/>
             <div className="d-flex justify-content-md-start">
                 <h3 className="me-2">
-                    (email)@gmail.com
+                    {state.email}@gmail.com
                 </h3>
                 <Button className="me-2" variant="outline-info" onClick={handleAccount}>
-                    my account
+                    Back to my account
                 </Button>
-                <Button className="me-2" variant="outline-dark" onClick={handleLogout}>
-                    logout
-                </Button>
-                {/*<GoogleLogout*/}
-                {/*    clientId='1068088482416-5ta3i9a1s4ki9d1fiilvdv8uiu16pot1.apps.googleusercontent.com'*/}
-                {/*    buttonText={"Logout"}*/}
-                {/*    onLogoutSuccess={handleLogout}>*/}
-                {/*</GoogleLogout>*/}
             </div>
             <div className="container vertical-scrollable">
                 <div className="row text-center">
@@ -122,7 +107,7 @@ export function MyCharts() {
                             <Container>
                                 <Row className="align-items-start">
                                     <Col>
-                                        <Card key={chart._id} onClick={() => selectChart(chart)}>
+                                        <Card key={chart._id} onClick={() => selectChart(chart)} style={{backgroundColor:'whitesmoke'}}>
                                             <Card.Body>
                                                 <Card.Title>{chart.chartName}</Card.Title>
                                                 <Card.Text>{chart.chartType}</Card.Text>
