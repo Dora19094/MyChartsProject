@@ -2,7 +2,7 @@
 
 ### Server Features
 * Purchase Credits for creating charts
-
+* Reduce the number of credits('-' POST request in URL parameters)
 ### Installation Guide
 * Run npm install to install all dependencies
 * Create an .env file in your project root folder and add your variables (It may already exist).
