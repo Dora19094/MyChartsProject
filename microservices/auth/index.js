@@ -27,9 +27,7 @@ redisClient.on("error", (err) => {
     console.log("Redis: Error in the Connection");
 });
 
-//make the connection string from web config file
 app.use(cors({
-    // origin: 'http://localhost:3000'
     origin: webConfig.proto+"://"+webConfig.host+":"+webConfig.port
 }));
 
