@@ -3,14 +3,10 @@ const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
 const port = process.env.PORT || 4002;
-const db = require('./src/services/mongoDbConnector.js');
 const templatesRouter = require('./src/router/download.js');
-
-db.connect();
 
 
 app.use(cors({
-    //origin: 'http://localhost:3000'
     origin:"*"
 }));
 

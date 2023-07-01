@@ -16,9 +16,9 @@ function NewChart() {
 
     const {state} = useLocation();
     console.log(state);
-    const downloadFile = (chartType) => {
+    const downloadFile = (chartType,isExample) => {
 
-        fetch(`http://localhost:4002/download-templates/template/${chartType}`, {
+        fetch(`http://localhost:4002/download-templates/template/${chartType}/${isExample}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${state.accessToken}`,
@@ -36,7 +36,10 @@ function NewChart() {
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = 'template.xlsx';
+                if (isExample === "false")
+                    a.download = 'template.xlsx';
+                else
+                    a.download = 'example_template.xlsx';
                 a.click();
                 URL.revokeObjectURL(url);
             })
@@ -54,7 +57,7 @@ function NewChart() {
             <Col>
                 <h2 className='mt-5'> Let's create your own chart!</h2>
 
-                <Carousel style={{backgroundColor: "lightblue", borderColor: "black"}}>
+                <Carousel style={{backgroundColor: "lightblue", borderColor: "black", width:'480px'}}>
                     {charts.map((chart) => (
                         <CarouselItem key={chart.chartID}
                                       style={{height: 280}}>
@@ -65,9 +68,14 @@ function NewChart() {
                                 </div>
                                 <div className="justify-content-xl-end">
                                     <Button variant="outline-dark" onClick={() => {
-                                        downloadFile(chart.chartType)
+                                        downloadFile(chart.chartType,"false")
                                     }}>
-                                        Download Template
+                                        Download template
+                                    </Button>
+                                    <Button style={{marginLeft:'6px'}} variant="outline-dark" onClick={() => {
+                                        downloadFile(chart.chartType,"true")
+                                    }}>
+                                        Download Example
                                     </Button>
                                 </div>
                             </Carousel.Caption>
