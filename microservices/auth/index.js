@@ -29,7 +29,8 @@ redisClient.on("error", (err) => {
 
 //make the connection string from web config file
 app.use(cors({
-    origin: 'http://localhost:3000'
+    // origin: 'http://localhost:3000'
+    origin: webConfig.proto+"://"+webConfig.host+":"+webConfig.port
 }));
 
 app.use(bodyParser.json());

@@ -1,4 +1,3 @@
-const { auth } = require('google-auth-library');
 const jwt = require('jsonwebtoken');
 
 const authenticateToken = (req, res) => { 
