@@ -3,7 +3,6 @@ const redisClient = require('../services/redisClient');
 const logout = async (req, res) => {
     try{
         const {refreshToken} = req.body;
-        console.log(refreshToken)
         await redisClient.del(refreshToken);
         res.sendStatus(204);
     } catch(error){
