@@ -23,7 +23,7 @@ export function ErrorMessage() {
     return (
         <div>
             <img src={logo} className="App-logo" alt="logo"/>
-            <div className="d-flex justify-content-md-start">
+            <div className="d-flex justify-content-md-start" style={{marginTop:'30px'}}>
                 <h3 className="me-2">
                     Cannot prepare your chart. Your uploaded file contained errors.
                 </h3>

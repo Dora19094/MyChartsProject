@@ -2,7 +2,12 @@
 
 const templatesDownload = (req, res) => {
         const templateType = req.params.templateType;
-        const filePath = './src/templatesStorage/' + templateType + 'Template.xlsx';
+        const isExample = req.params.isExample;
+        let filePath = "";
+        if (isExample === "false")
+            filePath = './src/templatesStorage/templates_original/' + templateType + 'Template.xlsx';
+        else
+            filePath = './src/templatesStorage/templates_examples/' + templateType + 'Example.xlsx';
         //const filePath = './src/templatesStorage/basicLineTemplate.xlsx'
 
          res.download(filePath, (err) => {

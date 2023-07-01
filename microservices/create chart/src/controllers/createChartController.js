@@ -9,7 +9,10 @@ const createChartController = async (req, res) => {
                 const chartType = jsonData[2][jsonData[2].length-1];
                 const result = await createChart(jsonData,chartType);
                 // Send a response back to the frontend
-                res.send(result);
+                if (result.status === "error")
+                        res.status(500).send({error:"Wrong data"});
+                else
+                        res.send(result);
         } catch (error) {
                 // Handle any errors that occur during processing
                 console.error(error);
