@@ -17,7 +17,7 @@
 ### API Endpoints
 | HTTP Verbs | Endpoints | Action | Headers | URL parameters |
 | --- | --- | --- | --- | --- |
-| GET | [/credits/purchaseCredits/:numOfCredits'](./src/controllers/getInfo.js) | To get info about the loggeg in user | "Authorization": "Access Token" | --- |
+| GET | [/userInfo/getInfo/'](./src/controllers/getInfo.js) | To get info about the loggeg in user | "Authorization": "Access Token" | --- |
 
 ### Technologies Used
 * NodeJS

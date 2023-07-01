@@ -5,6 +5,7 @@ const app = express();
 const cors = require('cors');
 const port = process.env.PORT || 5000;
 
+const webConfig = require('./src/configs/web.config.js');
 
 const userInfoRouter = require('./src/router/userInfo.js');
 const db = require('./src/services/mongoDbConnector.js');
@@ -12,10 +13,9 @@ const receiveUserInfoRabbit = require('./src/services/receiveUserInfoRabbit.js')
 const receiveCreditsRabbit = require('./src/services/recieveCreditsRabbit.js');
 db.connect();
 
-//make the connection string from web config file
+
 app.use(cors({
-    // origin: 'http://localhost:3000'
-    origin:"*"
+    origin: webConfig.proto+"://"+webConfig.host+":"+webConfig.port
 }));
 
 app.use(bodyParser.json());
