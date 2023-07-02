@@ -9,13 +9,20 @@ const polarParser = async (chartUserData,chartConfig) => {
     const types = ['column','line','area'];
     let seriesObjects = [];
 
-    for (let col = 0;col<chartUserData[5].length;col+=2)
+    for (let col = 0;col<chartUserData[5].length-1;col+=2)
     {
         seriesObjects.push({
             type: types[col/2],
             name: chartUserData[5][col+1],
             data: [chartUserData[5][col]]
         })
+    }
+
+    for (let i=5;i<chartUserData.length;i++){
+        if (chartUserData[i][6])
+            chartConfig.xAxis.categories.push(chartUserData[i][6])
+        else
+            return {status:"error"};
     }
 
     for (let row = 6; row < chartUserData.length; row++)

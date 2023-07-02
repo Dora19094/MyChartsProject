@@ -12,6 +12,8 @@ import HighchartSankey from "highcharts/modules/sankey";
 import HighchartsWheel from "highcharts/modules/dependency-wheel";
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsNetwork from "highcharts/modules/networkgraph";
+import AnnotationsModule from 'highcharts/modules/annotations';
+AnnotationsModule(Highcharts);
 HighchartsMore(Highcharts);
 HighchartSankey(Highcharts);
 HighchartsWheel(Highcharts);
@@ -80,9 +82,9 @@ export default function DisplayChart() {
         <div>
             <h5>Your -selected type- chart is ready. </h5>
             <img src={logo} className="template-logo" alt="logo"/>
-            <Card style={{height: 500, width: 500}}>
+            <Card style={{height: 600, width: '650px'}}>
                 <img src={logo} style={{height: 56, width: 56}} className="App-logo" alt="logo"/>
-                <div style={{ height: '80%' }} ref={chartRef}>
+                <div style={{ height: '80%',width:'640px',alignSelf:'center' }} ref={chartRef}>
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={state.files}

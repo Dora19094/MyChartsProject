@@ -21,15 +21,7 @@ const lineWithAnnotationsParser = async (chartUserData,chartConfig) => {
     chartConfig.series[0].lineColor = '#800080';
     chartConfig.series[0].color = '#98FB98';
     let my_data = [];
-    let label = {
-        point: {
-            xAxis: 0,
-            yAxis: 0,
-            x: 27.98,
-            y: 255
-        },
-        text: ''
-    };
+
 
     //Get data
     for (let row = 5;row<chartUserData.length;row++)
@@ -40,14 +32,33 @@ const lineWithAnnotationsParser = async (chartUserData,chartConfig) => {
     }
 
     //Get Labels
-    for (let col = 2;col<6;col+=2)
+    for (let col = 2;col<5;col+=2)
     {
         let row = 5;
         while (chartUserData[row][col]){
-            label.text = chartUserData[row][col];
-            label.point.x = chartUserData[row][col+1].split(' ').map(Number)[0];
-            label.point.y = chartUserData[row][col+1].split(' ').map(Number)[1];
-            chartConfig.annotations[Math.floor(col/3)].labels.push(label);
+            let textl = chartUserData[row][col];
+            const regex = /^\d+(\.\d+)? \d+(\.\d+)?$/; // Regular expression pattern
+            const isValidFormat = regex.test(chartUserData[row][col+1]);
+            if (!isValidFormat)
+                return {status:"error"};
+            let xl = chartUserData[row][col+1].split(' ').map(Number)[0];
+            let yl = chartUserData[row][col+1].split(' ').map(Number)[1];
+
+            let label = {
+                point: {
+                    xAxis: 0,
+                    yAxis: 0,
+                    x: xl,
+                    y: yl
+                },
+                text: textl,
+                allowOverlap:true
+            };
+
+            if (col===2)
+                chartConfig.annotations[0].labels.push(label);
+            else
+                chartConfig.annotations[1].labels.push(label);
             row++;
         }
 
