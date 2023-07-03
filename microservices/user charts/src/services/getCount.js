@@ -2,6 +2,7 @@ const chartConfig = require('../models/ChartConfig');
 const getCount = async (user) => {
     //It returns a promise!
     return (
+        //return the number of charts the user has saved
         chartConfig.count({userId: user})
             .then(function(count)
             {
@@ -9,7 +10,7 @@ const getCount = async (user) => {
                 return count;
             })
             .catch((err) =>{
-                console.log('Error counting Charts', err);
+                console.log('Error counting Home', err);
                 //return {error: err.message};
             })
     )

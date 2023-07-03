@@ -1,12 +1,12 @@
 import React, {useEffect, useState, useCallback} from "react";
 import Button from "react-bootstrap/Button";
-import "./style/NewChart.css";
-import logo from "../logo.svg";
+import "../style/NewChart.css";
+import logo from "../images/logo.svg";
 import {Carousel, CarouselItem, Col} from "react-bootstrap";
-import Dropzone from "./Dropzone";
-import {charts} from './data.js';
+import Dropzone from "../components/Dropzone";
+import {charts} from '../components/data.js';
 import {useLocation} from "react-router-dom";
-import template from "../template.png"
+import template from "../images/template.png"
 
 function NewChart() {
 

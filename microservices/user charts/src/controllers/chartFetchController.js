@@ -3,7 +3,7 @@ const chartFetchController = async (req, res) => {
 
     try {
         const result = await fetchChart(req.user_id);
-        // Send a response back to the frontend
+        // Send the charts back to the frontend
         res.send(result);
     } catch (error) {
         // Handle any errors that occur during processing

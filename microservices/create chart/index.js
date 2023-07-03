@@ -24,5 +24,5 @@ app.use(bodyParser.json());
 app.use('/create-chart', chartRouter);
 
 app.listen(port, () => {
-    console.log(`> Highcharts Server started on port ${port}`);
+    console.log(`> Create Chart Server started on port ${port}`);
 });

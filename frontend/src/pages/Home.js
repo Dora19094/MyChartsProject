@@ -1,40 +1,45 @@
 import React, {useState} from "react";
 import Button from "react-bootstrap/Button";
-import "./style/Charts.css";
+import "../style/Charts.css";
 
-import logo from "../logo.svg";
-import network from "../chartimages/netwrokgraph.jpg";
-import column from "../chartimages/basiccolumn.png";
-import line from "../chartimages/basicline.png";
-import dependency from "../chartimages/Dependency.png";
-import polar from "../chartimages/polar.png";
-import annotation from "../chartimages/annotation.png";
+import logo from "../images/logo.svg";
+import network from "../images/netwrokgraph.jpg";
+import column from "../images/basiccolumn.png";
+import line from "../images/basicline.png";
+import dependency from "../images/Dependency.png";
+import polar from "../images/polar.png";
+import annotation from "../images/annotation.png";
 import {Card, Carousel, CarouselItem, Modal, Nav, Stack} from "react-bootstrap";
-import GoogleLoginButton from "./GoogleLoginButton";
+import GoogleLoginButton from "../components/GoogleLoginButton";
 import {useNavigate} from "react-router-dom";
 
-export function Charts() {
+export function Home() {
 
     const [show, setShow] = useState(false);
     const [showLog, setShowLog] = useState(false);
     const navigate = useNavigate();
     function handleOpen() {
+        //show the chart-message
         setShow(true);
     }
 
     function showLogin() {
+        //show the google-login-button
         setShowLog(true);
     }
 
     function handleClose() {
+        //close the chart-message window
         setShow(false);
     }
 
     function handleCloseLog() {
+        //close the google-login-button window
         setShowLog(false);
     }
 
     function about(){
+        //Go to the About page
         navigate(`/about`, {})
         }
 

@@ -2,10 +2,10 @@
 import React, {useState, useRef, useEffect} from "react";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import "./style/Charts.css";
-import logo from "../logo.svg";
+import "../style/Charts.css";
+import logo from "../images/logo.svg";
 import {ButtonGroup, ButtonToolbar, Card, Toast} from "react-bootstrap";
-import "./style/Account.css";
+import "../style/Account.css";
 import Highcharts from 'highcharts';
 import HighchartsReact from "highcharts-react-official";
 import HighchartSankey from "highcharts/modules/sankey";
@@ -80,22 +80,16 @@ export default function DisplayChart() {
 
     return (
         <div>
-            <h5>Your -selected type- chart is ready. </h5>
+            <br/>
+            <h5>Your chart is ready. </h5>
             <img src={logo} className="template-logo" alt="logo"/>
-            <Card style={{height: 600, width: '650px'}}>
-                <img src={logo} style={{height: 56, width: 56}} className="App-logo" alt="logo"/>
-                <div style={{ height: '80%',width:'640px',alignSelf:'center' }} ref={chartRef}>
+            <Card style={{height: 600, width: 600}}>
+                <div style={{width:590,alignSelf:'center' }} ref={chartRef}>
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={state.files}
                 />
                 </div>
-
-                <Card.Footer>
-                    <p>
-                        Created Chart
-                    </p>
-                </Card.Footer>
             </Card>
             <ButtonToolbar className='mt-3'>
                 <ButtonGroup className="me-2">

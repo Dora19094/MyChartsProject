@@ -1,16 +1,15 @@
 import './App.css';
-import './components/Charts.js';
-import {Charts} from "./components/Charts";
+import './pages/Home.js';
+import {Home} from "./pages/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import NewChart from "./components/NewChart";
-import Account from "./components/Account";
-import BuyCredits from "./components/BuyCredits";
-import About from "./components/About";
+import NewChart from "./pages/NewChart";
+import Account from "./pages/Account";
+import BuyCredits from "./pages/BuyCredits";
+import About from "./pages/About";
 import {GoogleOAuthProvider} from '@react-oauth/google';
-import DisplayChart from "./components/DisplayChart";
-import {MyCharts} from "./components/MyCharts";
-import Parse from "./components/csvtojson";
+import DisplayChart from "./pages/DisplayChart";
+import {MyCharts} from "./pages/MyCharts";
 import {ErrorMessage} from "./components/ErrorMessage";
 import NewUser from "./components/NewUser";
 
@@ -21,8 +20,8 @@ function App() {
                 <header className="App-header">
                     <BrowserRouter>
                         <Routes>
-                            <Route path="/" element={<Charts/>}/>
-                            <Route path="/home" element={<Charts/>}/>
+                            <Route path="/" element={<Home/>}/>
+                            <Route path="/home" element={<Home/>}/>
                             <Route path="/account/:credentials/newchart" element={<NewChart/>}/>
                             <Route path="/account/:credentials" element={<Account/>}/>
                             <Route path="/account/:credentials/buy" element={<BuyCredits/>}/>
@@ -30,7 +29,6 @@ function App() {
                             <Route path="/account/:credentials/error" element={<DisplayChart/>}/>
                             <Route path="/account/:credentials/mycharts" element={<MyCharts/>}/>
                             <Route path="/account/:credentials/errormessage" element={<ErrorMessage/>}/>
-                            <Route path="/parse" element={<Parse/>}/>
                             <Route path="/account/newuser" element={<NewUser/>}/>
 
                         </Routes>

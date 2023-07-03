@@ -1,24 +1,24 @@
 import React, {useEffect, useState} from "react";
 import {useLocation, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import "./style/Charts.css";
-import logo from "../logo.svg";
+import "../style/Charts.css";
+import logo from "../images/logo.svg";
 import {ButtonGroup, ButtonToolbar, Col, Row} from "react-bootstrap";
-import "./style/Account.css";
+import "../style/Account.css";
 import {useNavigate} from "react-router-dom";
-import "./GoogleLoginButton.js";
+import "../components/GoogleLoginButton.js";
 
 export default function Account() {
 
     const {state} = useLocation();
-    console.log(state.accessToken, state.refreshToken);
-//fetch account ID, user's email, no of charts & credits, date of last login
-
+    const [nocharts, setNoCharts] = useState();
     const navigate = useNavigate();
     const {credentials} = useParams();
     const [account, setAccount] = useState();
+    console.log(state.accessToken, state.refreshToken);
 
     useEffect(() => {
+        //fetch the user's account information(email,last_login,number of credits)
         fetch('http://localhost:5000/userInfo/getInfo', {
             method: 'GET',
             //credentials: "include",
@@ -35,12 +35,12 @@ export default function Account() {
     }, []);
 
 
-    const [nocharts, setNoCharts] = useState();
+
 
     useEffect(() => {
+        //fetch the number of charts the user has
         fetch('http://localhost:4003/user-chart/countCharts', {
             method: 'GET',
-            //credentials: "include",
             headers: {
                 'Authorization': `Bearer ${state.accessToken}`,
                 'Content-Type': 'application/json'
@@ -54,6 +54,7 @@ export default function Account() {
     }, []);
 
     function handleMyCharts() {
+        //Go to MyCharts page
         console.log("my charts");
         navigate(`/account/${credentials}/mycharts`, {
             state: {
@@ -65,6 +66,7 @@ export default function Account() {
     }
 
     function handleNewChart() {
+        //Go to New Chart page
         console.log("new chart");
         navigate(`/account/${credentials}/newchart`, {
             state: {
@@ -77,6 +79,7 @@ export default function Account() {
     }
 
     function handleBuyCredits() {
+        //Go to Purchase Credits page
         console.log("buy credits");
         navigate(`/account/${credentials}/buy`, {
             state: {
@@ -88,6 +91,7 @@ export default function Account() {
     }
 
     function handleLogout(){
+        //Logout: Go back to the Home page, account disconnected
         console.log("logout");
         console.log(state.refreshToken);
         fetch('http://localhost:4000/auth/logout/', {
@@ -104,7 +108,6 @@ export default function Account() {
             });
     }
 
-    const date = account ? new Date(account.lastLogin) : null;
     return (
         <div>
             <img src={logo} className="App-logo" alt="logo"/>

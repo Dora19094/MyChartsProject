@@ -10,9 +10,9 @@ const getConfig = require("./getConfigMongo");
 const createChart = async (jsonData,chartType) => {
     const chartCon = await getConfig(chartType);
     const chartConfig = await chartCon.toObject({ getters: true });
-    //console.log(chartConfig);
     await Object.assign(chartConfig,{chartName: jsonData[2][jsonData[2].length-2]});
 
+    //for every chart type there is a parser that created the chart configuration appropriately
     switch(chartType){
         case "basicLine": return(basicLineParser(jsonData,chartConfig));
         case "basicColumn": return (basicColumnParser(jsonData,chartConfig));
@@ -20,7 +20,7 @@ const createChart = async (jsonData,chartType) => {
         case "dependencyWheel": return (dependencyWheelParser(jsonData,chartConfig));
         case "polar": return (polarParser(jsonData,chartConfig));
         case "lineWithAnnotations": return (lineWithAnnotationsParser(jsonData,chartConfig));
-        default: return ({});
+        default: return ({status:"error"});
     }
 
 };

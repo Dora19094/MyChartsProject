@@ -1,12 +1,10 @@
-import {useState} from 'react';
-import Button from "react-bootstrap/Button";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
-import React, {useCallback} from 'react'
+import React, {useCallback,useState} from 'react'
 import {useDropzone} from 'react-dropzone'
 import * as xlsx from "xlsx";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {ButtonGroup, ButtonToolbar} from "react-bootstrap";
+import {ButtonGroup, ButtonToolbar,Button} from "react-bootstrap";
 
 export default function MyDropzone() {
 
@@ -20,9 +18,6 @@ export default function MyDropzone() {
 
 
     const onDrop = useCallback((acceptedFiles) => {
-        // post FILE to backend
-        console.log(acceptedFiles);
-        // -------------------------------------------
         acceptedFiles.forEach((file) => {
             const reader = new FileReader();
             reader.onabort = () => console.log('file reading was aborted');
@@ -33,7 +28,9 @@ export default function MyDropzone() {
                 const workbook = xlsx.read(fileContent, {type: 'binary'});
                 const worksheet = workbook.Sheets[workbook.SheetNames[0]];
                 const jsonData = xlsx.utils.sheet_to_json(worksheet, {header: 1, blankrows: false});
+                //take the uploaded files
                 setChartData(jsonData);
+                //inform the user that the upload of his data has completed
                 toast.info('Upload completed!', {
                     position: toast.POSITION.TOP_RIGHT,
                     hideProgressBar: true
@@ -58,12 +55,14 @@ export default function MyDropzone() {
                     "Accept": "application/json"
                 },
             };
+            //Decrease the number of user's credits upon creation of a chart
             const url = `http://localhost:4500/credits/purchaseCredits/${-1}`
             await fetch(url, requestOptions)
                 .then((res) => {console.log(res)})
                 .catch(err => console.log(err));
         }
         else {
+            //inform the user that he hasn't enough credits to create a chart
             toast.info('Not enough credits!', {
                 position: toast.POSITION.TOP_RIGHT,
                 hideProgressBar: true
@@ -71,7 +70,7 @@ export default function MyDropzone() {
             return;
         }
 
-        // Send the JSON data to the backend
+        //If he has enough credits the created chart is fetched
         try {
             const response = await fetch('http://localhost:4001/create-chart/create', {
                 method: 'POST',
@@ -81,7 +80,8 @@ export default function MyDropzone() {
                 },
                 body: JSON.stringify(chartData),
             });
-
+            //If the data were valid and the chart was created
+            //then navigate to the Display Chart page
             if (response.ok) {
                 // Handle the successful response from the backend
                 console.log('Request sent successfully');

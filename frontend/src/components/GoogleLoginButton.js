@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {GoogleLogin} from '@react-oauth/google';
 import {useNavigate} from "react-router-dom";
-import "./Account.js";
+import "../pages/Account.js";
 
 const GoogleLoginButton = () => {
     const navigate = useNavigate();

@@ -15,5 +15,5 @@ app.use(bodyParser.json());
 app.use('/download-templates', templatesRouter);
 
 app.listen(port, () => {
-    console.log(`> Create Chart Server started on port ${port}`);
+    console.log(`> Download Templates Server started on port ${port}`);
 });

@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import "./style/Charts.css";
-import "./style/About.css"
-import logo from "../logo.svg";
-import {ButtonGroup, ButtonToolbar, Card, Carousel, CarouselItem, Col, Modal, Row, Stack} from "react-bootstrap";
+import React from "react";
+import "../style/Charts.css";
+import "../style/About.css"
+import logo from "../images/logo.svg";
 
+
+//About page: Information about the team and the application
 export default function About() {
 
     return (

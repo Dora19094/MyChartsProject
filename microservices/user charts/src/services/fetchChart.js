@@ -4,6 +4,7 @@ const chartConfig = require("../models/ChartConfig");
 const fetchChart = async (user) => {
     //It returns a promise!
     return (
+        //return the charts the user has saved
          chartConfig.find({userId: user})
              .then(function(charts)
             {

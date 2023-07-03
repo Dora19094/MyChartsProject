@@ -1,18 +1,17 @@
+import "../style/Account.css";
+import "../components/GoogleLoginButton.js";
+import "../style/Charts.css";
+import logo from "../images/logo.svg";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import "./style/Charts.css";
-import logo from "../logo.svg";
-import {ButtonGroup, ButtonToolbar} from "react-bootstrap";
-import "./style/Account.css";
-import "./GoogleLoginButton.js"
+import {ButtonGroup, ButtonToolbar,Button} from "react-bootstrap";
 import { ToastContainer, toast } from 'react-toastify';
 
-
-// url here needs accountID email
 export default function BuyCredits() {
     const navigate = useNavigate();
     const {credentials} = useParams();
     const {state} = useLocation();
+
+    //save the number of credits the user bought
     async function postCredits(credits){
         if (credits !== 0) {
             const requestOptions = {
@@ -22,7 +21,6 @@ export default function BuyCredits() {
                     "Content-Type": "application/json",
                     "Accept": "application/json"
                 },
-                // body: JSON.stringify(credits),
             };
             const url = `http://localhost:4500/credits/purchaseCredits/${credits}`
             await fetch(url, requestOptions)
@@ -38,7 +36,7 @@ export default function BuyCredits() {
     }
 
     function handleClick() {
-        //navigate to previous page
+        //Go to the Account page
         navigate(`/account/${credentials}`, {
             state: {
                 accessToken: state.accessToken,

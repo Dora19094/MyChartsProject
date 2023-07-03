@@ -1,9 +1,9 @@
 import React from "react";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import "./style/Charts.css";
-import logo from "../logo.svg";
-import "./style/MyCharts.css";
+import "../style/Charts.css";
+import logo from "../images/logo.svg";
+import "../style/MyCharts.css";
 
 export function ErrorMessage() {
 

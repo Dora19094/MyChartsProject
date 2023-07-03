@@ -11,10 +11,11 @@
 
 #chart-container{
     position: absolute;
-    top: 270px;
-    bottom: 50px;
+    top: 240px;
+    bottom: 70px;
     right: 30px;
     width: 40%;
+    height:460px;
 }
 
 .col-sm-8 {

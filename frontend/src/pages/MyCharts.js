@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import "./style/Charts.css";
-import logo from "../logo.svg";
+import "../style/Charts.css";
+import logo from "../images/logo.svg";
 import {Card, Col, Container, DropdownButton,Dropdown, Row} from "react-bootstrap";
-import "./style/MyCharts.css";
+import "../style/MyCharts.css";
 import Highcharts from 'highcharts';
 import Exporting from 'highcharts/modules/exporting';
 import ExportSVG from 'highcharts/modules/exporting';
@@ -99,7 +99,7 @@ export function MyCharts() {
                     Back to my account
                 </Button>
             </div>
-            <div className="container vertical-scrollable">
+            <div className="container vertical-scrollable" style={{ overflowX: 'auto', paddingLeft: '10px' }}>
                 <div className="row text-center">
 
                     {charts && (charts.map(chart => (
