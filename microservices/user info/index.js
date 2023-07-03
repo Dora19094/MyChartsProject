@@ -15,7 +15,8 @@ db.connect();
 
 
 app.use(cors({
-    origin: webConfig.proto+"://"+webConfig.host+":"+webConfig.port
+    // origin: webConfig.proto+"://"+webConfig.host+":"+webConfig.port
+    origin: "*"
 }));
 
 app.use(bodyParser.json());

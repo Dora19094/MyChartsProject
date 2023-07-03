@@ -2,7 +2,9 @@ const mongoose = require("mongoose");
 const config = require('../configs/db.config.js');
 mongoose.Promise = global.Promise;
 // const dbUrl = "mongodb://127.0.0.1/user";
-const dbUrl = config.name+'://'+config.host+':'+config.port+'/'+'user';
+//const dbUrl = config.name+'://'+config.host+':'+config.port+'/'+'user';
+const dbUrl = "mongodb+srv://mongoSaaS2023:mongoSaaS2023@cluster0.xrop4o1.mongodb.net/?retryWrites=true&w=majority";
+console.log(dbUrl);
 const connect = async () => {
     mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
     const db = mongoose.connection;
@@ -10,7 +12,7 @@ const connect = async () => {
         console.log("could not connect");
     });
     db.once("open", () => {
-        console.log(`> Successfully connected to '${dbUrl}'`);
+        console.log('> Successfully connected to MongoDB');
     });
 };
 module.exports = { connect };

@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const config = require('../configs/db.config.js');
 mongoose.Promise = global.Promise;
-const dbUrl = config.name+'://'+config.host+':'+config.port+'/'+'userInfo';
+//const dbUrl = config.name+'://'+config.host+':'+config.port+'/'+'userInfo';
+const dbUrl = "mongodb+srv://mongoSaaS2023:mongoSaaS2023@cluster0.xrop4o1.mongodb.net/?retryWrites=true&w=majority";
 const connect = async () => {
     mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
     const db = mongoose.connection;

@@ -3,7 +3,7 @@ const rabbit_config = require('../configs/rabbitmq.config');
 
 async function configureRabbitMQ(exchangeName, queueName) {
   // Use config file
-  const connection = await amqp.connect(rabbit_config.proto + "://" + rabbit_config.host);
+  const connection = await amqp.connect('amqps://xgpturee:HTaKUxbw3wMXsCL-1N7G6adN2o7jlKbx@stingray.rmq.cloudamqp.com/xgpturee');
   const channel = await connection.createChannel();
   const routingKey = ''
   // Create exchange and queue

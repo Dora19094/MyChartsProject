@@ -2,7 +2,7 @@ const amqp = require('amqplib');
 
 async function configureRabbitMQ(exchangeName, queueName) {
   // Use config file
-  const connection = await amqp.connect('amqp://localhost');
+  const connection = await amqp.connect('amqps://xgpturee:HTaKUxbw3wMXsCL-1N7G6adN2o7jlKbx@stingray.rmq.cloudamqp.com/xgpturee');
   const channel = await connection.createChannel();
   const routingKey = ''
   // Create exchange and queue
@@ -13,5 +13,4 @@ async function configureRabbitMQ(exchangeName, queueName) {
   // Return channel to use for sending and receiving messages
   return channel;
 }
-
 module.exports=configureRabbitMQ;

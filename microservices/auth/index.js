@@ -2,14 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
-const amqp = require('amqplib');
 const port = process.env.PORT || 4000;
 
-const webConfig = require('./src/configs/web.config.js');
 const authRouter = require('./src/router/auth.js');
 const db = require('./src/services/mongoDbConnector.js');
 const redisClient = require('./src/services/redisClient.js');
-const redisConfig = require('./src/configs/redis.config.js');
 
 db.connect();
 
@@ -20,16 +17,17 @@ db.connect();
 console.log("Connecting to the Redis");
   
 redisClient.on("ready", () => {
-    console.log(`> Successfully connected to '${redisConfig.host}:${redisConfig.port}'`);
+    console.log('> Successfully conected to Redis');
 });
   
 redisClient.on("error", (err) => {
     console.log("Redis: Error in the Connection");
 });
 
+
 app.use(cors({
-    origin: webConfig.proto+"://"+webConfig.host+":"+webConfig.port
-}));
+    origin: "http://localhost:300"
+}))
 
 app.use(bodyParser.json());
 

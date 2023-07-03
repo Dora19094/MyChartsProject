@@ -9,7 +9,7 @@ const purchaseCredits = require('./src/router/purchaseCredits');
 const web_config = require('./src/configs/web.config');
 
 app.use(cors({
-    origin: "*"
+    origin: "http://localhost:3000"
 }));
 
 app.use(bodyParser.json());

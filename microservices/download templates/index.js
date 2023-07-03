@@ -5,9 +5,8 @@ const cors = require('cors');
 const port = process.env.PORT || 4002;
 const templatesRouter = require('./src/router/download.js');
 
-
 app.use(cors({
-    origin:"*"
+    origin: "http://localhost:3000"
 }));
 
 app.use(bodyParser.json());

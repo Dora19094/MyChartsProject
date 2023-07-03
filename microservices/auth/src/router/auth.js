@@ -17,4 +17,8 @@ router.post('/logout', logout);
 
 router.post('/checkIfNewUser', checkIfNewUser);
 
+router.get('/test', ()=>{
+    res.send('test');
+})
+
 module.exports = router;
