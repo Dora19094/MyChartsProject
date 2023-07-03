@@ -1,4 +1,4 @@
-import './App.css';
+import './style/App.css';
 import './pages/Home.js';
 import {Home} from "./pages/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -11,7 +11,7 @@ import {GoogleOAuthProvider} from '@react-oauth/google';
 import DisplayChart from "./pages/DisplayChart";
 import {MyCharts} from "./pages/MyCharts";
 import {ErrorMessage} from "./components/ErrorMessage";
-import NewUser from "./components/NewUser";
+import NewUser from "./pages/NewUser";
 
 function App() {
     return (

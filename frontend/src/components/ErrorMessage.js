@@ -11,6 +11,7 @@ export function ErrorMessage() {
     const {credentials} = useParams();
     const {state} = useLocation();
     function handleBack() {
+        //Go back to the New Chart page
         navigate(`/account/${credentials}/newchart`,{
             state:{
                 accessToken: state.accessToken,

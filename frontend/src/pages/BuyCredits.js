@@ -6,6 +6,8 @@ import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {ButtonGroup, ButtonToolbar,Button} from "react-bootstrap";
 import { ToastContainer, toast } from 'react-toastify';
 
+
+//Purchase Credits Page
 export default function BuyCredits() {
     const navigate = useNavigate();
     const {credentials} = useParams();

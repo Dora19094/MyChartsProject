@@ -1,4 +1,3 @@
-import React, {useEffect, useState, useCallback} from "react";
 import Button from "react-bootstrap/Button";
 import "../style/NewChart.css";
 import logo from "../images/logo.svg";
@@ -8,16 +7,14 @@ import {charts} from '../components/data.js';
 import {useLocation} from "react-router-dom";
 import template from "../images/template.png"
 
+//New Chart page
 function NewChart() {
-
-    function handleClick() {
-        console.log("clicked");
-    }
 
     const {state} = useLocation();
     console.log(state);
     const downloadFile = (chartType,isExample) => {
 
+        //download the selected template
         fetch(`http://localhost:4002/download-templates/template/${chartType}/${isExample}`, {
             method: 'GET',
             headers: {
@@ -44,8 +41,8 @@ function NewChart() {
                 URL.revokeObjectURL(url);
             })
             .catch((error) => {
+                // Handle error
                 console.error(error);
-                // Handle error, e.g., show an error message to the user
             });
     };
 
@@ -64,7 +61,7 @@ function NewChart() {
                             <Carousel.Caption style={{color: "black", backgroundColor: " #lightblue"}}>
                                 {chart.chartTitle}
                                 <div style={{ display: "flex", justifyContent: "center" }}>
-                                    <img src={template} style={{ maxWidth: "50%", maxHeight: "50%" }} />
+                                    <img src={template} style={{ maxWidth: "50%", maxHeight: "50%" }} alt=""/>
                                 </div>
                                 <div className="justify-content-xl-end">
                                     <Button variant="outline-dark" onClick={() => {

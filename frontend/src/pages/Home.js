@@ -9,10 +9,11 @@ import line from "../images/basicline.png";
 import dependency from "../images/Dependency.png";
 import polar from "../images/polar.png";
 import annotation from "../images/annotation.png";
-import {Card, Carousel, CarouselItem, Modal, Nav, Stack} from "react-bootstrap";
+import {Card, Carousel, CarouselItem, Modal, Stack} from "react-bootstrap";
 import GoogleLoginButton from "../components/GoogleLoginButton";
 import {useNavigate} from "react-router-dom";
 
+//Home Page
 export function Home() {
 
     const [show, setShow] = useState(false);

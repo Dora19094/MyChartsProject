@@ -8,6 +8,7 @@ import "../style/Account.css";
 import {useNavigate} from "react-router-dom";
 import "../components/GoogleLoginButton.js";
 
+//Account Page
 export default function Account() {
 
     const {state} = useLocation();
@@ -21,7 +22,6 @@ export default function Account() {
         //fetch the user's account information(email,last_login,number of credits)
         fetch('http://localhost:5000/userInfo/getInfo', {
             method: 'GET',
-            //credentials: "include",
             headers: {
                 'Authorization': `Bearer ${state.accessToken}`,
                 'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ export default function Account() {
                 console.log(data);
                 setAccount(data);
             })
-    }, []);
+    }, [state.accessToken]);
 
 
 
@@ -51,7 +51,7 @@ export default function Account() {
                 console.log(data);
                 setNoCharts(data);
             })
-    }, []);
+    }, [state.accessToken]);
 
     function handleMyCharts() {
         //Go to MyCharts page

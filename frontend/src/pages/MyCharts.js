@@ -16,14 +16,16 @@ ExportSVG(Highcharts);
 ExportPDF(Highcharts);
 ExportPNG(Highcharts);
 
+//My Charts page
 export function MyCharts() {
 
     const [charts, setCharts] = useState();
     const {state} = useLocation();
-    // const [isLoggedIn, setIsLoggedIn] = useState(true);
-    // const [accessToken, setAccessToken] = useState(state.accessToken);
+    const navigate = useNavigate();
+    const {credentials} = useParams();
 
     useEffect(() => {
+        //fetch the user's charts
         fetch('http://localhost:4003/user-chart/fetch', {
             method: 'GET',
             //credentials: "include",
@@ -37,12 +39,11 @@ export function MyCharts() {
                 console.log(data);
                 setCharts(data);
             })
-    }, []);
+    }, [state.accessToken]);
 
-    const navigate = useNavigate();
-    const {credentials} = useParams();
 
     function handleAccount() {
+        //Go to Account page
         navigate(`/account/${credentials}`, {
             state: {
                 accessToken: state.accessToken,
@@ -54,6 +55,7 @@ export function MyCharts() {
 
 
     function selectChart(chartOptions){
+        //Render the chart the user selected
         console.log("Chart selected");
         chartOptions.exporting.enabled = false;
         console.log(chartOptions);
@@ -61,10 +63,12 @@ export function MyCharts() {
     }
 
     function downloadChart(chartOptions,format){
+        //Download the chart in the format that was selected
         delete chartOptions._id;
         delete chartOptions.userId;
         delete chartOptions.__v;
         const chart = Highcharts.chart('chart-container', chartOptions);
+        //If html format was selected, the html file is created using the svg file
         if (format === 'html'){
             const svg = chart.getSVG();
             const html = `<html>
@@ -83,6 +87,7 @@ export function MyCharts() {
             document.body.removeChild(element);
         }
 
+        //Download the chart in the selected format(not html)
         else {
             chart.exportChart({ type: format });
         }

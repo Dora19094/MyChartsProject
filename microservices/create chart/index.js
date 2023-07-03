@@ -23,9 +23,5 @@ app.use(bodyParser.json());
 app.use('/create-chart', chartRouter);
 
 app.listen(port, () => {
-<<<<<<< Updated upstream
     console.log(`> Create Chart Server started on port ${port}`);
-=======
-    console.log(`> Create Charts Server started on port ${port}`);
->>>>>>> Stashed changes
 });

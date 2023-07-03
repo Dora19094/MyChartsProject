@@ -1,5 +1,3 @@
-import React, {useEffect, useState} from 'react';
-import {GoogleLogin} from '@react-oauth/google';
 import {useLocation, useNavigate} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 

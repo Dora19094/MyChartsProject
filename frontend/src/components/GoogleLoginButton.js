@@ -1,26 +1,12 @@
-import React, {useEffect, useState} from 'react';
 import {GoogleLogin} from '@react-oauth/google';
 import {useNavigate} from "react-router-dom";
 import "../pages/Account.js";
 
 const GoogleLoginButton = () => {
     const navigate = useNavigate();
-    // const [isLoggedIn, setIsLoggedIn] = useState(false);
-    // const [accessToken, setAccessToken] = useState('');
-
-
-    // useEffect(() => {
-    //     // Check if access token exists in local storage
-    //     const storedAccessToken = localStorage.getItem('accessToken');
-    //     if (storedAccessToken) {
-    //         setAccessToken(storedAccessToken);
-    //         setIsLoggedIn(true);
-    //     }
-    // }, []);
-
-
     const success = (googleResponse) => {
 
+        //check if the user is new by asking the backend server
         fetch('http://localhost:4000/auth/checkIfNewUser', {
             method: 'POST',
             headers: {
@@ -32,6 +18,7 @@ const GoogleLoginButton = () => {
             .then(newUserResponse => {
                 let newUserResponseJSobj = JSON.parse(newUserResponse)
                 if (newUserResponseJSobj.newUser === false) {
+                    //Old user
                     fetch('http://localhost:4000/auth/login', {
                         method: 'POST',
                         headers: {
@@ -46,13 +33,7 @@ const GoogleLoginButton = () => {
                             const logindata = JSON.parse(loginData);
                             console.log(logindata);
 
-                            // store access token in local storage
-                            // const {accessToken} = googleResponse.accessToken;
-                            // setAccessToken(accessToken);
-                            // setIsLoggedIn(true);
-                            // localStorage.setItem('accessToken', accessToken);
-
-                            // navigate to user account page, account.js
+                            // navigate to Account page
                             navigate(
                                 `/account/${googleResponse.credential}`,
                                 {
@@ -67,13 +48,14 @@ const GoogleLoginButton = () => {
                         });
 
                 } else {
+                    //New user
                     console.log("New user");
+                    //go to New User page
                     navigate(
                          `/account/newuser`, {
                         state :{
                             googleRes: googleResponse}
                         });
-                    //code for new user
                 }
             })
             .catch(error => {
