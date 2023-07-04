@@ -6,9 +6,18 @@ import "../pages/Account.js";
 const GoogleLoginButton = () => {
     const navigate = useNavigate();
     const success = (googleResponse) => {
+        const {credential} = googleResponse
+        const userObject = jwt_decode(credential);
+        const { name, sub, email } = userObject;
 
-        const userObject = jwt_decode(googleResponse);
-        const { name, id, email } = userObject;
+        // const {credential} = req.body;
+        // console.log(credential)
+        // const ticket = await client.verifyIdToken({
+        //     idToken: credential,
+        //     audience: process.env.CLIENT_ID
+        // });
+        // const {sub, name, email} = ticket.getPayload();
+        // const user = {id:sub, name:name, email:email};
 
         //check if the user is new by asking the backend server
         fetch('http://localhost:4000/auth/checkIfNewUser', {
@@ -16,7 +25,7 @@ const GoogleLoginButton = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({id:id})
+            body: JSON.stringify({id:sub})
         })
             .then(newUserResponse => newUserResponse.text())
             .then(newUserResponse => {
@@ -28,7 +37,7 @@ const GoogleLoginButton = () => {
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({name:name,id:id,email:email})
+                        body: JSON.stringify({name:name,id:sub,email:email})
                     })
                         .then(loginResponse => loginResponse.text())
                         .then(loginData => {

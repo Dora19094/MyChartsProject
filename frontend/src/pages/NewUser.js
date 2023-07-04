@@ -13,15 +13,16 @@ const NewUser = () => {
     }
 
     async function handleContinue() {
-        const userObject = jwt_decode(googleResponse);
-        const { name, id, email } = userObject;
+        const {credential} = googleResponse;
+        const userObject = jwt_decode(credential);
+        const { name, sub, email } = userObject;
 
         await fetch('http://localhost:4000/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({id:id,name:name,email:email})
+            body: JSON.stringify({id:sub ,name:name,email:email})
         })
             .then(loginResponse => loginResponse.text())
             .then(loginData => {
