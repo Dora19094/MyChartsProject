@@ -1,5 +1,6 @@
 import {useLocation, useNavigate} from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import jwt_decode from "jwt-decode";
 
 const NewUser = () => {
     const navigate = useNavigate();
@@ -12,12 +13,15 @@ const NewUser = () => {
     }
 
     async function handleContinue() {
+        const userObject = jwt_decode(googleResponse);
+        const { name, id, email } = userObject;
+
         await fetch('http://localhost:4000/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(googleResponse)
+            body: JSON.stringify({id:id,name:name,email:email})
         })
             .then(loginResponse => loginResponse.text())
             .then(loginData => {
