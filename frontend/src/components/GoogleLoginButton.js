@@ -1,10 +1,14 @@
 import {GoogleLogin} from '@react-oauth/google';
 import {useNavigate} from "react-router-dom";
+import jwt_decode from 'jwt-decode';
 import "../pages/Account.js";
 
 const GoogleLoginButton = () => {
     const navigate = useNavigate();
     const success = (googleResponse) => {
+
+        const userObject = jwt_decode(googleResponse);
+        const { name, id, email } = userObject;
 
         //check if the user is new by asking the backend server
         fetch('http://localhost:4000/auth/checkIfNewUser', {
@@ -12,7 +16,7 @@ const GoogleLoginButton = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(googleResponse)
+            body: JSON.stringify({id:id})
         })
             .then(newUserResponse => newUserResponse.text())
             .then(newUserResponse => {
@@ -24,7 +28,7 @@ const GoogleLoginButton = () => {
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify(googleResponse)
+                        body: JSON.stringify({name:name,id:id,email:email})
                     })
                         .then(loginResponse => loginResponse.text())
                         .then(loginData => {
