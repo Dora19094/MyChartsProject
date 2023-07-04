@@ -7,13 +7,15 @@ const redisClient = require('../services/redisClient');
 require('dotenv').config();
 
 const  login = async (req, res) => {
-    const {credential} = req.body;
-    const ticket = await client.verifyIdToken({
-        idToken: credential,
-        audience: process.env.CLIENT_ID
-    });
-    const {sub, name, email} = ticket.getPayload();
-    const user = {id:sub, name:name, email:email};
+    // const {credential} = req.body;
+    // console.log(credential)
+    // const ticket = await client.verifyIdToken({
+    //     idToken: credential,
+    //     audience: process.env.CLIENT_ID
+    // });
+    // const {sub, name, email} = ticket.getPayload();
+    // const user = {id:sub, name:name, email:email};
+    const user  = req.body;
     try{ 
         addUser(user);
         const accessToken = generateAccessToken(user);

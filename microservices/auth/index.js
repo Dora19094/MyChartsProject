@@ -24,10 +24,13 @@ redisClient.on("error", (err) => {
     console.log("Redis: Error in the Connection");
 });
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
-app.use(cors({
-    origin: "http://localhost:300"
-}))
+app.use(cors());
 
 app.use(bodyParser.json());
 
