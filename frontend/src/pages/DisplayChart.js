@@ -80,7 +80,7 @@ export default function DisplayChart() {
             <h5>Your chart is ready. </h5>
             <img src={logo} className="template-logo" alt="logo"/>
             <Card style={{height: 600, width: 600}}>
-                <div style={{width:590,alignSelf:'center' }} ref={chartRef}>
+                <div style={{width: '100%', height: '100%',alignSelf:'center'}} ref={chartRef}>
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={state.files}
