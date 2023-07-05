@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const redis = require('redis');
 //const redisConfig = require('../configs/redis.config');
 
@@ -9,6 +11,12 @@ const redisConfig = {
     }
 }
 
+// const redisConfig = {
+//     host: 'redis',
+//     port: 6379
+//   }
+
 const redisClient = redis.createClient(redisConfig);
+
 
 module.exports = redisClient;

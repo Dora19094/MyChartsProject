@@ -7,9 +7,7 @@ const port = process.env.PUR_CREDITS_SERVER_PORT || 4500;
 
 const purchaseCredits = require('./src/router/purchaseCredits');
 
-app.use(cors({
-    origin: "http://localhost:3000"
-}));
+app.use(cors());
 
 app.use(bodyParser.json());
 

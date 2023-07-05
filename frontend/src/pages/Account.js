@@ -104,7 +104,12 @@ export default function Account() {
         })
             .then((res) => {
                 console.log(res.status);
-                navigate(`/`, {})
+                navigate(`/`, {
+                    state: {
+                    accessToken: null,
+                    refreshToken: null,
+                    email: null
+                }})
             });
     }
 

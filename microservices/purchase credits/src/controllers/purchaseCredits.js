@@ -2,11 +2,18 @@ const sendCreditsRabbit = require("../services/sendCreditsRabbit");
 
 const purchaseCredits = (req,res) => {
     const numOfCredits = req.params.numOfCredits
+    console.log(numOfCredits);
     const message = {
         userId: req.user_id,
         numOfCredits: numOfCredits
     }
-    sendCreditsRabbit(message);
+    try{
+        sendCreditsRabbit(message);
+    } 
+    catch(err){
+        console.log(err);
+    }
+    
     res.send({numOfCredits: numOfCredits})
 }
 

@@ -13,10 +13,7 @@ const receiveCreditsRabbit = require('./src/services/recieveCreditsRabbit.js');
 db.connect();
 
 
-app.use(cors({
-    // origin: webConfig.proto+"://"+webConfig.host+":"+webConfig.port
-    origin: "http://localhost:3000"
-}));
+app.use(cors());
 
 app.use(bodyParser.json());
 

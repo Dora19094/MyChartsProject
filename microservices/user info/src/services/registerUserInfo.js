@@ -14,10 +14,7 @@ const registerUserInfo = (data) => {
             .then(console.log(`User ${newUserInfo.name} added successfully`))
             .catch(err => console.log(err))
     } else { 
-        userInfo.findOneAndUpdate({
-            id:data.userInfo.id,
-            lastLogin: data.timestamp
-        })
+        userInfo.findOneAndUpdate({id:data.userInfo.id},{lastLogin: data.timestamp})
             .then(updatedUser => console.log(updatedUser))
             .catch(err => console.log(err))
     }

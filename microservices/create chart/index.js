@@ -12,9 +12,7 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 db.connect();
 
 
-app.use(cors({
-    origin: "http://localhost:3000"
-}));
+app.use(cors());
 
 app.use(bodyParser.json());
 
