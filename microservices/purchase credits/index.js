@@ -11,9 +11,12 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
+app.use((req,res)=>{
+    console.log(req)
+})
 app.use('/credits',purchaseCredits);
 
 
 app.listen(port, () => {
-    console.log(`> Auth Server started on port ${port}`);
+    console.log(`> Purchase Credits Server started on port ${port}`);
 });

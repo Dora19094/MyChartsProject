@@ -2,7 +2,7 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - 147.102.131.25:4007:3000
+      - 3000:3000
     
     networks:
       - saasNet

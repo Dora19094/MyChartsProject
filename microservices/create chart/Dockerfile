@@ -5,6 +5,8 @@ WORKDIR /app
 
 COPY package*.json ./
 
+RUN npm install lodash
+
 RUN npm install
 
 COPY . .
