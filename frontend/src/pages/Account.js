@@ -20,7 +20,7 @@ export default function Account() {
 
     useEffect(() => {
         //fetch the user's account information(email,last_login,number of credits)
-        fetch('http://localhost:5000/userInfo/getInfo', {
+        fetch('http://localhost:5001/userInfo/getInfo', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${state.accessToken}`,
