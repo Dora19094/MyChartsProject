@@ -10,7 +10,9 @@
 
 # Application Overview
 
-Our application, **MyCharts**, consists of six microservices and a frontend project. The architectures that were used were `MVC` in each microservice and `Microservices architecture` for the the entire app. Moreover, the technologies that were used are "NodeJs" for the microservices, "MongoDb" for the microservice's databases (which are deployed on cloud), "React" for the frontend and "RabbitMQ" for the message queue.
+Our application, **MyCharts**, consists of six microservices and a frontend project. The architectures that were used were `MVC` in each microservice and `Microservices architecture` for the entire app. Moreover, the technologies that were used are "NodeJs" for the microservices, "MongoDb" for the microservices' databases, "React" for the frontend and "RabbitMQ" for the message queue. The databases are deployed on cloud. 
+
+Note: The redis database which exists in this project was meant to be used as a cache for access tokens, but eventually we did not implement accessToken-refreshToken authorization. We only use the refresh token that expires after a set amount of time. After the expiration, user's interaction with the app is forbidden and the user needs to log in again.
 
 ## Microservices Overview
 
@@ -69,7 +71,6 @@ Note: Ensure that you have `npm` installed and available in your system's PATH f
 
 4. You can check they are all on the same network by running the command `docker network inspect saasNet` in the terminal.
 
-Note: We have not yet achieved to solve the cors errors that appear when fetching in frontend from the backend in the dockerised application. So api calls will not work when dockerised. The first time we run docker compose it worked, but gradually with every new docker compose those errors developed.
 
 ### Contributing
 
