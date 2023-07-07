@@ -12,7 +12,7 @@ function NewChart() {
 
     const {state} = useLocation();
     console.log(state);
-    const downloadFile = (chartType,isExample) => {
+    const downloadFile = (chartType, isExample) => {
 
         //download the selected template
         fetch(`http://localhost:4002/download-templates/template/${chartType}/${isExample}`, {
@@ -54,23 +54,23 @@ function NewChart() {
             <Col>
                 <h2 className='mt-5'> Let's create your own chart!</h2>
 
-                <Carousel style={{backgroundColor: "lightblue", borderColor: "black", width:'480px'}}>
+                <Carousel style={{backgroundColor: "lightblue", borderColor: "black", width: '480px'}}>
                     {charts.map((chart) => (
                         <CarouselItem key={chart.chartID}
                                       style={{height: 280}}>
                             <Carousel.Caption style={{color: "black", backgroundColor: " #lightblue"}}>
                                 {chart.chartTitle}
-                                <div style={{ display: "flex", justifyContent: "center" }}>
-                                    <img src={template} style={{ maxWidth: "50%", maxHeight: "50%" }} alt=""/>
+                                <div style={{display: "flex", justifyContent: "center"}}>
+                                    <img src={template} style={{maxWidth: "50%", maxHeight: "50%"}} alt=""/>
                                 </div>
                                 <div className="justify-content-xl-end">
                                     <Button variant="outline-dark" onClick={() => {
-                                        downloadFile(chart.chartType,"false")
+                                        downloadFile(chart.chartType, "false")
                                     }}>
                                         Download template
                                     </Button>
-                                    <Button style={{marginLeft:'6px'}} variant="outline-dark" onClick={() => {
-                                        downloadFile(chart.chartType,"true")
+                                    <Button style={{marginLeft: '6px'}} variant="outline-dark" onClick={() => {
+                                        downloadFile(chart.chartType, "true")
                                     }}>
                                         Download Example
                                     </Button>

@@ -1,4 +1,3 @@
-
 import React, {useRef, useEffect} from "react";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import "../style/Charts.css";
@@ -12,6 +11,7 @@ import HighchartsWheel from "highcharts/modules/dependency-wheel";
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsNetwork from "highcharts/modules/networkgraph";
 import AnnotationsModule from 'highcharts/modules/annotations';
+
 AnnotationsModule(Highcharts);
 HighchartsMore(Highcharts);
 HighchartSankey(Highcharts);
@@ -67,7 +67,7 @@ export default function DisplayChart() {
                 state: {
                     accessToken: state.accessToken,
                     refreshToken: state.refreshToken,
-                    email:state.email,
+                    email: state.email,
                 },
             });
         });
@@ -80,11 +80,11 @@ export default function DisplayChart() {
             <h5>Your chart is ready. </h5>
             <img src={logo} className="template-logo" alt="logo"/>
             <Card style={{height: 600, width: 600}}>
-                <div style={{width: '100%', height: '100%',alignSelf:'center'}} ref={chartRef}>
-                <HighchartsReact
-                    highcharts={Highcharts}
-                    options={state.files}
-                />
+                <div style={{width: '100%', height: '100%', alignSelf: 'center'}} ref={chartRef}>
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        options={state.files}
+                    />
                 </div>
             </Card>
             <ButtonToolbar className='mt-3'>

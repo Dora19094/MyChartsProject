@@ -8,7 +8,7 @@ const GoogleLoginButton = () => {
     const success = (googleResponse) => {
         const {credential} = googleResponse
         const userObject = jwt_decode(credential);
-        const { name, sub, email } = userObject;
+        const {name, sub, email} = userObject;
 
         // const {credential} = req.body;
         // console.log(credential)
@@ -25,7 +25,7 @@ const GoogleLoginButton = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({id:sub})
+            body: JSON.stringify({id: sub})
         })
             .then(newUserResponse => newUserResponse.text())
             .then(newUserResponse => {
@@ -37,7 +37,7 @@ const GoogleLoginButton = () => {
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({name:name,id:sub,email:email})
+                        body: JSON.stringify({name: name, id: sub, email: email})
                     })
                         .then(loginResponse => loginResponse.text())
                         .then(loginData => {
@@ -65,9 +65,10 @@ const GoogleLoginButton = () => {
                     console.log("New user");
                     //go to New User page
                     navigate(
-                         `/account/newuser`, {
-                        state :{
-                            googleRes: googleResponse}
+                        `/account/newuser`, {
+                            state: {
+                                googleRes: googleResponse
+                            }
                         });
                 }
             })

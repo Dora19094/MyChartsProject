@@ -3,7 +3,7 @@ import {useLocation, useNavigate, useParams} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../style/Charts.css";
 import logo from "../images/logo.svg";
-import {Card, Col, Container, DropdownButton,Dropdown, Row} from "react-bootstrap";
+import {Card, Col, Container, DropdownButton, Dropdown, Row} from "react-bootstrap";
 import "../style/MyCharts.css";
 import Highcharts from 'highcharts';
 import Exporting from 'highcharts/modules/exporting';
@@ -53,8 +53,7 @@ export function MyCharts() {
     }
 
 
-
-    function selectChart(chartOptions){
+    function selectChart(chartOptions) {
         //Render the chart the user selected
         console.log("Chart selected");
         chartOptions.exporting.enabled = false;
@@ -62,14 +61,14 @@ export function MyCharts() {
         Highcharts.chart('chart-container', chartOptions);
     }
 
-    function downloadChart(chartOptions,format){
+    function downloadChart(chartOptions, format) {
         //Download the chart in the format that was selected
         delete chartOptions._id;
         delete chartOptions.userId;
         delete chartOptions.__v;
         const chart = Highcharts.chart('chart-container', chartOptions);
         //If html format was selected, the html file is created using the svg file
-        if (format === 'html'){
+        if (format === 'html') {
             const svg = chart.getSVG();
             const html = `<html>
                                <body>
@@ -89,7 +88,7 @@ export function MyCharts() {
 
         //Download the chart in the selected format(not html)
         else {
-            chart.exportChart({ type: format });
+            chart.exportChart({type: format});
         }
     }
 
@@ -104,7 +103,7 @@ export function MyCharts() {
                     Back to my account
                 </Button>
             </div>
-            <div className="container vertical-scrollable" style={{ overflowX: 'auto', paddingLeft: '10px' }}>
+            <div className="container vertical-scrollable" style={{overflowX: 'auto', paddingLeft: '10px'}}>
                 <div className="row text-center">
 
                     {charts && (charts.map(chart => (
@@ -112,29 +111,30 @@ export function MyCharts() {
                             <Container>
                                 <Row className="align-items-start">
                                     <Col>
-                                        <Card key={chart._id} onClick={() => selectChart(chart)} style={{backgroundColor:'whitesmoke'}}>
+                                        <Card key={chart._id} onClick={() => selectChart(chart)}
+                                              style={{backgroundColor: 'whitesmoke'}}>
                                             <Card.Body>
                                                 <Card.Title>{chart.chartName}</Card.Title>
                                                 <Card.Text>{chart.chartType}</Card.Text>
                                                 <Card.Text>{chart.createdOn}</Card.Text>
                                                 <DropdownButton title="Export Chart" variant="outline-info">
                                                     <Dropdown.Item
-                                                        onClick={() => downloadChart(chart,'image/png')}
+                                                        onClick={() => downloadChart(chart, 'image/png')}
                                                     >
                                                         PNG
                                                     </Dropdown.Item>
                                                     <Dropdown.Item
-                                                        onClick={() => downloadChart(chart,'application/pdf')}
+                                                        onClick={() => downloadChart(chart, 'application/pdf')}
                                                     >
                                                         PDF
                                                     </Dropdown.Item>
                                                     <Dropdown.Item
-                                                        onClick={() => downloadChart(chart,'html')}
+                                                        onClick={() => downloadChart(chart, 'html')}
                                                     >
                                                         HTML
                                                     </Dropdown.Item>
                                                     <Dropdown.Item
-                                                        onClick={() => downloadChart(chart,'image/svg')}
+                                                        onClick={() => downloadChart(chart, 'image/svg')}
                                                     >
                                                         SVG
                                                     </Dropdown.Item>
