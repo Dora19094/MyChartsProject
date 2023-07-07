@@ -19,7 +19,7 @@ We have six microservices :
 
 * auth : it has its database in which it stores all user IDs, so when a user tries to login it checks if the user is new or not. This microservice is responsible of logging in and logging out users.
 
-* user-charts : in its database it stores all users' saved charts. It is resmponsible of returning their charts to frontend.
+* user-charts : in its database it stores all users' saved charts. It is responsible of returning their charts to frontend.
 
 * create-chart : it validates the templates the users upload when creating a chart and it forms the final chart configuration which will be rendered in the frontend.
 
