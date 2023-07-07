@@ -1,7 +1,11 @@
 const amqp = require('amqplib');
 
+/*
+ * Configuration of CloudAMPQ 
+ */ 
+
 async function configureRabbitMQ(exchangeName, queueName) {
-  // Use config file
+
   const connection = await amqp.connect('amqps://xgpturee:HTaKUxbw3wMXsCL-1N7G6adN2o7jlKbx@stingray.rmq.cloudamqp.com/xgpturee');
   const channel = await connection.createChannel();
   const routingKey = ''

@@ -1,5 +1,7 @@
 sendMessageRabbitMQ = require('./sendMessageRabbitMQ');
-
+/*
+ * Sends new user or the update login date to user info 
+ */
 const sendUserInfoRabbit = (firstTimeLogin, data) => {
     let date_time = new Date(Date.now());
     let month = date_time.getMonth() + 1;

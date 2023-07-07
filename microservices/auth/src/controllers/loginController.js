@@ -6,15 +6,13 @@ const client = new OAuth2Client(process.env.CLIENT_ID);
 const redisClient = require('../services/redisClient');
 require('dotenv').config();
 
+
+/*
+ * Generation of access and refresh tokens
+ * The refresh token is stored in redis
+ * Both of them are send in the frontend
+ */
 const  login = async (req, res) => {
-    // const {credential} = req.body;
-    // console.log(credential)
-    // const ticket = await client.verifyIdToken({
-    //     idToken: credential,
-    //     audience: process.env.CLIENT_ID
-    // });
-    // const {sub, name, email} = ticket.getPayload();
-    // const user = {id:sub, name:name, email:email};
     const user  = req.body;
     try{ 
         addUser(user);

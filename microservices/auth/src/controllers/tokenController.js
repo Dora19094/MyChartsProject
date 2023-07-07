@@ -1,7 +1,10 @@
 const jwt = require('jsonwebtoken');
 const generateAccessToken = require('../services/generateAccessToken');
 const redisClient = require('../services/redisClient');
-
+/*
+ * Generates new access token when it expires based on refresh token
+ * We did not use this function
+ */ 
 const  token = async (req, res) => {
     const {refreshToken} = req.body;
     if(refreshToken ===null) return res.sendStatus(401)

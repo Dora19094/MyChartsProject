@@ -1,5 +1,9 @@
 const userInfo = require('../models/userInfoModel');
-
+/*
+ * Code that updates user info 
+ * if user new it creates a new record for that user
+ * If user old it updates the user's login date
+ */
 const registerUserInfo = (data) => {
     const {firstTimeLogin} = data
     if(firstTimeLogin){

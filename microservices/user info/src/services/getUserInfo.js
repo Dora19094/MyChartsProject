@@ -1,7 +1,8 @@
 const UserInfo = require("../models/userInfoModel");
 
-//should fix return object and console logs
-
+/*
+ * Retrieves user info from db based on user id
+ */ 
 const getUserInfo = (id) => {
   return (
     UserInfo.findOne({ 'id': id })
