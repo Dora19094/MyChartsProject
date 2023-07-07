@@ -39,7 +39,7 @@ services:
   user-info:
     build: ./microservices/user info
     ports:
-      - 5001:5001
+      - 4004:4004
     networks:
       - saasNet
   
