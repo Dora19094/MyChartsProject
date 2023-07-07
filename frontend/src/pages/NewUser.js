@@ -4,7 +4,7 @@ import jwt_decode from "jwt-decode";
 
 const NewUser = () => {
     const navigate = useNavigate();
-    const {state}= useLocation();
+    const {state} = useLocation();
     const googleResponse = state.googleRes;
     console.log(googleResponse);
 
@@ -15,14 +15,14 @@ const NewUser = () => {
     async function handleContinue() {
         const {credential} = googleResponse;
         const userObject = jwt_decode(credential);
-        const { name, sub, email } = userObject;
+        const {name, sub, email} = userObject;
 
         await fetch('http://localhost:4000/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({id:sub ,name:name,email:email})
+            body: JSON.stringify({id: sub, name: name, email: email})
         })
             .then(loginResponse => loginResponse.text())
             .then(loginData => {
@@ -46,11 +46,11 @@ const NewUser = () => {
 
     return (
         <div>
-            <h3 style ={{padding: '100px'}}>
+            <h3 style={{padding: '100px'}}>
                 Are you sure you want to log in with google? Your data will be stored in our database and will be
                 processed based on our policy.
             </h3>
-            <Button variant="outline-info" style={{marginRight : '5px'}} onClick={handleContinue}>
+            <Button variant="outline-info" style={{marginRight: '5px'}} onClick={handleContinue}>
                 Continue
             </Button>
             <Button variant="outline-info" onClick={handleCancel}>

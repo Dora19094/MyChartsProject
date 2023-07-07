@@ -19,6 +19,7 @@ export function Home() {
     const [show, setShow] = useState(false);
     const [showLog, setShowLog] = useState(false);
     const navigate = useNavigate();
+
     function handleOpen() {
         //show the chart-message
         setShow(true);
@@ -39,11 +40,10 @@ export function Home() {
         setShowLog(false);
     }
 
-    function about(){
+    function about() {
         //Go to the About page
         navigate(`/about`, {})
-        }
-
+    }
 
 
     return (
@@ -72,7 +72,8 @@ export function Home() {
                             <Modal.Title>Hello there!</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <p style={{fontSize:'15px'}}>In this app you can create charts, like the one you selected, by downloading a
+                            <p style={{fontSize: '15px'}}>In this app you can create charts, like the one you selected,
+                                by downloading a
                                 template, filling it in with your data and then uploading it.
                                 More instructions about the filling in of the templates will be
                                 given to you along the way. Moreover you can save the diagrams you create. Enjoy!</p>
@@ -84,8 +85,8 @@ export function Home() {
                         </Modal.Footer>
                     </Modal>
                 </div>
-                <div style={{height: '400px',width: '900px'}}>
-                    <Carousel >
+                <div style={{height: '400px', width: '900px'}}>
+                    <Carousel>
                         <Carousel.Item style={{height: '500px'}}>
                             <Stack
                                 direction="horizontal"
@@ -167,12 +168,12 @@ export function Home() {
                             </Stack>
                         </CarouselItem>
                     </Carousel>
-                </div >
+                </div>
             </div>
-            <div className='foot' style={{marginTop:'20px'}}>
+            <div className='foot' style={{marginTop: '20px'}}>
                 <h5> Press on a diagram to see how this works, or log in with your google account to start creating your
                     diagrams.</h5>
-                <Button variant="outline-info" style={{left:'0%',position:'absolute',marginTop:'30px'}}
+                <Button variant="outline-info" style={{left: '0%', position: 'absolute', marginTop: '30px'}}
                         onClick={about}> about </Button>
             </div>
         </div>

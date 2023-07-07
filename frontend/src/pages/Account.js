@@ -35,8 +35,6 @@ export default function Account() {
     }, [state.accessToken]);
 
 
-
-
     useEffect(() => {
         //fetch the number of charts the user has
         fetch('http://localhost:4003/user-chart/countCharts', {
@@ -90,13 +88,13 @@ export default function Account() {
         });
     }
 
-    function handleLogout(){
+    function handleLogout() {
         //Logout: Go back to the Home page, account disconnected
         console.log("logout");
         console.log(state.refreshToken);
-        fetch('http://localhost:4000/auth/logout/', {
+        fetch('http://localhost:4000/auth/logout', {
             method: 'POST',
-            body: JSON.stringify({refreshToken :state.refreshToken}),
+            body: JSON.stringify({refreshToken: state.refreshToken}),
             headers: {
                 'Authorization': `Bearer ${state.accessToken}`,
                 'Content-Type': 'application/json'
@@ -106,10 +104,11 @@ export default function Account() {
                 console.log(res.status);
                 navigate(`/`, {
                     state: {
-                    accessToken: null,
-                    refreshToken: null,
-                    email: null
-                }})
+                        accessToken: null,
+                        refreshToken: null,
+                        email: null
+                    }
+                })
             });
     }
 
@@ -170,7 +169,7 @@ export default function Account() {
                         </Button>
                     </ButtonGroup>
                     <ButtonGroup className="me-2">
-                    <Button variant="outline-info" onClick={handleLogout}>Logout</Button>
+                        <Button variant="outline-info" onClick={handleLogout}>Logout</Button>
                     </ButtonGroup>
                 </ButtonToolbar>
             </div>

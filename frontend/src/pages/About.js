@@ -14,7 +14,8 @@ export default function About() {
                 <br/>
                 <br/>
                 <h3>Who we are</h3>
-                <p style={{fontSize:'15px'}}> We are a team of undergraduate students of Electrical and Computer Engineering
+                <p style={{fontSize: '15px'}}> We are a team of undergraduate students of Electrical and Computer
+                    Engineering
                     at National Technical University of Athens.
                     Meet the team: Argyro Tsipi, Theodora Boutsini and Vangelis Kontogiannis.
                     We are specialized in Software Development and we are the creators of 'MyCharts'. MyCharts is a
@@ -29,7 +30,8 @@ export default function About() {
                 </p>
                 <br/>
                 <h3>Pricing</h3>
-                <p style={{fontSize:'15px'}}> MyCharts pricing concerning credits is the following: 5 credits for 0.99$, 10 credits for 1.99$, 15
+                <p style={{fontSize: '15px'}}> MyCharts pricing concerning credits is the following: 5 credits for
+                    0.99$, 10 credits for 1.99$, 15
                     credits for 14.99$, 20 credits for 19.99$
                     Each chart you create costs 1 credit. </p>
                 <br/>

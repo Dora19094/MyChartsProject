@@ -10,10 +10,11 @@ export function ErrorMessage() {
     const navigate = useNavigate();
     const {credentials} = useParams();
     const {state} = useLocation();
+
     function handleBack() {
         //Go back to the New Chart page
-        navigate(`/account/${credentials}/newchart`,{
-            state:{
+        navigate(`/account/${credentials}/newchart`, {
+            state: {
                 accessToken: state.accessToken,
                 refreshToken: state.refreshToken,
                 credits: state.credits
@@ -24,7 +25,7 @@ export function ErrorMessage() {
     return (
         <div>
             <img src={logo} className="App-logo" alt="logo"/>
-            <div className="d-flex justify-content-md-start" style={{marginTop:'30px'}}>
+            <div className="d-flex justify-content-md-start" style={{marginTop: '30px'}}>
                 <h3 className="me-2">
                     Cannot prepare your chart. Your uploaded file contained errors.
                 </h3>
