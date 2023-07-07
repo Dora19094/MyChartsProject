@@ -1,6 +1,0 @@
-@echo off
-
-echo * Starting Web app...
-cd /d C:\Users\konto\Documents\GitHub\SaaS23-60\frontend"
-npm run start-win
-echo * Web app started successfully...
