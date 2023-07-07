@@ -148,7 +148,10 @@ export function MyCharts() {
                     )))}
                 </div>
             </div>
-            <div id="chart-container"/>
+            <div id="contain">
+                <div id="chart-container"/>
+            </div>
+
         </div>
     )
 }

@@ -10,6 +10,15 @@ const GoogleLoginButton = () => {
         const userObject = jwt_decode(credential);
         const { name, sub, email } = userObject;
 
+        // const {credential} = req.body;
+        // console.log(credential)
+        // const ticket = await client.verifyIdToken({
+        //     idToken: credential,
+        //     audience: process.env.CLIENT_ID
+        // });
+        // const {sub, name, email} = ticket.getPayload();
+        // const user = {id:sub, name:name, email:email};
+
         //check if the user is new by asking the backend server
         fetch('http://localhost:4000/auth/checkIfNewUser', {
             method: 'POST',

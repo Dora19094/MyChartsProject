@@ -8,14 +8,15 @@
     overflow-y: scroll;
 }
 
-
-#chart-container{
+#contain{
     position: absolute;
-    top: 240px;
-    bottom: 70px;
-    right: 45px;
-    width: 38%;
-    height:460px;
+    top: 260px;
+    right: 100px;
+    width: 30%;
+}
+#chart-container{
+   width:100%;
+    height:100%;
 }
 
 .col-sm-8 {
