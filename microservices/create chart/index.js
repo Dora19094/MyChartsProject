@@ -11,13 +11,13 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 db.connect();
 
-
+app.options('*', cors())
 app.use(cors());
 
 app.use(bodyParser.json());
 
 app.use('/create-chart', chartRouter);
 
-app.listen(port, () => {
+app.listen(4001, () => {
     console.log(`> Create Chart Server started on port ${port}`);
 });

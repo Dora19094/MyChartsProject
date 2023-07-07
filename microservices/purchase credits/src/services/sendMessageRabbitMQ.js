@@ -6,6 +6,7 @@ async function sendMessageRabbitMQ(message, queue, exchangeName, ) {
     const exchangeOptions = { persistent: false };
     const messageOptions = { persistent: false };
     await channel.publish(exchangeName, routingKey, Buffer.from(JSON.stringify(message)), exchangeOptions, messageOptions);
+    console.log("I sent credits")
   }
 
 module.exports=sendMessageRabbitMQ;
