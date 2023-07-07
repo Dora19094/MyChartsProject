@@ -1,8 +1,9 @@
 const User = require("../models/userModel");
 const sendUserInfoRabbit = require("../services/sendUserInfoRabbit");
 
-//should fix return object and console logs
-
+/*
+ * Adds new user
+ */
 const addUser = (user) => {
     User.findOne({ 'google.id': user.id })
       .then((existingUser) => {

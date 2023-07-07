@@ -1,5 +1,7 @@
 const userInfo = require('../models/userInfoModel');
-
+/*
+ * Update the number of credits of a user
+ */
 const registerCredits = (data) => {
     const {userId, numOfCredits} = data 
     

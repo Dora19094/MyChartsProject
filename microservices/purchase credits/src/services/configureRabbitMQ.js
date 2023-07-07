@@ -1,6 +1,11 @@
 const amqp = require('amqplib');
 const rabbit_config = require('../configs/rabbitmq.config');
 
+/*
+ *  Configuration of connection with CLoudAMQP
+ *  Creation of queue
+ */
+
 async function configureRabbitMQ(exchangeName, queueName) {
   // Use config file
   const connection = await amqp.connect('amqps://xgpturee:HTaKUxbw3wMXsCL-1N7G6adN2o7jlKbx@stingray.rmq.cloudamqp.com/xgpturee');
