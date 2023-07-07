@@ -97,7 +97,7 @@ export function MyCharts() {
             <img src={logo} className="App-logo" alt="logo" style={{marginBottom: '30px'}}/>
             <div className="d-flex justify-content-md-start">
                 <h3 className="me-2">
-                    {state.email}@gmail.com
+                    {state.email}
                 </h3>
                 <Button className="me-2" variant="outline-info" onClick={handleAccount}>
                     Back to my account
