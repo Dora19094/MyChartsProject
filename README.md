@@ -12,7 +12,7 @@
 
 Our application, **MyCharts**, consists of six microservices and a frontend project. The architectures that were used were `MVC` in each microservice and `Microservices architecture` for the entire app. Moreover, the technologies that were used are "NodeJs" for the microservices, "MongoDb" for the microservices' databases, "React" for the frontend and "RabbitMQ" for the message queue. The databases are deployed on cloud. 
 
-Note: The redis database which exists in this project was meant to be used as a cache for access tokens, but eventually we did not implement accessToken-refreshToken authorization. We only use the refresh token that expires after a set amount of time. After the expiration, user's interaction with the app is forbidden and the user needs to log in again.
+Note: The redis database which exists in this project was meant to be used as a cache for access tokens, but eventually we did not implement accessToken-refreshToken authorization. We only use the access token that expires after a set amount of time. After the expiration, user's interaction with the app is forbidden and the user needs to log in again.
 
 ## Microservices Overview
 
